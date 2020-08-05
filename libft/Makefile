@@ -12,9 +12,9 @@
 
 NAME		= libft.a
 
-SRC_DIR		= sources
-OBJ_DIR		= objects
-INC_DIR		= includes
+DIR_SRC		= sources
+DIR_OBJ 	= objects
+DIR_INC 	= includes
 
 SRC_LIST	= ft_abs.c ft_atoi.c ft_bzero.c ft_free_array.c ft_intlen.c ft_isalnum.c ft_isalpha.c\
 			ft_isascii.c ft_isdigit.c ft_islower.c ft_isprint.c ft_isspace.c\
@@ -30,28 +30,27 @@ SRC_LIST	= ft_abs.c ft_atoi.c ft_bzero.c ft_free_array.c ft_intlen.c ft_isalnum.
 			ft_strrev.c ft_strsplit.c ft_strstr.c ft_strsub.c ft_strtrim.c ft_strtrim_char.c ft_strtrim_chars.c\
 			ft_swap.c ft_tolower.c ft_toupper.c get_next_line.c
 
-OBJ_LIST	= $(SRC_LIST:.c=.o)
 HEADERS		= libft.h get_next_line.h
 
-SRC			= $(addprefix $(SRC_DIR)/, $(SRC_LIST))
-OBJ			= $(addprefix $(OBJ_DIR)/, $(OBJ_LIST))
-INC			= $(addprefix $(INC_DIR)/, $(HEADERS))
+SRC			= $(addprefix $(DIR_SRC)/, $(SRC_LIST))
+OBJ			= $(addprefix $(DIR_OBJ)/, $(SRC_LIST:.c=.o))
+INC			= $(addprefix $(DIR_INC)/, $(HEADERS))
 
 FLAGS		= -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(OBJ_DIR) $(OBJ)
+$(NAME): $(DIR_OBJ) $(OBJ) $(INC)
 	@ar rc $(NAME) $(OBJ)
 
-$(OBJ_DIR):
-	@mkdir -p $(OBJ_DIR)
+$(DIR_OBJ):
+	@mkdir -p $(DIR_OBJ)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC)
-	@gcc -c -I $(INC_DIR) $(FLAGS) $< -o $@
+$(DIR_OBJ)/%.o: $(DIR_SRC)/%.c $(INC)
+	@gcc -c -I $(DIR_INC) $(FLAGS) $< -o $@
 
 clean:
-	@/bin/rm -rf $(OBJ_DIR)
+	@/bin/rm -rf $(DIR_OBJ)
 
 fclean: clean
 	@/bin/rm -f $(NAME)

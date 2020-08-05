@@ -22,7 +22,7 @@ static int		newline(char **s, char **line, int fd, int nbread)
 		len++;
 	if (s[fd][len] == '\n')
 	{
-		*line = ft_strsub(s[fd], 0, len);
+		*line = ft_strsub(s[fd], 0, len + 1);
 		temp = ft_strdup(s[fd] + len + 1);
 		free(s[fd]);
 		s[fd] = temp;

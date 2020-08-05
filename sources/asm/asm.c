@@ -40,20 +40,24 @@ int				main(int argc, char **argv)
 	char *filename;
 
 	fd = 0;
-	if (argc == 2)
-	{
+	if (argc == 2) {
 		if (-1 == (fd = open(argv[1], O_RDONLY)))
-			ft_printf("Error \n");
-	}
-	parser = init_parser(fd);
-	read_file(parser);
-	filename = replace_extension(parser, argv[1]);
+			exit_func(NULL, "main" , 2);
+		parser = init_parser(fd);
+		read_file(parser);
+		filename = replace_extension(parser, argv[1]);
+		write_to_file(parser, filename);
 
-/*	if (solution(m))
-		result(m);
-	else
-		exit_func(m, 1);
-	exit_func(m, 0);
+/*		if (solution(m))
+			result(m);
+		else
+			exit_func(m, 1);
+		exit_func(m, 0);
 */
+	}
+	else if (argc > 2)
+		ft_printf("Usage: ./asm mychampion.s\n");
+	else
+		ft_printf("Usage: ./asm mychampion.s\n");
 	return (0);
 }

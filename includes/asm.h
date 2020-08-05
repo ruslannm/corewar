@@ -79,6 +79,7 @@ void		exit_func(t_parser *parser, char *func_name, int error);
 int		get_next_line_asm(const int fd, char **line);
 int 	is_filename(const char *filename);
 char	*replace_extension(t_parser * parser, const char *filename);
+void	write_to_file(t_parser * parser, const char *filename); // create and write commands to file *.cor
 
 //int lexer(char *filename);
 //int is_kword(char *id);

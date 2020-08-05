@@ -16,6 +16,10 @@ void print_error(char *func_name, int error)
 {
 	if (error == 1)
 		ft_printf("Memory allocation error in function \"%s\"\n", func_name);
+	if (error == 2)
+		ft_printf("Error with opening file in \"%s\"\n", func_name);
+	if (error == 3)
+		ft_printf("I can't create a file in \"%s\"\n", func_name);
 
 	//TODO print for other errors
 }

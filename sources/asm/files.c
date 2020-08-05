@@ -46,3 +46,16 @@ char	*replace_extension(t_parser * parser, const char *filename)
 	}
 	return (NULL);
 }
+
+void	write_to_file(t_parser * parser, const char *filename)
+{
+	int		fd;
+
+	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
+	if (fd == -1)
+		exit_func(parser, "write_to_file" , 3);
+	//to do write to file
+	close(fd);
+	ft_printf("Writing output program to %s", filename);
+//	free(filename);
+}
