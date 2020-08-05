@@ -3,3 +3,8 @@ corewar-sub
 
 libft/objects
 ft_printf/objects
+
+CMakeLists.txt
+cmake-build-debug/
+.DS_Store
+.idea/
