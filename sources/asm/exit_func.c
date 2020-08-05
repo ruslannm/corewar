@@ -1,0 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exit_func.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
+/*   Updated: 2020/08/04 18:40:31 by rgero            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "asm.h"
+
+void print_error(char *func_name, int error)
+{
+	if (error == 1)
+		ft_printf("Memory allocation error in function \"%s\"\n", func_name);
+
+	//TODO print for other errors
+}
+
+void		exit_func(t_parser *parser, char *func_name, int error)
+{
+	if (error)
+		print_error(func_name, error);
+	if (!parser)
+	{
+		exit(1);
+	}
+	exit(0);
+}
