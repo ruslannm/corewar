@@ -41,7 +41,7 @@ char	*replace_extension(t_parser * parser, const char *filename)
 		if (!(newname = ft_strnew(len + 2)))
 			exit_func(parser, "replace_extansion" , 1);
 		newname = ft_strncpy(newname, filename, len - 2);
-		newname = ft_strcat(newname, "cor");
+		newname = ft_strcat(newname, ".cor");
 		return (newname);
 	}
 	return (NULL);
