@@ -2,5 +2,13 @@ lem-in-final
 corewar-sub
 .vscode
 
+# Folders
+cmake-build-debug/
+.idea/
+.vscode/
+
+# Object files
+*.o
+objects/
 libft/objects
 ft_printf/objects

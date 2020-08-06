@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/05 20:13:35 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/06 17:23:33 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,24 @@ int				main(int argc, char **argv)
 	if ((fd = open(filename, O_CREAT | O_TRUNC | O_WRONLY, 0644)) == -1)
 		terminate(parser, "Can\'t create file");
 	write_file(fd, parser);
+	if (argc == 2) {
+		if (-1 == (fd = open(argv[1], O_RDONLY)))
+			exit_func(NULL, "main" , 2);
+		parser = init_parser(fd);
+		read_file(parser);
+		filename = replace_extension(parser, argv[1]);
+		write_to_file(parser, filename);
+
+/*		if (solution(m))
+			result(m);
+		else
+			exit_func(m, 1);
+		exit_func(m, 0);
+*/
+	}
+	else if (argc > 2)
+		ft_printf("Usage: ./asm mychampion.s\n");
+	else
+		ft_printf("Usage: ./asm mychampion.s\n");
 	return (0);
 }
