@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/05 20:16:41 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/06 21:30:28 by rgero            ###   ########.fr       */
+/*   Created: 2020/08/06 19:11:37 by rgero             #+#    #+#             */
+/*   Updated: 2020/08/06 19:39:52 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_token		*init_token(t_parser *parser, token_type type)
+void	lexical_error(t_parser *parser)
 {
-	t_token	*token;
-
-	if (!(token = (t_token *)ft_memalloc(sizeof(t_token))))
-		terminate(parser, "memory allocation in init_token");
-	token->content = NULL;
-	token->type = type;
-	token->row = parser->row;
-	if (type == SEPARATOR || type == NEW_LINE)
-		token->column = parser->column - 1;
-	else
-		token->column = parser->column;
-	return (token);
+	ft_printf("Lexical error at [%03u:%03u]\n",
+													parser->row,
+													parser->column + 1);
+	exit_func(parser, 1);
 }

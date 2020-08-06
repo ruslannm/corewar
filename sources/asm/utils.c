@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/05 20:16:41 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/06 21:30:28 by rgero            ###   ########.fr       */
+/*   Created: 2020/08/06 19:07:21 by rgero             #+#    #+#             */
+/*   Updated: 2020/08/06 21:31:34 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_token		*init_token(t_parser *parser, token_type type)
+char	*join_str(t_parser *parser, char **str1, char **str2)
 {
-	t_token	*token;
+	char *ret;
 
-	if (!(token = (t_token *)ft_memalloc(sizeof(t_token))))
-		terminate(parser, "memory allocation in init_token");
-	token->content = NULL;
-	token->type = type;
-	token->row = parser->row;
-	if (type == SEPARATOR || type == NEW_LINE)
-		token->column = parser->column - 1;
-	else
-		token->column = parser->column;
-	return (token);
+	if (!(ret = ft_strjoin(*str1, *str2)))
+		terminate(parser, "memory allocation in join_str");
+	ft_strdel(str1);
+	ft_strdel(str2);
+	return (ret);
 }

@@ -6,7 +6,7 @@
 #    By: rgero <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#              #
-#    Updated: 2020/08/05 23:03:46 by rgero            ###   ########.fr        #
+#    Updated: 2020/08/06 19:39:09 by rgero            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,11 +27,14 @@ SRC_LIST_ASM 	= 	add_item.c\
 					asm.c\
 					check_char.c\
 					get_next_line_asm.c\
+					error.c\
 					exit_func.c\
 					init.c\
 					files.c\
 					parse.c\
+					parse_str.c\
 					read_file.c\
+					utils.c\
 					write_file.c
 
 HEADERS				= asm.h op.h

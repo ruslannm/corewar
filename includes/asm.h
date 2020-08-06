@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/06 17:27:44 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/06 19:32:35 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct	s_parser
 	unsigned int		row;
 	unsigned int		column;
 	t_token				**tokens;
+	int					*label_links;
 	unsigned int		tokens_size[2];
 	int32_t				pos;
 	int32_t				op_pos;
@@ -91,8 +92,13 @@ char	*replace_extension(t_parser * parser, const char *filename);
 void		read_file(t_parser *parser);
 void	write_file(int fd, t_parser *parser);
 void	parse_token(t_parser *parser, char **row);
-void add_token(t_parser *parser, t_token *token);
+void 	add_token(t_parser *parser, t_token *token);
 t_token		*init_token(t_parser *parser, token_type type);
+int	is_delimiter(char c);
+char	*join_str(t_parser *parser, char **str1, char **str2);
+void	lexical_error(t_parser *parser);
+void	parse_str(t_parser *parser,	char **row,	unsigned start,	t_token *token);
+
 //void	write_to_file(t_parser * parser, const char *filename); // create and write commands to file *.cor
 
 //int lexer(char *filename);

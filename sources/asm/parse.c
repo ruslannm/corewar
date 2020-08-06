@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 19:40:18 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/06 17:16:59 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/06 21:38:13 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,19 @@
 void	parse_operator(t_parser *parser,	char *row,	unsigned int start,
 		t_token *token)
 {
-	char 	*content;
 	unsigned column;
 
 	token->column = start;
 	column = parser->column;
-	
-	if (!(content = ft_strsub(row, start, parser->column - start)))
-		terminate(parser, "memory allocation");
-	token->type = OPERATOR;
+	while (row[parser->column]
+		&&  0 == is_delimiter(row[parser->column]))
+		parser->column++;
+	if (!(token->content = ft_strsub(row, start, parser->column - start)))
+		terminate(parser, "memory allocation in parse_operator");
+	add_token(parser, token);
+//	parser->column++;
 }
+
 
 
 void	parse_token(t_parser *parser, char **row)
@@ -36,4 +39,6 @@ void	parse_token(t_parser *parser, char **row)
 	else if (*(*row + parser->column) == '.')
 		parse_operator(parser, *row, parser->column++,
 					init_token(parser, COMMAND));
+	else if (*(*row + parser->column) == '\"')
+		parse_str(parser, row, parser->column, init_token(parser, STRING));
 }

@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/05 19:41:56 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/06 21:31:15 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,5 @@ void		read_file(t_parser *parser)
 		ft_strdel(&row);
 	}
 	if (size < 0)
-		terminate(parser, "read file");
+		terminate(parser, "read file in read_file");
 }

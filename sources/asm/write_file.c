@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 17:15:22 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/05 18:29:27 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/06 21:31:51 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		write_file(int fd, t_parser *parser)
 	len = 4;
 	pos = 0;
 	if (!(bytecode = ft_strnew(len)))
-		terminate(parser, "Memory allocation");
+		terminate(parser, "Memory allocation in write_file");
 	int_to_bigendian(bytecode, pos, COREWAR_EXEC_MAGIC, 4);
 	write(fd, bytecode, len);
 	free(bytecode);
