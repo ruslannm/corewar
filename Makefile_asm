@@ -6,7 +6,7 @@
 #    By: rgero <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#              #
-#    Updated: 2020/08/05 16:01:08 by rgero            ###   ########.fr        #
+#    Updated: 2020/08/05 23:03:46 by rgero            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,10 +23,16 @@ DIR_FT_PRINTF 		= ft_printf
 NAME_FT_PRINTF		= $(DIR_FT_PRINTF)/libftprintf.a
 DIR_INC_PRINTF		= $(DIR_FT_PRINTF)/includes
 
-SRC_LIST_ASM 	= 	get_next_line_asm.c\
+SRC_LIST_ASM 	= 	add_item.c\
+					asm.c\
+					check_char.c\
+					get_next_line_asm.c\
 					exit_func.c\
+					init.c\
 					files.c\
-					asm.c
+					parse.c\
+					read_file.c\
+					write_file.c
 
 HEADERS				= asm.h op.h
 

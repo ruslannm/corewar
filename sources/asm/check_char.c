@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_func.c                                        :+:      :+:    :+:   */
+/*   check_char.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/05 18:03:18 by rgero            ###   ########.fr       */
+/*   Created: 2020/08/05 22:53:38 by rgero             #+#    #+#             */
+/*   Updated: 2020/08/05 22:56:17 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void terminate(t_parser *parser, char *str)
+int	is_whitespace(char c)
 {
-	ft_putstr_fd("ERROR: ", 2);
-	ft_putendl_fd(str, 2);
-	exit_func(parser, 1);
+	if (c == '\t' || c == '\v' || c == '\f' || c == '\r' ||	c == ' ')
+		return (1);
+	return (0);
 }
 
-void		exit_func(t_parser *parser, int error)
+int	is_delimiter(char c)
 {
-	if (!parser)
-	{
-		exit(error);
-	}
-	exit(error);
+	if (c == '\0' || c == '\n' || is_whitespace(c) || c == COMMAND_CHAR
+		|| c == '\"' || c == DIRECT_CHAR || c == SEPARATOR_CHAR
+		|| c == COMMENT_CHAR)
+		return (1);
+	return (0);
 }

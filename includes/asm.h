@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/05 15:46:47 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/05 22:57:24 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,24 @@
 # include <fcntl.h>
 # include "libft.h"
 # include "ft_printf.h"
+# include "op.h"
+
+# define MAX_ARR		1000000
+# define MIN_ARR		1000
+# define COMMAND_CHAR	'.'
 
 typedef enum
 {
+	COMMAND,
+	STRING,
 	LABEL,
-	OPER,
-	REG,
-	DIR,
-	DIR_LABEL,
-	IND,
-	IND_LABEL,
-	SEP,
+	OPERATOR,
+	REGISTER,
+	DIRECT,
+	DIRECT_LABEL,
+	INDIRECT,
+	INDIRECT_LABEL,
+	SEPARATOR,
 	NEW_LINE
 }	token_type;
 
@@ -36,7 +43,6 @@ typedef struct			s_token
 	token_type			type;
 	unsigned int		row;
 	unsigned int		column;
-	struct s_token		*next;
 }						t_token;
 
 typedef struct			s_link
@@ -46,42 +52,46 @@ typedef struct			s_link
 	int32_t				pos;
 	int32_t				op_pos;
 	size_t				size;
-	struct s_mention	*next;
 }						t_link;
-
-
 
 typedef struct			s_label
 {
 	char				*content;
 	int32_t				op_pos;
-	t_link				*links;
-	struct s_label		*next;
+	t_link				**links;
 }						t_label;
+
+/*
+**   tokens_size, label_size: 0 - max size, 1 - current size
+*/
 
 typedef struct	s_parser
 {
 	int					fd;
-	unsigned			row;
-	unsigned			column;
-	t_token				*tokens;
+	unsigned int		row;
+	unsigned int		column;
+	t_token				**tokens;
+	unsigned int		tokens_size[2];
 	int32_t				pos;
 	int32_t				op_pos;
 	char				*name;
 	char				*comment;
 	char				*code;
 	int32_t				code_size;
-	t_label				*labels;
+	t_label				**labels;
+	unsigned int		labels_size[2];
 }						t_parser;
 
 
-void		exit_func(t_parser *parser, char *func_name, int error);
+void	 terminate(t_parser *parser, char *str);
+void	exit_func(t_parser *parser, int error);
 int		get_next_line_asm(const int fd, char **line);
 int 	is_filename(const char *filename);
 char	*replace_extension(t_parser * parser, const char *filename);
-
-//int lexer(char *filename);
-//int is_kword(char *id);
-//int add_token(struct token *tok);
+void		read_file(t_parser *parser);
+void	write_file(int fd, t_parser *parser);
+void	parse_token(t_parser *parser, char **row);
+void add_token(t_parser *parser, t_token *token);
+t_token		*init_token(t_parser *parser, token_type type);
 
 #endif

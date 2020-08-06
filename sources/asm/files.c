@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 19:07:08 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/05 15:48:53 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/05 18:29:42 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ char	*replace_extension(t_parser * parser, const char *filename)
 	{
 		len = ft_strlen(filename);
 		if (!(newname = ft_strnew(len + 2)))
-			exit_func(parser, "replace_extansion" , 1);
-		newname = ft_strncpy(newname, filename, len - 2);
+			terminate(parser, "Memory allocation");
+		newname = ft_strncpy(newname, filename, len - 1);
 		newname = ft_strcat(newname, "cor");
 		return (newname);
 	}

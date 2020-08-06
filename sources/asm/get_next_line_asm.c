@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 14:15:32 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/05 15:51:54 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/05 19:00:14 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int		newline(char **s, char **line, int fd, int nbread)
 		len++;
 	if (s[fd][len] == '\n')
 	{
-		*line = ft_strsub(s[fd], 0, len);
+		*line = ft_strsub(s[fd], 0, len + 1);
 		temp = ft_strdup(s[fd] + len + 1);
 		free(s[fd]);
 		s[fd] = temp;
@@ -46,7 +46,7 @@ int		get_next_line_asm(const int fd, char **line)
 	char		*temp;
 	int			nbread;
 
-	if (fd < 0 || line == NULL)
+	if (fd < 0 || line == NULL || read(fd, buffer, 0) < 0)
 		return (-1);
 	while ((nbread = read(fd, buffer, BUFF_SIZE)) > 0)
 	{

@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_func.c                                        :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/05 18:03:18 by rgero            ###   ########.fr       */
+/*   Created: 2020/08/05 20:16:41 by rgero             #+#    #+#             */
+/*   Updated: 2020/08/05 22:14:19 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void terminate(t_parser *parser, char *str)
+t_token		*init_token(t_parser *parser, token_type type)
 {
-	ft_putstr_fd("ERROR: ", 2);
-	ft_putendl_fd(str, 2);
-	exit_func(parser, 1);
-}
+	t_token	*token;
 
-void		exit_func(t_parser *parser, int error)
-{
-	if (!parser)
-	{
-		exit(error);
-	}
-	exit(error);
+	if (!(token = (t_token *)ft_memalloc(sizeof(t_token))))
+		terminate(parser, "Can\'t initialize token");
+	token->content = NULL;
+	token->type = type;
+	token->row = parser->row;
+	if (type == SEPARATOR || type == NEW_LINE)
+		token->column = parser->column - 1;
+	else
+		token->column = parser->column;
+	return (token);
 }
