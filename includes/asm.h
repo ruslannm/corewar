@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/06 17:23:33 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/06 17:27:44 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	write_file(int fd, t_parser *parser);
 void	parse_token(t_parser *parser, char **row);
 void add_token(t_parser *parser, t_token *token);
 t_token		*init_token(t_parser *parser, token_type type);
-void	write_to_file(t_parser * parser, const char *filename); // create and write commands to file *.cor
+//void	write_to_file(t_parser * parser, const char *filename); // create and write commands to file *.cor
 
 //int lexer(char *filename);
 //int is_kword(char *id);
