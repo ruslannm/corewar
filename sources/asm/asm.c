@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/06 21:29:30 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/06 22:15:37 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int				main(int argc, char **argv)
 //		fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
 	if ((fd = open(filename, O_CREAT | O_TRUNC | O_WRONLY, 0644)) == -1)
 		terminate(parser, "Can\'t create file in main");
+ DEBUG_print_tokens(parser);
 	write_file(fd, parser);
-
 	return (0);
 }

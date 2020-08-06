@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/06 19:32:35 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/06 21:58:26 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,8 @@ void	parse_str(t_parser *parser,	char **row,	unsigned start,	t_token *token);
 //int lexer(char *filename);
 //int is_kword(char *id);
 //int add_token(struct token *tok);
+
+//delete. only for debug
+void DEBUG_print_tokens(t_parser *parser);
 
 #endif

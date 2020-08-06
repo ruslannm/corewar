@@ -1,6 +1,5 @@
 lem-in-final
 corewar-sub
-.vscode
 
 # Folders
 cmake-build-debug/
@@ -12,3 +11,23 @@ cmake-build-debug/
 objects/
 libft/objects
 ft_printf/objects
+
+# Libraries
+*.a
+
+# Executable
+*.out
+
+# Debug files
+*.dSYM
+CMakeLists.txt
+
+# Swp files
+*.swp
+*.swo
+
+# Precompiled header
+*.h.gch
+
+#Other junk files
+.DS_Store
