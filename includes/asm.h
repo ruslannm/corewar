@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/08 11:33:37 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/08 12:15:25 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,9 @@ void	parse_command(t_parser *parser,	char *row,	t_token *token);
 void	parse_command_str(t_parser *parser,	char **row,	t_token *token);
 void	parse_operator(t_parser *parser, char *row,	t_token *token);
 void	parse_direct_label(t_parser *parser, char *row,	t_token *token);
+void 	parse_indirect_label(t_parser *parser, char *row, t_token *token);
 void	parse_direct_nbr(t_parser *parser,	char *row,	t_token *token);
-
+void	parse_str(t_parser *parser,	char *row,	t_token *token);
 char	*get_str(t_parser *parser, const char *row, unsigned start);
 
 //void	write_to_file(t_parser * parser, const char *filename); // create and write commands to file *.cor

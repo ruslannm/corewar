@@ -1,4 +1,4 @@
-label1: mov
+%:a0,label1: mov,:label2,%0,r3:
 .name	"Leeoo"
 .comment "Multipass"
 .name	"Leeloo"

@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/08 09:59:59 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/08 12:19:07 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void		read_file(t_parser *parser)
 	while (++(parser->row) && !(parser->column = 0) &&
 		(size = get_next_line_asm(parser->fd, &row)) > 0)
 	{
-if (parser->row > 2) break;
+//if (parser->row > 2) break;
 		while (row[parser->column])
 		{
 			skip_whitespaces(parser, row);
