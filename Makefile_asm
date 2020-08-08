@@ -33,6 +33,7 @@ SRC_LIST_ASM 	= 	DEBUG.c\
 					error.c\
 					exit_func.c\
 					init.c\
+					init_op_tab.c\
 					files.c\
 					parse.c\
 					parse_command.c\

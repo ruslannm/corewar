@@ -40,6 +40,8 @@ static t_parser	*init_parser(int fd)
 	if (!(parser->labels = (t_label**)malloc(sizeof(t_label*) *\
 		parser->array_info[LABELS][ARRAY_CAPACITY])))
 		terminate(parser, ERR_MEMORY, "init_parser");
+	if (!(parser->orig_op_tab = (t_op_tab**)ft_memalloc(sizeof(t_op_tab*) * 16)))
+		terminate(parser, ERR_MEMORY, "init_parser");
 	return (parser);
 }
 
@@ -64,6 +66,7 @@ int				main(int argc, char **argv)
 		return (0);
 	}
 	parser = init_parser(fd);
+	init_op_tab(parser);
 	read_file(parser);
 //	filename = replace_extension(parser, argv[1]);
 	filename = replace_extension(parser, filename);

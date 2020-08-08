@@ -53,6 +53,16 @@ enum
 	LABELS
 };
 
+typedef struct			s_op_tab
+{
+	char				*name;
+	uint8_t				code;
+	uint8_t				args_num;
+	int					args_types_code;
+	uint8_t				args_types[3];
+	uint8_t				t_dir_size;
+}						t_op_tab;
+
 typedef struct			s_token
 {
 	char				*content;
@@ -95,6 +105,7 @@ typedef struct	s_parser
 	char				*code;
 	int32_t				code_size;
 	t_label				**labels;
+	t_op_tab			**orig_op_tab;
 }						t_parser;
 
 
@@ -129,6 +140,7 @@ void 	parse_indirect_label(t_parser *parser, char *row, t_token *token);
 void	parse_direct_nbr(t_parser *parser,	char *row,	t_token *token);
 void	parse_str(t_parser *parser,	char *row,	t_token *token);
 void	check_command(t_parser *parser, unsigned int i);
+void	init_op_tab(t_parser *parser); // initialization original table;
 
 char	*get_str(t_parser *parser, const char *row, unsigned start);
 
