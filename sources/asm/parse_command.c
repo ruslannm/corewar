@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 19:23:34 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/08 16:02:41 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/08 17:48:19 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,15 @@ void	parse_command(t_parser *parser,	char *row,	t_token *token)
 	int len;
 
 	len = ft_strlen(row + parser->column);
-	if (len > 4 && 0 == ft_strncmp(".name", row + parser->column, 5))
+	if (len > 4 && 0 == ft_strncmp(NAME_CMD_STRING, row + parser->column, 5))
 	{
-		if (!(token->content = ft_strsub(row, parser->column, 5)))
+		if (!(token->content = ft_strdup(NAME_CMD_STRING)))
 			terminate(parser, ERR_MEMORY, "parse_command");
 		parser->column +=5;
 	}
-	else if (len > 7 && 0 == ft_strncmp(".comment", row + parser->column, 8))
+	else if (len > 7 && 0 == ft_strncmp(COMMENT_CMD_STRING, row + parser->column, 8))
 	{
-		if (!(token->content = ft_strsub(row, parser->column, 8)))
+		if (!(token->content = ft_strdup(COMMENT_CMD_STRING)))
 			terminate(parser, ERR_MEMORY, "parse_command");
 		parser->column +=8;
 	}

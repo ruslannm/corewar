@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 20:16:41 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/08 09:54:28 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/08 18:00:39 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_token		*init_token(t_parser *parser, token_type type)
 {
 	t_token	*token;
 
-	if (!(token = (t_token *)ft_memalloc(sizeof(t_token))))
+	if (!(token = (t_token *)malloc(sizeof(t_token))))
 		terminate(parser, ERR_MEMORY, "init_token");
 	token->content = NULL;
 	token->type = type;

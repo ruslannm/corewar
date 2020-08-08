@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 19:11:37 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/08 16:12:53 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/08 19:45:33 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,13 @@ void	token_error(t_parser *parser, t_token *token)
 		"SEPARATOR",
 		"NEW_LINE"};
 	
-	ft_printf("Unexpected token \"%s\" %s at [%03u:%03u]\n",
-														token->content,
-														type[token->type],
-														token->row,
-														token->column + 1);
+	ft_printf("Syntax error at token [TOKEN][%03u:%03u] %s \"%s\"",
+		token->row,	token->column + 1, type[token->type], token->content);
+	exit_func(parser, 1);
+}
+
+void	command_error(t_parser *parser, const char *command, int len)
+{
+	ft_printf( "Champion %s too long (Max length %u)\n", command, len);
 	exit_func(parser, 1);
 }

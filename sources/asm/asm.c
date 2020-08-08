@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/08 09:15:46 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/08 18:10:31 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,18 @@ static t_parser	*init_parser(int fd)
 	parser->comment = NULL;
 	parser->code = NULL;
 	parser->code_size = 0;
-	parser->tokens_size[0] = MIN_ARR;
-	parser->tokens_size[1] = 0;
-	if (!(parser->tokens = (t_token**)ft_memalloc(sizeof(t_token*) *\
-		parser->tokens_size[0])))
+	parser->tokens_size[ARRAY_CAPACITY] = ARRAY_CAPACITY_MIN;
+	parser->tokens_size[ARRAY_SIZE] = 0;
+	if (!(parser->tokens = (t_token**)malloc(sizeof(t_token*) *\
+		parser->tokens_size[ARRAY_CAPACITY])))
 		terminate(parser, ERR_MEMORY, "init_parser");
 	if (!(parser->label_links = (int*)ft_memalloc(sizeof(int) *\
-		parser->tokens_size[0])))
+		parser->tokens_size[ARRAY_CAPACITY])))
 		terminate(parser, ERR_MEMORY, "init_parser");
-	parser->labels_size[0] = MIN_ARR;
-	parser->labels_size[1] = 0;
-	if (!(parser->labels = (t_label**)ft_memalloc(sizeof(t_label*) *\
-		parser->labels_size[0])))
+	parser->labels_size[ARRAY_CAPACITY] = ARRAY_CAPACITY_MIN;
+	parser->labels_size[ARRAY_SIZE] = 0;
+	if (!(parser->labels = (t_label**)malloc(sizeof(t_label*) *\
+		parser->labels_size[ARRAY_CAPACITY])))
 		terminate(parser, ERR_MEMORY, "init_parser");
 	return (parser);
 }

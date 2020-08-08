@@ -1,6 +1,6 @@
 #aa
-  .comment1 "Multipass"
-.name	"Lтeoo"
+  .comment "Multipass" 
+  .name	"Lтeoo" #1
 
 a:	
 begin:	ld %0,r6
