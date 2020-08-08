@@ -6,7 +6,7 @@
 #    By: rgero <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#              #
-#    Updated: 2020/08/08 19:15:22 by rgero            ###   ########.fr        #
+#    Updated: 2020/08/08 20:23:39 by rgero            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC_LIST_ASM 	= 	DEBUG.c\
 					asm.c\
 					check_char.c\
 					check_command.c\
+					check_label.c\
 					get_next_line_asm.c\
 					error.c\
 					exit_func.c\

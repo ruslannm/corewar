@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/08 19:39:51 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/08 21:16:13 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void		read_file(t_parser *parser)
 	}
 	if (size < 0)
 		terminate(parser, ERR_READ, "read_file");
-	parser->tokens_size[ARRAY_INDEX] = 0;
+	parser->array_info[TOKENS][ARRAY_INDEX] = 0;
+	parser->array_info[LABELS][ARRAY_INDEX] = 0;
 	check_command(parser, 0);
 }

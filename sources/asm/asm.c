@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/08 18:10:31 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/08 21:31:14 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static t_parser	*init_parser(int fd)
 {
 	t_parser *parser;
 
-	if (!(parser = (t_parser*)ft_memalloc(sizeof(t_parser))))
+	if (!(parser = (t_parser*)malloc(sizeof(t_parser))))
 		terminate(NULL, ERR_MEMORY, "init_parser");
 	parser->fd = fd;
 	parser->row = 0;
@@ -25,20 +25,20 @@ static t_parser	*init_parser(int fd)
 	parser->op_pos = 0;
 	parser->name = NULL;
 	parser->comment = NULL;
-	parser->code = NULL;
+	if (!(parser->code = (char *)malloc(CHAMP_MAX_SIZE)))
+		terminate(parser, ERR_MEMORY, "init_parser");
 	parser->code_size = 0;
-	parser->tokens_size[ARRAY_CAPACITY] = ARRAY_CAPACITY_MIN;
-	parser->tokens_size[ARRAY_SIZE] = 0;
+	parser->array_info[TOKENS][ARRAY_CAPACITY] = ARRAY_CAPACITY_MIN;
+	parser->array_info[TOKENS][ARRAY_SIZE] = 0;
 	if (!(parser->tokens = (t_token**)malloc(sizeof(t_token*) *\
-		parser->tokens_size[ARRAY_CAPACITY])))
+		parser->array_info[TOKENS][ARRAY_CAPACITY])))
 		terminate(parser, ERR_MEMORY, "init_parser");
-	if (!(parser->label_links = (int*)ft_memalloc(sizeof(int) *\
-		parser->tokens_size[ARRAY_CAPACITY])))
-		terminate(parser, ERR_MEMORY, "init_parser");
-	parser->labels_size[ARRAY_CAPACITY] = ARRAY_CAPACITY_MIN;
-	parser->labels_size[ARRAY_SIZE] = 0;
+	parser->label_links = init_label_links(parser,
+		parser->array_info[TOKENS][ARRAY_CAPACITY]);
+	parser->array_info[LABELS][ARRAY_CAPACITY] = ARRAY_CAPACITY_MIN;
+	parser->array_info[LABELS][ARRAY_SIZE] = 0;
 	if (!(parser->labels = (t_label**)malloc(sizeof(t_label*) *\
-		parser->labels_size[ARRAY_CAPACITY])))
+		parser->array_info[LABELS][ARRAY_CAPACITY])))
 		terminate(parser, ERR_MEMORY, "init_parser");
 	return (parser);
 }

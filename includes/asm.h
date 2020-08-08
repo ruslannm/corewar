@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/08 19:10:28 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/08 21:30:11 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@ enum
 	ARRAY_INDEX
 };
 
+enum
+{
+	TOKENS,
+	LABELS
+};
+
 typedef struct			s_token
 {
 	char				*content;
@@ -68,7 +74,6 @@ typedef struct			s_label
 {
 	char				*content;
 	int32_t				op_pos;
-	t_link				**links;
 }						t_label;
 
 /*
@@ -81,8 +86,8 @@ typedef struct	s_parser
 	unsigned int		row;
 	unsigned int		column;
 	t_token				**tokens;
-	int					*label_links;
-	unsigned int		tokens_size[3];
+	unsigned int		*label_links;
+	unsigned int		array_info[2][3];
 	int32_t				pos;
 	int32_t				op_pos;
 	char				*name;
@@ -90,7 +95,6 @@ typedef struct	s_parser
 	char				*code;
 	int32_t				code_size;
 	t_label				**labels;
-	unsigned int		labels_size[3];
 }						t_parser;
 
 
@@ -103,7 +107,12 @@ void		read_file(t_parser *parser);
 void	write_file(int fd, t_parser *parser);
 void	parse_token(t_parser *parser, char **row);
 void 	add_token(t_parser *parser, t_token *token);
+
 t_token		*init_token(t_parser *parser, token_type type);
+t_label		*init_label(t_parser *parser, char **content);
+unsigned int *init_label_links(t_parser *parser, unsigned int capacity);
+
+
 int		is_delimiter(const char c);
 int		is_register(const char *str);
 char	*join_str(t_parser *parser, char **str1, char **str2);

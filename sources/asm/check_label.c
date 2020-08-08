@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug.c                                            :+:      :+:    :+:   */
+/*   check_label.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/06 21:52:20 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/08 21:14:57 by rgero            ###   ########.fr       */
+/*   Created: 2020/08/08 20:18:50 by rgero             #+#    #+#             */
+/*   Updated: 2020/08/08 21:14:50 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// only for debug
-
 #include "asm.h"
 
-void DEBUG_print_tokens(t_parser *parser)
+t_label	*find_label(t_parser *parser, char *str)
 {
 	unsigned int i;
-	ft_printf("print_tokens\n");
+
 	i = 0;
-	while (i < parser->array_info[TOKENS][ARRAY_SIZE])
+	
+	while (i < parser->array_info[LABELS][ARRAY_SIZE])
 	{
-		if (parser->tokens[i]->type == NEW_LINE)
-			ft_printf("NEW_LINE/%d\n", parser->tokens[i]->type);
-		else if (parser->tokens[i]->type == SEPARATOR)
-			ft_printf("SEPARATOR/%d -> ", parser->tokens[i]->type);
-		else 
-			ft_printf("%s/%d -> ", parser->tokens[i]->content, parser->tokens[i]->type);
-		++i;
+		if (!ft_strcmp(parser->labels[i]->content, str))
+			return (parser->labels[i]);
+		i++;
 	}
+	return (NULL);
 }
