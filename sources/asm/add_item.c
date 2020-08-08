@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 20:29:16 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/06 21:27:41 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/08 09:15:24 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ void add_token(t_parser *parser, t_token *token)
 	if (parser->tokens_size[1] + 1 > parser->tokens_size[0])
 	{
 		if ((parser->tokens_size[0] *= 2) > MAX_ARR)
-			terminate(parser, "memory accocation in add_token");
+			terminate(parser, ERR_MEMORY, "add_token");
 		if (!(new_tokens = (t_token**)ft_memalloc(sizeof(t_token*) *\
 			parser->tokens_size[0])))
-			terminate(parser, "memory accocation in add_token");
+			terminate(parser, ERR_MEMORY, "add_token");
 		if (!(new_label_links = (int*)ft_memalloc(sizeof(int) *\
 			parser->tokens_size[0])))
-			terminate(parser, "memory accocation in add_token");
+			terminate(parser, ERR_MEMORY, "add_token");
 		i = -1;
 		while (++i < parser->tokens_size[1])
 		{

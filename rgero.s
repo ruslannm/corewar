@@ -1,4 +1,5 @@
-.name	"Leeloo"
+label1: mov
+.name	"Leeoo"
 .comment "Multipass"
 .name	"Leeloo"
 	

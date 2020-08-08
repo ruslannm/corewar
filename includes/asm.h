@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/06 21:58:26 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/08 11:33:37 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,18 @@
 # include "libft.h"
 # include "ft_printf.h"
 # include "op.h"
+# include "asm_error.h"
 
 # define MAX_ARR		1000000
 # define MIN_ARR		1000
 # define COMMAND_CHAR	'.'
+# define REGISTER_CHAR	'r'
+# define WHITESPACES	"\t\v\f\r "
 
 typedef enum
 {
 	COMMAND,
-	STRING,
+	COMMAND_STRING,
 	LABEL,
 	OPERATOR,
 	REGISTER,
@@ -84,7 +87,7 @@ typedef struct	s_parser
 }						t_parser;
 
 
-void	 terminate(t_parser *parser, char *str);
+void terminate(t_parser *parser, const char *error_info, const char *func);
 void	exit_func(t_parser *parser, int error);
 int		get_next_line_asm(const int fd, char **line);
 int 	is_filename(const char *filename);
@@ -94,10 +97,17 @@ void	write_file(int fd, t_parser *parser);
 void	parse_token(t_parser *parser, char **row);
 void 	add_token(t_parser *parser, t_token *token);
 t_token		*init_token(t_parser *parser, token_type type);
-int	is_delimiter(char c);
+int		is_delimiter(const char c);
+int		is_register(const char *str);
 char	*join_str(t_parser *parser, char **str1, char **str2);
 void	lexical_error(t_parser *parser);
-void	parse_str(t_parser *parser,	char **row,	unsigned start,	t_token *token);
+void	parse_command(t_parser *parser,	char *row,	t_token *token);
+void	parse_command_str(t_parser *parser,	char **row,	t_token *token);
+void	parse_operator(t_parser *parser, char *row,	t_token *token);
+void	parse_direct_label(t_parser *parser, char *row,	t_token *token);
+void	parse_direct_nbr(t_parser *parser,	char *row,	t_token *token);
+
+char	*get_str(t_parser *parser, const char *row, unsigned start);
 
 //void	write_to_file(t_parser * parser, const char *filename); // create and write commands to file *.cor
 

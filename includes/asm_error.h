@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   asm_error.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/05 20:16:41 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/08 09:54:28 by rgero            ###   ########.fr       */
+/*   Created: 2020/08/08 09:04:01 by rgero             #+#    #+#             */
+/*   Updated: 2020/08/08 09:09:14 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#ifndef ASM_ERROR_H
+# define ASM_ERROR_H
 
-t_token		*init_token(t_parser *parser, token_type type)
-{
-	t_token	*token;
+# define ERR_MEMORY "memory allocation"
+# define ERR_OPEN "opening file"
+# define ERR_CREATE "creating file"
+# define ERR_READ "reading file"
 
-	if (!(token = (t_token *)ft_memalloc(sizeof(t_token))))
-		terminate(parser, ERR_MEMORY, "init_token");
-	token->content = NULL;
-	token->type = type;
-	token->row = parser->row;
-	if (type == SEPARATOR || type == NEW_LINE)
-		token->column = parser->column - 1;
-	else
-		token->column = parser->column;
-	return (token);
-}
+#endif
