@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/08 12:15:25 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/08 15:35:25 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 typedef enum
 {
 	COMMAND,
-	COMMAND_STRING,
+	STRING,
 	LABEL,
 	OPERATOR,
 	REGISTER,

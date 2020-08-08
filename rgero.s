@@ -1,8 +1,8 @@
-%:a0,label1: mov,:label2,%0,r3:
-.name	"Leeoo"
-.comment "Multipass"
-.name	"Leeloo"
-	
+#aa
+  .comment1 "Multipass"
+.name	"Lтeoo"
+
+a:	
 begin:	ld %0,r6
 jump:	zjmp %:deb
 	

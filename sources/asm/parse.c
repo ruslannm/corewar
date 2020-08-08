@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 19:40:18 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/08 12:32:37 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/08 16:04:35 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ void	parse_token(t_parser *parser, char **row)
 		add_token(parser, init_token(parser, SEPARATOR));
 	else if (*(*row + parser->column) == '\n' && ++parser->column)
 		add_token(parser, init_token(parser, NEW_LINE));
-	else if (*(*row + parser->column) == '.' && ++parser->column)
+	else if (*(*row + parser->column) == '.')
 		parse_command(parser, *row,	init_token(parser, COMMAND));
 	else if (*(*row + parser->column) == '\"')
-		parse_command_str(parser, row, init_token(parser, COMMAND_STRING));
-	else if (*(*row + parser->column) == DIRECT_CHAR && ++parser->column)
+		parse_command_str(parser, row, init_token(parser, STRING));
+	else if (*(*row + parser->column) == DIRECT_CHAR)
 	{
-		if (*(*row + parser->column) == LABEL_CHAR && ++parser->column)
+		if (*(*row + parser->column + 1) == LABEL_CHAR)
 			parse_direct_label(parser, *row, init_token(parser, DIRECT_LABEL));
 		else
 			parse_direct_nbr(parser, *row, init_token(parser, DIRECT));

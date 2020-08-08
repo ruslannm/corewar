@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 19:23:34 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/08 12:39:03 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/08 16:02:41 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,22 @@ void	parse_command_str(t_parser *parser,	char **row,	t_token *token)
 
 void	parse_command(t_parser *parser,	char *row,	t_token *token)
 {
-	unsigned int start;
+	int len;
 
-	start = parser->column;
-	while (row[parser->column]
-		&&  0 == is_delimiter(row[parser->column]))
-		parser->column++;
-	if (!(token->content = ft_strsub(row, start, parser->column - start)))
-		terminate(parser, ERR_MEMORY, "parse_command");
+	len = ft_strlen(row + parser->column);
+	if (len > 4 && 0 == ft_strncmp(".name", row + parser->column, 5))
+	{
+		if (!(token->content = ft_strsub(row, parser->column, 5)))
+			terminate(parser, ERR_MEMORY, "parse_command");
+		parser->column +=5;
+	}
+	else if (len > 7 && 0 == ft_strncmp(".comment", row + parser->column, 8))
+	{
+		if (!(token->content = ft_strsub(row, parser->column, 8)))
+			terminate(parser, ERR_MEMORY, "parse_command");
+		parser->column +=8;
+	}
+	else
+		lexical_error(parser);
 	add_token(parser, token);
 }

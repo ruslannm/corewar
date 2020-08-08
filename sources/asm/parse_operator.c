@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 07:44:19 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/08 12:39:41 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/08 16:07:06 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,11 @@ void	parse_direct_label(t_parser *parser, char *row,	t_token *token)
 	unsigned int start;
 
 	start = parser->column;
+	parser->column += 2;
 	while (row[parser->column]
 		&& ft_strchr(LABEL_CHARS, row[parser->column]))
 		parser->column++;
-	if ((parser->column - start) && is_delimiter(row[parser->column]))
+	if ((parser->column - start - 2) && is_delimiter(row[parser->column]))
 	{
 		token->content = get_str(parser, row, start);
 		add_token(parser, token);
@@ -78,6 +79,7 @@ void	parse_direct_nbr(t_parser *parser,	char *row,	t_token *token)
 	unsigned int	start_digit;
 
 	start = parser->column;
+	parser->column++;
 	start_digit = parser->column;
 	if (row[parser->column] == '-')
 		start_digit = ++parser->column;
