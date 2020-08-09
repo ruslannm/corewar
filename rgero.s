@@ -1,9 +1,6 @@
 #aa
-  .comment "Multipass" 
-  .name	"Lтeoo" #1
-
-a:	
-begin:	ld %0,r6
-jump:	zjmp %:deb
+.comment "Multipass"
+.name	"Lтeoo" #1
 	
-deb:	st r16, :begin
+ld %0,r6
+st r15, -1

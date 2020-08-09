@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/08 21:30:11 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/09 17:25:17 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,15 @@
 # include "op.h"
 # include "asm_error.h"
 
+
 # define ARRAY_CAPACITY_MAX		1000000
-# define ARRAY_CAPACITY_MIN		1000
+# define ARRAY_CAPACITY_MIN		1024
+# define OP_TAB_SIZE			16
 # define COMMAND_CHAR			'.'
 # define REGISTER_CHAR			'r'
 # define WHITESPACES			"\t\v\f\r "
+# define MODUL16 				65536
+# define MODUL32				4294967296
 
 typedef enum
 {
@@ -111,18 +115,25 @@ typedef struct	s_parser
 
 void terminate(t_parser *parser, const char *error_info, const char *func);
 void	exit_func(t_parser *parser, int error);
+
 int		get_next_line_asm(const int fd, char **line);
 int 	is_filename(const char *filename);
 char	*replace_extension(t_parser * parser, const char *filename);
 void		read_file(t_parser *parser);
+
 void	write_file(int fd, t_parser *parser);
+void	int32_to_int8(char *str, int32_t pos, int32_t value, size_t size);
+
 void	parse_token(t_parser *parser, char **row);
 void 	add_token(t_parser *parser, t_token *token);
+void 	add_label(t_parser *parser, t_label *label);
 
 t_token		*init_token(t_parser *parser, token_type type);
 t_label		*init_label(t_parser *parser, char **content);
 unsigned int *init_label_links(t_parser *parser, unsigned int capacity);
 
+t_label		*find_label(t_parser *parser, char *str);
+t_op_tab	*find_op(t_parser *parser, char *name);
 
 int		is_delimiter(const char c);
 int		is_register(const char *str);
@@ -131,6 +142,8 @@ char	*join_str(t_parser *parser, char **str1, char **str2);
 void	lexical_error(t_parser *parser);
 void	command_error(t_parser *parser, const char *command, int len);
 void	token_error(t_parser *parser, t_token *token);
+void	instruction_error(t_parser *parser, t_token *token);
+void	arg_type_error(t_parser *parser, t_token *token, int arg_num, t_op_tab *op);
 
 void	parse_command(t_parser *parser,	char *row,	t_token *token);
 void	parse_command_str(t_parser *parser,	char **row,	t_token *token);
@@ -139,10 +152,16 @@ void	parse_direct_label(t_parser *parser, char *row,	t_token *token);
 void 	parse_indirect_label(t_parser *parser, char *row, t_token *token);
 void	parse_direct_nbr(t_parser *parser,	char *row,	t_token *token);
 void	parse_str(t_parser *parser,	char *row,	t_token *token);
+
 void	check_command(t_parser *parser, unsigned int i);
+void	check_code(t_parser *parser, unsigned int i);
+int8_t			check_arg(t_parser *parser, unsigned int i,
+							t_op_tab *op, int arg_num);
+
 void	init_op_tab(t_parser *parser); // initialization original table;
 
 char	*get_str(t_parser *parser, const char *row, unsigned start);
+int		ft_atoi32(const char *str, long long modul);
 
 //void	write_to_file(t_parser * parser, const char *filename); // create and write commands to file *.cor
 

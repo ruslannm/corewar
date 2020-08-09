@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/08 21:31:14 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/09 17:44:41 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static t_parser	*init_parser(int fd)
 	if (!(parser->labels = (t_label**)malloc(sizeof(t_label*) *\
 		parser->array_info[LABELS][ARRAY_CAPACITY])))
 		terminate(parser, ERR_MEMORY, "init_parser");
-	if (!(parser->orig_op_tab = (t_op_tab**)ft_memalloc(sizeof(t_op_tab*) * 16)))
+	if (!(parser->orig_op_tab = (t_op_tab**)ft_memalloc(sizeof(t_op_tab*) * OP_TAB_SIZE)))
 		terminate(parser, ERR_MEMORY, "init_parser");
 	return (parser);
 }
@@ -76,5 +76,7 @@ int				main(int argc, char **argv)
 		terminate(parser, ERR_CREATE, "main");
  DEBUG_print_tokens(parser);
 	write_file(fd, parser);
+	ft_printf("Writing output program to %s\n", filename);
+
 	return (0);
 }

@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_label.c                                      :+:      :+:    :+:   */
+/*   ft_atoi32.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/08 20:18:50 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/08 21:14:50 by rgero            ###   ########.fr       */
+/*   Created: 2020/08/09 13:49:57 by rgero             #+#    #+#             */
+/*   Updated: 2020/08/09 17:47:07 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+# include "asm.h"
 
-t_label	*find_label(t_parser *parser, char *str)
+int	ft_atoi32(const char *str, long long modul)
 {
-	unsigned int i;
+	int	i;
+	int	sign;
+	long long ret;
 
+	ret = 0;
+	sign = 1;
 	i = 0;
-	
-	while (i < parser->array_info[LABELS][ARRAY_SIZE])
+	if (str[i] == '-')
 	{
-		if (!ft_strcmp(parser->labels[i]->content, str))
-			return (parser->labels[i]);
+		sign = -1;
 		i++;
 	}
-	return (NULL);
+	while (str[i] > 47 && str[i] < 58)
+	{
+		ret *= 10;
+		ret += str[i++] - 48;
+		if (1 == sign && ret > modul - 1)
+			return (ret % modul);
+		if (-1 == sign && ret > modul)
+			return (modul - ret % modul);
+	}
+	return (sign == -1 ? modul - ret : ret);
 }

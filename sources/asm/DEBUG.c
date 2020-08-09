@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug.c                                            :+:      :+:    :+:   */
+/*   DEBUG.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 21:52:20 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/08 21:14:57 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/09 17:45:05 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 void DEBUG_print_tokens(t_parser *parser)
 {
 	unsigned int i;
-	ft_printf("print_tokens\n");
+	ft_printf("\nprint_tokens\n");
 	i = 0;
 	while (i < parser->array_info[TOKENS][ARRAY_SIZE])
 	{
@@ -29,4 +29,5 @@ void DEBUG_print_tokens(t_parser *parser)
 			ft_printf("%s/%d -> ", parser->tokens[i]->content, parser->tokens[i]->type);
 		++i;
 	}
+	ft_printf("end print_tokens\n\n");
 }

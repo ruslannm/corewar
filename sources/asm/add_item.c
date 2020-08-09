@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 20:29:16 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/08 21:35:17 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/09 17:50:36 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,4 @@ void add_label(t_parser *parser, t_label *label)
 		parser->labels = new_labels;
 	}
 	parser->labels[parser->array_info[LABELS][ARRAY_SIZE]++] = label;
-
 }
