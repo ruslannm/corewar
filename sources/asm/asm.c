@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/09 17:44:41 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/09 21:13:15 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,15 @@ static t_parser	*init_parser(int fd)
 	if (!(parser->tokens = (t_token**)malloc(sizeof(t_token*) *\
 		parser->array_info[TOKENS][ARRAY_CAPACITY])))
 		terminate(parser, ERR_MEMORY, "init_parser");
-	parser->label_links = init_label_links(parser,
-		parser->array_info[TOKENS][ARRAY_CAPACITY]);
 	parser->array_info[LABELS][ARRAY_CAPACITY] = ARRAY_CAPACITY_MIN;
 	parser->array_info[LABELS][ARRAY_SIZE] = 0;
 	if (!(parser->labels = (t_label**)malloc(sizeof(t_label*) *\
 		parser->array_info[LABELS][ARRAY_CAPACITY])))
+		terminate(parser, ERR_MEMORY, "init_parser");
+	parser->array_info[LINKS][ARRAY_CAPACITY] = ARRAY_CAPACITY_MIN;
+	parser->array_info[LINKS][ARRAY_SIZE] = 0;
+	if (!(parser->links = (t_link**)malloc(sizeof(t_link*) *\
+		parser->array_info[LINKS][ARRAY_CAPACITY])))
 		terminate(parser, ERR_MEMORY, "init_parser");
 	if (!(parser->orig_op_tab = (t_op_tab**)ft_memalloc(sizeof(t_op_tab*) * OP_TAB_SIZE)))
 		terminate(parser, ERR_MEMORY, "init_parser");
@@ -75,6 +78,9 @@ int				main(int argc, char **argv)
 	if ((fd = open(filename, O_CREAT | O_TRUNC | O_WRONLY, 0644)) == -1)
 		terminate(parser, ERR_CREATE, "main");
  DEBUG_print_tokens(parser);
+ DEBUG_print_labels(parser);
+ DEBUG_print_links(parser);
+
 	write_file(fd, parser);
 	ft_printf("Writing output program to %s\n", filename);
 

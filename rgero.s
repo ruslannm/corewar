@@ -2,5 +2,5 @@
 .comment "Multipass"
 .name	"Lтeoo" #1
 	
-ld %0,r6
-st r15, -1
+a:ld %:b,r6
+b:st r15, :a

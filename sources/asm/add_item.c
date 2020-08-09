@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 20:29:16 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/09 17:50:36 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/09 20:10:35 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,52 +14,70 @@
 
 void add_token(t_parser *parser, t_token *token)
 {
-	t_token	**new_tokens;
-	unsigned int *new_label_links;
-	unsigned int 	i;
+	t_token	**new;
+	int 	i;
 
-	if (!(i = 0) && parser->array_info[TOKENS][ARRAY_SIZE] + 1
+	if (parser->array_info[TOKENS][ARRAY_SIZE] + 1
 		> parser->array_info[TOKENS][ARRAY_CAPACITY])
 	{
-		if ((parser->array_info[TOKENS][ARRAY_CAPACITY] *= 2)
-			> ARRAY_CAPACITY_MAX)
+		if ((parser->array_info[TOKENS][ARRAY_CAPACITY] *= 2) > ARRAY_CAPACITY_MAX)
 			terminate(parser, ERR_MEMORY, "add_token");
-		if (!(new_tokens = (t_token**)malloc(sizeof(t_token*) *\
+		if (!(new = (t_token**)malloc(sizeof(t_token*) *\
 			parser->array_info[TOKENS][ARRAY_CAPACITY])))
 			terminate(parser, ERR_MEMORY, "add_token");
-		new_label_links = init_label_links(parser, 
-			parser->array_info[TOKENS][ARRAY_CAPACITY]);
-		while (i < parser->array_info[TOKENS][ARRAY_SIZE])
-		{
-			new_tokens[i] = parser->tokens[i];
-			new_label_links[i] = parser->label_links[i];
-			i++;
-		}
+		i = -1;
+		while (++i < parser->array_info[TOKENS][ARRAY_SIZE])
+			new[i] = parser->tokens[i];
 		free(parser->tokens);
-		free(parser->label_links);
-		parser->tokens = new_tokens;
-		parser->label_links = new_label_links;
+		parser->tokens = new;
 	}
 	parser->tokens[parser->array_info[TOKENS][ARRAY_SIZE]++] = token;
 }
 
 void add_label(t_parser *parser, t_label *label)
 {
-	t_label	**new_labels;
-	unsigned int 	i;
+	t_label	**new;
+	int 	i;
 
-	if (!(i = 0) && parser->array_info[LABELS][ARRAY_SIZE] + 1
+	if (parser->array_info[LABELS][ARRAY_SIZE] + 1
 		> parser->array_info[LABELS][ARRAY_CAPACITY])
 	{
 		if ((parser->array_info[LABELS][ARRAY_CAPACITY] *= 2) > ARRAY_CAPACITY_MAX)
 			terminate(parser, ERR_MEMORY, "add_label");
-		if (!(new_labels = (t_label**)malloc(sizeof(t_label*) *\
+		if (!(new = (t_label**)malloc(sizeof(t_label*) *\
 			parser->array_info[LABELS][ARRAY_CAPACITY])))
 			terminate(parser, ERR_MEMORY, "add_label");
-		while (i < parser->array_info[LABELS][ARRAY_SIZE])
-			new_labels[i] = parser->labels[i];
+		i = -1;
+		while (++i < parser->array_info[LABELS][ARRAY_SIZE])
+			new[i] = parser->labels[i];
 		free(parser->labels);
-		parser->labels = new_labels;
+		parser->labels = new;
 	}
+	parser->array_info[LABELS][ARRAY_INDEX] =
+		parser->array_info[LABELS][ARRAY_SIZE];
 	parser->labels[parser->array_info[LABELS][ARRAY_SIZE]++] = label;
+}
+
+void add_link(t_parser *parser, t_link *link)
+{
+	t_link	**new;
+	int 	i;
+
+	if (parser->array_info[LINKS][ARRAY_SIZE] + 1
+		> parser->array_info[LINKS][ARRAY_CAPACITY])
+	{
+		if ((parser->array_info[LINKS][ARRAY_CAPACITY] *= 2) > ARRAY_CAPACITY_MAX)
+			terminate(parser, ERR_MEMORY, "add_label");
+		if (!(new = (t_link**)malloc(sizeof(t_link*) *\
+			parser->array_info[LINKS][ARRAY_CAPACITY])))
+			terminate(parser, ERR_MEMORY, "add_label");
+		i = -1;
+		while (++i < parser->array_info[LINKS][ARRAY_SIZE])
+			new[i] = parser->links[i];
+		free(parser->links);
+		parser->links = new;
+	}
+	parser->array_info[LINKS][ARRAY_INDEX] =
+		parser->array_info[LINKS][ARRAY_SIZE];
+	parser->links[parser->array_info[LINKS][ARRAY_SIZE]++] = link;
 }

@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 19:11:37 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/09 17:31:03 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/09 20:15:56 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,11 @@ void	arg_type_error(t_parser *parser, t_token *token, int arg_num, t_op_tab *op)
 
 	ft_printf("Invalid parameter %d type for instruction %s\n", arg_num,
 		type[token->type],	op->name);	
+	exit_func(parser, 1);
+}
+
+void	link_error(t_parser * parser, t_label *label)
+{
+	ft_printf("link \"%s\"\n", label->content);
 	exit_func(parser, 1);
 }

@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 19:40:18 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/08 16:04:35 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/09 22:03:36 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	parse_token(t_parser *parser, char **row)
 		else
 			parse_direct_nbr(parser, *row, init_token(parser, DIRECT));
 	}
-	else if (*(*row + parser->column) == LABEL_CHAR && ++parser->column)
+	else if (*(*row + parser->column) == LABEL_CHAR)
 		parse_indirect_label(parser, *row, init_token(parser, INDIRECT_LABEL));
 	else
 		parse_str(parser, *row, init_token(parser, INDIRECT));

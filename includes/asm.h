@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/09 17:25:17 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/09 21:11:59 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ enum
 enum
 {
 	TOKENS,
-	LABELS
+	LABELS,
+	LINKS
 };
 
 typedef struct			s_op_tab
@@ -77,6 +78,7 @@ typedef struct			s_token
 
 typedef struct			s_link
 {
+	int					label_index;
 	unsigned			row;
 	unsigned			column;
 	int32_t				pos;
@@ -100,8 +102,8 @@ typedef struct	s_parser
 	unsigned int		row;
 	unsigned int		column;
 	t_token				**tokens;
-	unsigned int		*label_links;
-	unsigned int		array_info[2][3];
+	t_link				**links;
+	int					array_info[3][3];
 	int32_t				pos;
 	int32_t				op_pos;
 	char				*name;
@@ -127,12 +129,13 @@ void	int32_to_int8(char *str, int32_t pos, int32_t value, size_t size);
 void	parse_token(t_parser *parser, char **row);
 void 	add_token(t_parser *parser, t_token *token);
 void 	add_label(t_parser *parser, t_label *label);
+void 	add_link(t_parser *parser, t_link *link);
 
 t_token		*init_token(t_parser *parser, token_type type);
-t_label		*init_label(t_parser *parser, char **content);
-unsigned int *init_label_links(t_parser *parser, unsigned int capacity);
+t_label		*init_label(t_parser *parser, char **content, int op_pos);
+t_link		*init_link(t_parser *parser, int token_index, size_t size);
 
-t_label		*find_label(t_parser *parser, char *str);
+int			find_label(t_parser *parser, char *str);
 t_op_tab	*find_op(t_parser *parser, char *name);
 
 int		is_delimiter(const char c);
@@ -144,6 +147,7 @@ void	command_error(t_parser *parser, const char *command, int len);
 void	token_error(t_parser *parser, t_token *token);
 void	instruction_error(t_parser *parser, t_token *token);
 void	arg_type_error(t_parser *parser, t_token *token, int arg_num, t_op_tab *op);
+void	link_error(t_parser * parser, t_label *label);
 
 void	parse_command(t_parser *parser,	char *row,	t_token *token);
 void	parse_command_str(t_parser *parser,	char **row,	t_token *token);
@@ -153,9 +157,9 @@ void 	parse_indirect_label(t_parser *parser, char *row, t_token *token);
 void	parse_direct_nbr(t_parser *parser,	char *row,	t_token *token);
 void	parse_str(t_parser *parser,	char *row,	t_token *token);
 
-void	check_command(t_parser *parser, unsigned int i);
-void	check_code(t_parser *parser, unsigned int i);
-int8_t			check_arg(t_parser *parser, unsigned int i,
+void	check_command(t_parser *parser, int i);
+void	check_code(t_parser *parser, int i);
+int8_t			check_arg(t_parser *parser, int i,
 							t_op_tab *op, int arg_num);
 
 void	init_op_tab(t_parser *parser); // initialization original table;
@@ -171,5 +175,8 @@ int		ft_atoi32(const char *str, long long modul);
 
 //delete. only for debug
 void DEBUG_print_tokens(t_parser *parser);
+void DEBUG_print_labels(t_parser *parser);
+void DEBUG_print_links(t_parser *parser);
+
 
 #endif

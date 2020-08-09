@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 17:27:44 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/08 21:14:40 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/09 20:37:29 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static char *get_info(t_parser *parser, const char *command, int max_len, unsign
 	return (str);
 }
 
-void		check_command(t_parser *parser, unsigned int i)
+void		check_command(t_parser *parser, int i)
 {
 	while ((!parser->name || !parser->comment)
 		&& i < parser->array_info[TOKENS][ARRAY_SIZE])

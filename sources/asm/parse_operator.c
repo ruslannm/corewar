@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 07:44:19 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/08 16:07:06 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/09 22:04:25 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void	parse_operator(t_parser *parser, char *row,	t_token *token)
 		parser->column++;
 	if ((parser->column - start) && row[parser->column] == LABEL_CHAR)
 	{
+		parser->column++;
 		token->content = get_str(parser, row, start);
 		token->type = LABEL;
 		add_token(parser, token);
-		parser->column++;
 	}
 	else if ((parser->column - start) && is_delimiter(row[parser->column]))
 	{
@@ -61,10 +61,11 @@ void parse_indirect_label(t_parser *parser, char *row, t_token *token)
 	unsigned int start;
 
 	start = parser->column;
+	parser->column += 1;
 	while (row[parser->column]
 		&& ft_strchr(LABEL_CHARS, row[parser->column]))
 		parser->column++;
-	if ((parser->column - start) && is_delimiter(row[parser->column]))
+	if ((parser->column - start - 1) && is_delimiter(row[parser->column]))
 	{
 		token->content = get_str(parser, row, start);
 		add_token(parser, token);

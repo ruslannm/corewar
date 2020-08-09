@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 20:06:49 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/09 17:40:03 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/09 21:34:04 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static uint8_t	get_arg_code(int8_t type)
 		return (IND_CODE);
 }
 
-static int8_t	check_args(t_parser *parser, unsigned int i, t_op_tab *op)
+static int8_t	check_args(t_parser *parser, int i, t_op_tab *op)
 {
 	int		arg_num;
 	int8_t	types_code;
@@ -50,19 +50,18 @@ static int8_t	check_args(t_parser *parser, unsigned int i, t_op_tab *op)
 	return (types_code);
 }
 
-static void		check_label(t_parser *parser, unsigned int i)
+static void		check_label(t_parser *parser, int i)
 {
-	t_label	*label;
 	char *content;
 
 	if (!(content = ft_strsub(parser->tokens[i]->content,
-				0, ft_strlen(parser->tokens[i]->content - 1))))
+				0, ft_strlen(parser->tokens[i]->content) - 1)))
 		terminate(parser, ERR_MEMORY, "check_label");
-	if (!(label = find_label(parser, content)))
-		add_label(parser, init_label(parser, &content));
+	if (-1 == find_label(parser, content))
+		add_label(parser, init_label(parser, &content, parser->op_pos));
 }
 
-static void		check_operator(t_parser *parser, unsigned int i)
+static void		check_operator(t_parser *parser, int i)
 {
 	t_op_tab *op;
 	int8_t	types_code;
@@ -87,7 +86,7 @@ static void		check_operator(t_parser *parser, unsigned int i)
 	}
 }
 
-void	check_code(t_parser *parser, unsigned int i)
+void	check_code(t_parser *parser, int i)
 {
 	while (i < parser->array_info[TOKENS][ARRAY_SIZE])
 	{

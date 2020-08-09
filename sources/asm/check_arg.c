@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 09:28:37 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/09 16:06:42 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/09 20:39:38 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int8_t	get_arg_type(token_type type)
 		return (0);
 }
 
-static void		check_num(t_parser *parser, unsigned int i, t_op_tab *op)
+static void		check_num(t_parser *parser, int i, t_op_tab *op)
 {
 	unsigned	start;
 	size_t		size;
@@ -40,14 +40,36 @@ static void		check_num(t_parser *parser, unsigned int i, t_op_tab *op)
 	parser->pos += size;
 }
 
-static void		check_register(t_parser *parser, unsigned int i)
+static void		check_link(t_parser *parser, int i, t_op_tab *op)
+{
+	t_label		*label;
+	char		*name;
+	unsigned	start;
+	size_t		size;
+
+	start = (parser->tokens[i]->type == DIRECT_LABEL) ? 2 : 1;
+	size = (parser->tokens[i]->type == DIRECT_LABEL) ? op->t_dir_size : IND_SIZE;
+	if (!(name = ft_strsub(parser->tokens[i]->content,
+				start, ft_strlen(parser->tokens[i]->content) - start)))
+		terminate(parser, ERR_MEMORY, "check_links");
+	if (-1 == find_label(parser, name))
+	{
+		label = init_label(parser, &name, -1);
+		add_label(parser, label);
+	}
+	ft_strdel(&name);
+	add_link(parser, init_link(parser, i, size));
+	parser->pos += size;
+}
+
+static void		check_register(t_parser *parser, int i)
 {
 	int32_to_int8(parser->code,	parser->pos,
 				(int8_t)ft_atoi(&parser->tokens[i]->content[1]), 1);
 	parser->pos += 1;
 }
 
-int8_t			check_arg(t_parser *parser, unsigned int i,
+int8_t			check_arg(t_parser *parser, int i,
 							t_op_tab *op, int arg_num)
 {
 	int8_t	type;
@@ -58,10 +80,9 @@ int8_t			check_arg(t_parser *parser, unsigned int i,
 	if (parser->tokens[i]->type == INDIRECT
 		|| parser->tokens[i]->type == DIRECT)
 		check_num(parser, i, op);
-/*	else if (parser->tokens[i]->type == INDIRECT_LABEL
+	else if (parser->tokens[i]->type == INDIRECT_LABEL
 		|| parser->tokens[i]->type == DIRECT_LABEL)
-		check_links(parser, i, op);
-*/
+		check_link(parser, i, op);
 	else
 		check_register(parser, i);
 	return (type);
