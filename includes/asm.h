@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/09 21:11:59 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/10 16:37:17 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,7 @@ void	check_command(t_parser *parser, int i);
 void	check_code(t_parser *parser, int i);
 int8_t			check_arg(t_parser *parser, int i,
 							t_op_tab *op, int arg_num);
+void	replace_link(t_parser *parser);							
 
 void	init_op_tab(t_parser *parser); // initialization original table;
 

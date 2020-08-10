@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 09:28:37 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/09 20:39:38 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/10 17:12:47 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void		check_link(t_parser *parser, int i, t_op_tab *op)
 static void		check_register(t_parser *parser, int i)
 {
 	int32_to_int8(parser->code,	parser->pos,
-				(int8_t)ft_atoi(&parser->tokens[i]->content[1]), 1);
+				ft_atoi(&parser->tokens[i]->content[1]), 1);
 	parser->pos += 1;
 }
 

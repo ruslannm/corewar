@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 17:15:22 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/09 16:12:39 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/10 17:13:57 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ void	int32_to_int8(char *str,
 {
 	uint8_t	i;
 
+	if (1 == size)
+		value =	(int8_t)(value);
+	else if (2 == size)
+		value =	(int16_t)(value);
 	i = 0;
 	while (size)
 	{

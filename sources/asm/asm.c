@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/09 21:13:15 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/10 17:17:56 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,14 @@ int				main(int argc, char **argv)
 	char *filename;
 
 	fd = 0;
-	filename = ft_strdup("rgero.s");
+//	filename = ft_strdup("rgero.s");
 	if (argc == 2)
 	{
 		if (-1 == (fd = open(argv[1], O_RDONLY)))
 			terminate(NULL, ERR_OPEN, "main");
 	}
-	else if (argc == 1) //for debug
-		fd = open(filename, O_RDONLY);  //for debug
+//	else if (argc == 1) //for debug
+//		fd = open(filename, O_RDONLY);  //for debug
 	else
 	{
 		ft_printf("Usage: ./asm mychampion.s\n");
@@ -71,16 +71,19 @@ int				main(int argc, char **argv)
 	parser = init_parser(fd);
 	init_op_tab(parser);
 	read_file(parser);
-//	filename = replace_extension(parser, argv[1]);
-	filename = replace_extension(parser, filename);
+	filename = replace_extension(parser, argv[1]);
+//	filename = replace_extension(parser, filename);
 	
 //		fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
 	if ((fd = open(filename, O_CREAT | O_TRUNC | O_WRONLY, 0644)) == -1)
+	{
+		free(filename);
 		terminate(parser, ERR_CREATE, "main");
- DEBUG_print_tokens(parser);
+	}
+ /*DEBUG_print_tokens(parser);
  DEBUG_print_labels(parser);
  DEBUG_print_links(parser);
-
+*/
 	write_file(fd, parser);
 	ft_printf("Writing output program to %s\n", filename);
 
