@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/10 16:37:17 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/11 18:59:54 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ enum
 {
 	TOKENS,
 	LABELS,
-	LINKS
+	LINKS,
+	CODE
 };
 
 typedef struct			s_op_tab
@@ -102,15 +103,14 @@ typedef struct	s_parser
 	unsigned int		row;
 	unsigned int		column;
 	t_token				**tokens;
+	t_label				**labels;
 	t_link				**links;
-	int					array_info[3][3];
+	int					array_info[4][3];
+	char				*code;
 	int32_t				pos;
 	int32_t				op_pos;
 	char				*name;
 	char				*comment;
-	char				*code;
-	int32_t				code_size;
-	t_label				**labels;
 	t_op_tab			**orig_op_tab;
 }						t_parser;
 
@@ -130,6 +130,7 @@ void	parse_token(t_parser *parser, char **row);
 void 	add_token(t_parser *parser, t_token *token);
 void 	add_label(t_parser *parser, t_label *label);
 void 	add_link(t_parser *parser, t_link *link);
+void 	add_code_capacity(t_parser *parser, int i);
 
 t_token		*init_token(t_parser *parser, token_type type);
 t_label		*init_label(t_parser *parser, char **content, int op_pos);

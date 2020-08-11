@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 09:28:37 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/10 17:12:47 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/11 17:55:00 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void		check_num(t_parser *parser, int i, t_op_tab *op)
 	size = (parser->tokens[i]->type == DIRECT) ? op->t_dir_size : IND_SIZE;
 	if (size == 2)
 		int32_to_int8(parser->code,	parser->pos, 
-			ft_atoi32(&parser->tokens[i]->content[start], MODUL16),size);
+			ft_atoi32(parser->tokens[i]->content + start, MODUL16),size);
 	else
 		int32_to_int8(parser->code,	parser->pos,
 			ft_atoi32(&parser->tokens[i]->content[start], MODUL32), size);

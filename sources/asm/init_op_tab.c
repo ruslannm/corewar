@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_asm.c                                :+:      :+:    :+:   */
+/*   init_op_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 14:15:32 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/05 19:00:14 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/10 17:33:46 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void	init_op_tab(t_parser *parser)
 		terminate(parser, ERR_MEMORY, "init_op_tab");
 //	parser->orig_op_tab[8]->name = "zjmp";
 	parser->orig_op_tab[8]->code = 0x09;
-	parser->orig_op_tab[8]->args_num = 3;
+	parser->orig_op_tab[8]->args_num = 1;
 	parser->orig_op_tab[8]->args_types_code = 0;
 	parser->orig_op_tab[8]->args_types[0] = T_DIR;
 	parser->orig_op_tab[8]->args_types[1] = 0;

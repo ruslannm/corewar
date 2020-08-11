@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 20:06:49 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/10 16:44:27 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/11 19:02:40 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,9 @@ static void		check_operator(t_parser *parser, int i)
 	t_op_tab *op;
 	int8_t	types_code;
 
+	if (i == 686)
+		ft_printf("token_i=%d, name=%s\n", i, parser->tokens[i]->content);
+
 	if ((op = find_op(parser, parser->tokens[i]->content)))
 	{
 		parser->code[parser->pos++] = op->code;
@@ -94,6 +97,7 @@ void	check_code(t_parser *parser, int i)
 {
 	while (i < parser->array_info[TOKENS][ARRAY_SIZE])
 	{
+		add_code_capacity(parser, parser->pos);
 		parser->op_pos = parser->pos;
 		if (parser->tokens[i]->type == LABEL)
 		{

@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 20:29:16 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/09 20:10:35 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/11 18:59:37 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,16 @@ void add_link(t_parser *parser, t_link *link)
 	parser->array_info[LINKS][ARRAY_INDEX] =
 		parser->array_info[LINKS][ARRAY_SIZE];
 	parser->links[parser->array_info[LINKS][ARRAY_SIZE]++] = link;
+}
+
+void add_code_capacity(t_parser *parser, int i)
+{
+	if (i + 1 > parser->array_info[CODE][ARRAY_CAPACITY])
+	{
+		if ((parser->array_info[CODE][ARRAY_CAPACITY] *= 2) > ARRAY_CAPACITY_MAX)
+			terminate(parser, ERR_MEMORY, "add_code_capacity");
+		if (!(parser->code = (char *)realloc(parser->code,
+			parser->array_info[CODE][ARRAY_CAPACITY])))
+			terminate(parser, ERR_MEMORY, "add_code_capacity");
+	}
 }
