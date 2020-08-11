@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/11 19:02:03 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/11 22:44:45 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static t_parser	*init_parser(int fd)
 	return (parser);
 }
 
-/*
+
 int				main(int argc, char **argv)
 {
 	int fd;
@@ -90,10 +90,10 @@ int				main(int argc, char **argv)
 
 	return (0);
 }
-*/
+
 
 //for DEBUG only
-
+/*
 int				main()
 {
 	int fd;
@@ -124,3 +124,4 @@ int				main()
 
 	return (0);
 }
+*/

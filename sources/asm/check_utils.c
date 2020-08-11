@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 20:18:50 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/10 18:17:39 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/11 22:45:20 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ t_op_tab	*find_op(t_parser *parser, char *name)
 	i = -1;
 	while (++i < OP_TAB_SIZE)
 	{
-		ft_printf("name=%s, i=%d->", name, i);
-		if (!parser->orig_op_tab[i]->name)
-			ft_printf("parser->name=%s\n", parser->orig_op_tab[i]->name);
-		ft_printf("parser->name=%s\n", parser->orig_op_tab[i]->name);
+//		ft_printf("name=%s, i=%d->", name, i);
+//		if (!parser->orig_op_tab[i]->name)
+//			ft_printf("parser->name=%s\n", parser->orig_op_tab[i]->name);
+//		ft_printf("parser->name=%s\n", parser->orig_op_tab[i]->name);
 		if (!ft_strcmp(parser->orig_op_tab[i]->name, name))
 			return (parser->orig_op_tab[i]);
 	}
