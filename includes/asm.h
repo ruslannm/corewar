@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/11 18:59:54 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/13 21:35:48 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ typedef struct			s_label
 }						t_label;
 
 /*
-**   tokens_size, label_size: 0 - ARR_SIZE (memory allocated for array), 1 - ARR_INDEX (current size)
+**   array_info: 0 - ARR_SIZE (memory allocated for array), 1 - ARR_INDEX (current size)
 */
 
 typedef struct	s_parser

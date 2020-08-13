@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 09:28:37 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/11 17:55:00 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/13 21:52:00 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ static void		check_link(t_parser *parser, int i, t_op_tab *op)
 		label = init_label(parser, &name, -1);
 		add_label(parser, label);
 	}
-	ft_strdel(&name);
+	else
+		ft_strdel(&name);
 	add_link(parser, init_link(parser, i, size));
 	parser->pos += size;
 }

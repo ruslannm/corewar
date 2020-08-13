@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/11 22:44:45 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/13 21:52:46 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int				main()
 	t_parser	*parser;
 	char *filename;
 
-	filename = ft_strdup("42.s");
+	filename = ft_strdup("gedeon.s");
 	fd = open(filename, O_RDONLY);  //for debug
 	parser = init_parser(fd);
 	init_op_tab(parser);
