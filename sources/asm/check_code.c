@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 20:06:49 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/11 22:43:56 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/13 22:30:10 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,8 @@ void	check_code(t_parser *parser, int i)
 {
 	while (i < parser->array_info[TOKENS][ARRAY_SIZE])
 	{
-		add_code_capacity(parser, parser->pos);
+		parser->array_info[CODE][ARRAY_SIZE] = parser->pos;
+		add_code_capacity(parser);
 		parser->op_pos = parser->pos;
 		if (parser->tokens[i]->type == LABEL)
 		{
