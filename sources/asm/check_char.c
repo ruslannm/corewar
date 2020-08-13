@@ -14,7 +14,7 @@
 
 int	is_delimiter(const char c)
 {
-	if (ft_strchr(WHITESPACES, c) || c == '\0' || c == '\n' || c == '\"'
+	if (ft_strchr(WHITESPACES, c) || c == '\0' || c == '\n' || c == '\"' || c == '-'
 		|| c == COMMAND_CHAR || c == DIRECT_CHAR 
 		|| c == SEPARATOR_CHAR || c == COMMENT_CHAR || c == ALT_COMMENT_CHAR)
 		return (1);

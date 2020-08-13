@@ -14,7 +14,12 @@
 
 static void skip_whitespaces(t_parser * parser, const char *row)
 {
-	while (ft_strchr(WHITESPACES, row[parser->column]))
+//	while (ft_strchr(WHITESPACES, row[parser->column]))
+	while (row[parser->column] == '\t' ||
+	row[parser->column] == '\v' ||
+	row[parser->column] == '\f' ||
+	row[parser->column] == '\r' ||
+	row[parser->column] == ' ')
 		parser->column++;
 }
 
