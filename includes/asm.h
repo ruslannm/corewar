@@ -141,6 +141,7 @@ t_label		*init_label(t_parser *parser, char **content, int op_pos);
 t_link		*init_link(t_parser *parser, int token_index, size_t size);
 
 int			find_label(t_parser *parser, char *str);
+int			find_token(t_parser *parser, char *str);
 t_op_tab	*find_op(t_parser *parser, char *name);
 
 int		find_strchr(const char *s, int c);

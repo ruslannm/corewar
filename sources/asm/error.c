@@ -88,6 +88,29 @@ void	arg_type_error(t_parser *parser, t_token *token, int arg_num, t_op_tab *op)
 
 void	link_error(t_parser * parser, t_label *label)
 {
-	ft_printf("link \"%s\"\n", label->content);
+	char	*type[] = {
+			"COMMAND_NAME",
+			"COMMAND_COMMENT",
+			"STRING",
+			"LABEL",
+			"INSTRUCTION",
+			"REGISTER",
+			"DIRECT",
+			"DIRECT_LABEL",
+			"INDIRECT",
+			"INDIRECT_LABEL",
+			"SEPARATOR",
+			"ENDLINE",
+			"END"};
+	int i;
+
+	i = find_token(parser, ft_strjoin(":", label->content));
+//	ft_printf("i %d\n", i);
+//	ft_printf("%s\n", parser->tokens[i]->content);
+//	ft_printf("%03u\n", parser->tokens[i]->row);
+//	ft_printf("%03u\n", parser->tokens[i]->column);
+//	ft_printf("%s\n", type[parser->tokens[i]->type]);
+	ft_printf("No such label %s while attempting to dereference token [TOKEN][%03u:%03u] %s \":%s\"\n",
+		   label->content, parser->tokens[i]->row, parser->tokens[i]->column + 1, type[parser->tokens[i]->type], label->content);
 	exit_func(parser, -1);
 }

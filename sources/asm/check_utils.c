@@ -29,6 +29,25 @@ int	find_label(t_parser *parser, char *str)
 	return (-1);
 }
 
+int	find_token(t_parser *parser, char *str)
+{
+	int i;
+
+	i = 0;
+	while (i < parser->array_info[TOKENS][ARRAY_SIZE])
+	{
+		if (parser->tokens[i]->content)
+		{
+			if (!ft_strcmp(parser->tokens[i]->content, str)) {
+				parser->array_info[TOKENS][ARRAY_INDEX] = i;
+				return (i);
+			}
+		}
+		i++;
+	}
+	return (-1);
+}
+
 t_op_tab	*find_op(t_parser *parser, char *name)
 {
 	int	i;
