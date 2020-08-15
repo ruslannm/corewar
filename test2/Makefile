@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rnugroho <rnugroho@student.42.fr>          +#+  +:+       +#+         #
+#    By: rgero <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/01 20:07:00 by rnugroho          #+#    #+#              #
-#    Updated: 2018/05/17 21:41:34 by rnugroho         ###   ########.fr        #
+#    Updated: 2020/08/15 08:17:54 by rgero            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ----- Config -----
 
 #ASM_PATH:=./corewar-project/asm
-ASM_PATH:=../asm
+ASM_PATH:=../asm-orig
 VM_PATH:=./corewar-project/corewar
 
 OPT_V:=-v 30

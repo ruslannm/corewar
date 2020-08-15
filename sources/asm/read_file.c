@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/09 17:48:36 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/15 07:54:22 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static void skip_whitespaces(t_parser * parser, const char *row)
 {
-//	while (ft_strchr(WHITESPACES, row[parser->column]))
-	while (row[parser->column] == '\t' ||
+	while (find_strchr(WHITESPACES, row[parser->column]))
+/*	while (row[parser->column] == '\t' ||
 	row[parser->column] == '\v' ||
 	row[parser->column] == '\f' ||
 	row[parser->column] == '\r' ||
 	row[parser->column] == ' ')
-		parser->column++;
+*/		parser->column++;
 }
 
 void	skip_comment(t_parser *parser, const char *row)
