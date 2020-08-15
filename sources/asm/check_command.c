@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 17:27:44 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/09 20:37:29 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/15 17:10:24 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,12 @@ void		check_command(t_parser *parser, int i)
 	while ((!parser->name || !parser->comment)
 		&& i < parser->array_info[TOKENS][ARRAY_SIZE])
 	{
-		if (parser->tokens[i]->type == COMMAND	&& !parser->name
-			&& 0 == ft_strcmp(parser->tokens[i]->content, NAME_CMD_STRING))
+		if (parser->tokens[i]->type == COMMAND_NAME	&& !parser->name)
 		{
 			parser->array_info[TOKENS][ARRAY_INDEX] = ++i;
 			parser->name = get_info(parser, "name", PROG_NAME_LENGTH, i);
 		}
-		else if (parser->tokens[i]->type == COMMAND	&& !parser->comment
-			&& 0 == ft_strcmp(parser->tokens[i]->content, COMMENT_CMD_STRING))
+		else if (parser->tokens[i]->type == COMMAND_COMMENT	&& !parser->comment)
 		{
 			parser->array_info[TOKENS][ARRAY_INDEX] = ++i;
 			parser->comment = get_info(parser, "comment", COMMENT_LENGTH, i);

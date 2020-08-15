@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 19:11:37 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/15 13:19:40 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/15 17:20:33 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,25 @@ void	lexical_error(t_parser *parser)
 void	token_error(t_parser *parser, t_token *token)
 {
 	char	*type[] = {
-		"COMMAND",
+		"COMMAND_NAME",
+		"COMMAND_COMMENT",
 		"STRING",
 		"LABEL",
-		"OPERATOR",
+		"INSTRUCTION",
 		"REGISTER",
 		"DIRECT",
 		"DIRECT_LABEL",
 		"INDIRECT",
 		"INDIRECT_LABEL",
 		"SEPARATOR",
-		"NEW_LINE"};
+		"ENDLINE"};
 	
-	ft_printf("Syntax error at token [TOKEN][%03u:%03u] %s \"%s\"\n",
-		token->row,	token->column + 1, type[token->type], token->content);
+	if (token->type == NEW_LINE)
+		ft_printf("Syntax error at token [TOKEN][%03u:%03u] %s\n",
+			token->row,	token->column + 1, type[token->type]);
+	else
+		ft_printf("Syntax error at token [TOKEN][%03u:%03u] %s \"%s\"\n",
+			token->row,	token->column + 1, type[token->type], token->content);
 	exit_func(parser, -1);
 }
 
@@ -56,7 +61,8 @@ void	instruction_error(t_parser *parser, t_token *token)
 void	arg_type_error(t_parser *parser, t_token *token, int arg_num, t_op_tab *op)
 {
 	char	*type[] = {
-		"command",
+		"command_name",
+		"command_comment",
 		"string",
 		"label",
 		"operator",
@@ -68,8 +74,11 @@ void	arg_type_error(t_parser *parser, t_token *token, int arg_num, t_op_tab *op)
 		"separator",
 		"new_line"};
 
-	ft_printf("Invalid parameter %d type for instruction %s\n", arg_num,
+	ft_printf("Invalid parameter %d type %s for instruction %s\n", arg_num,
 		type[token->type],	op->name);	
+//	ft_printf("Invalid parameter %d type for instruction %s\n", arg_num,
+//		type[token->type],	op->name);	
+
 	exit_func(parser, -1);
 }
 

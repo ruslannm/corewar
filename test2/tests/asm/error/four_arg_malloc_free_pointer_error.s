@@ -8,5 +8,5 @@ le_12:
 
 live	%11
 
-liv: live %1,1,1,1	#
+liv: live %1,2,1,1	#
 	

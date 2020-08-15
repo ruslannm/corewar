@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 20:06:49 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/13 22:30:10 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/15 16:57:17 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,13 @@ static int8_t	check_args(t_parser *parser, int i, t_op_tab *op)
 				token_error(parser, parser->tokens[i]);
 			parser->array_info[TOKENS][ARRAY_INDEX] = ++i;
 		}
+	}
+	if (parser->tokens[i]->type == SEPARATOR)
+	{
+		if (parser->tokens[++i]->type == NEW_LINE)
+			token_error(parser, parser->tokens[i]);
+		else
+			arg_type_error(parser, parser->tokens[i], arg_num, op);
 	}
 	return (types_code);
 }
