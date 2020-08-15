@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 07:44:19 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/09 22:04:25 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/15 09:50:49 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,10 @@ void	parse_direct_nbr(t_parser *parser,	char *row,	t_token *token)
 		add_token(parser, token);
 	}
 	else
+	{
+		parser->column = start;
 		lexical_error(parser);
+	}
 }
 
 void	parse_str(t_parser *parser,	char *row,	t_token *token)

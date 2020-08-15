@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/15 08:05:39 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/15 16:37:49 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ int				main(int argc, char **argv)
 	filename = replace_extension(parser, argv[1]);
 //	filename = replace_extension(parser, filename);
 	
-//		fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
+	//if	((fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR)) == -1) 
+	//S_IRUSR | S_IWUSR - запись и чтение только для владельца = 0600
 	if ((fd = open(filename, O_CREAT | O_TRUNC | O_WRONLY, 0644)) == -1)
 	{
 		free(filename);
@@ -100,7 +101,7 @@ int				main()
 	t_parser	*parser;
 	char *filename;
 
-	filename = ft_strdup("rgero.s");
+	filename = ft_strdup("./42.s");
 	fd = open(filename, O_RDONLY);  //for debug
 	parser = init_parser(fd);
 	init_op_tab(parser);

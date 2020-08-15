@@ -6,14 +6,14 @@
 #    By: rgero <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/01 20:07:00 by rnugroho          #+#    #+#              #
-#    Updated: 2020/08/15 08:17:54 by rgero            ###   ########.fr        #
+#    Updated: 2020/08/15 13:01:19 by rgero            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ----- Config -----
 
 #ASM_PATH:=./corewar-project/asm
-ASM_PATH:=../asm-orig
+ASM_PATH:=../asm
 VM_PATH:=./corewar-project/corewar
 
 OPT_V:=-v 30

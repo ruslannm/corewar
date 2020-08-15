@@ -6,7 +6,7 @@
 
 le_12:
 
-live	%1
+live	%11
 
 liv: live %1,1,1,1	#
 	

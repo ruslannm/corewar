@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/15 07:53:40 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/15 16:23:23 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,17 @@
 # include "asm_error.h"
 
 
+# define FT_UINT_MAX			((unsigned)(~0L))
+# define FT_INT_MAX				((int)(FT_UINT_MAX >> 1))
 # define ARRAY_CAPACITY_MAX		1000000
 # define ARRAY_CAPACITY_MIN		1024
 # define OP_TAB_SIZE			16
 # define COMMAND_CHAR			'.'
 # define REGISTER_CHAR			'r'
 # define WHITESPACES			"\t\v\f\r "
+# define FT_ULONG_MAX			((unsigned long)(~0L))
+# define FT_LONG_MAX			((long)(FT_ULONG_MAX >> 1))
+
 # define MODUL16 				65536
 # define MODUL32				4294967296
 
@@ -168,7 +173,7 @@ void	replace_link(t_parser *parser);
 void	init_op_tab(t_parser *parser); // initialization original table;
 
 char	*get_str(t_parser *parser, const char *row, unsigned start);
-int		ft_atoi32(const char *str, long long modul);
+int32_t		ft_atoi32(const char *str);
 
 //void	write_to_file(t_parser * parser, const char *filename); // create and write commands to file *.cor
 
