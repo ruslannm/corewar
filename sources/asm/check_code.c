@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 20:06:49 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/15 16:57:17 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/15 21:20:39 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ static void		check_operator(t_parser *parser, int i)
 
 void	check_code(t_parser *parser, int i)
 {
-	while (i < parser->array_info[TOKENS][ARRAY_SIZE])
+	while (i < parser->array_info[TOKENS][ARRAY_SIZE] - 1)
 	{
 		parser->array_info[CODE][ARRAY_SIZE] = parser->pos;
 		add_code_capacity(parser);

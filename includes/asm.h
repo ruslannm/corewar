@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/15 20:54:06 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/15 21:23:30 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@
 # include "asm_error.h"
 
 
-# define FT_UINT_MAX			((unsigned)(~0L))
-# define FT_INT_MAX				((int)(FT_UINT_MAX >> 1))
-# define ARRAY_CAPACITY_MAX		1000000
 # define ARRAY_CAPACITY_MIN		1024
 # define OP_TAB_SIZE			16
 # define COMMAND_CHAR			'.'
