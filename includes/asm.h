@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/15 17:04:51 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/15 20:54:06 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ typedef enum
 	INDIRECT,
 	INDIRECT_LABEL,
 	SEPARATOR,
-	NEW_LINE
+	NEW_LINE,
+	END
 }	token_type;
 
 enum
@@ -164,6 +165,7 @@ void	parse_direct_label(t_parser *parser, char *row,	t_token *token);
 void 	parse_indirect_label(t_parser *parser, char *row, t_token *token);
 void	parse_direct_nbr(t_parser *parser,	char *row,	t_token *token);
 void	parse_str(t_parser *parser,	char *row,	t_token *token);
+void 	parse_endline(t_parser *parser);
 
 void	check_command(t_parser *parser, int i);
 void	check_code(t_parser *parser, int i);

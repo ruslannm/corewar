@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/15 16:37:49 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/15 20:55:59 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ static t_parser	*init_parser(int fd)
 		terminate(parser, ERR_MEMORY, "init_parser");
 	return (parser);
 }
-
 
 int				main(int argc, char **argv)
 {
@@ -92,7 +91,6 @@ int				main(int argc, char **argv)
 	return (0);
 }
 
-
 //for DEBUG only
 /*
 int				main()
@@ -101,7 +99,7 @@ int				main()
 	t_parser	*parser;
 	char *filename;
 
-	filename = ft_strdup("./42.s");
+	filename = ft_strdup("./test2/tests/asm/error/label_error_3.s");
 	fd = open(filename, O_RDONLY);  //for debug
 	parser = init_parser(fd);
 	init_op_tab(parser);

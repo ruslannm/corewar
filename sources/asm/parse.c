@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 19:40:18 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/15 17:06:31 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/15 20:55:11 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	parse_token(t_parser *parser, char **row)
 	if (*(*row + parser->column) == SEPARATOR_CHAR && ++parser->column)
 		add_token(parser, init_token(parser, SEPARATOR));
 	else if (*(*row + parser->column) == '\n' && ++parser->column)
-		add_token(parser, init_token(parser, NEW_LINE));
+		parse_endline(parser);
 	else if (*(*row + parser->column) == '.')
 		parse_command(parser, *row,	init_token(parser, COMMAND_NAME));
 	else if (*(*row + parser->column) == '\"')

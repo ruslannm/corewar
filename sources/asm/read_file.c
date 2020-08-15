@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/15 07:54:22 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/15 20:33:51 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void		read_file(t_parser *parser)
 		}
 		ft_strdel(&row);
 	}
+	add_token(parser, init_token(parser, END));
 	if (size < 0)
 		terminate(parser, ERR_READ, "read_file");
 	parser->array_info[TOKENS][ARRAY_INDEX] = 0;
