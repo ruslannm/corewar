@@ -5,6 +5,7 @@ corewar-sub
 cmake-build-debug/
 .idea/
 .vscode/
+.vscode1/
 
 # Object files
 *.o
