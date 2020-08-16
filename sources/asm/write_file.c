@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 17:15:22 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/10 17:13:57 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/16 11:07:15 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,23 @@ void		write_file(int fd, t_parser *parser)
 	pos += 4;
 	ft_memcpy(&bytecode[pos], parser->code, (size_t)parser->pos);
 	write(fd, bytecode, (size_t)len);
+}
+
+void		write_standart_output(t_parser *parser)
+{
+	int	i;
+
+	ft_printf("Dumping annotated program on standard output\n");
+	ft_printf("Program size : %d bytes\n", parser->pos);
+	ft_printf("Name : \"%s\"\n", parser->name);
+	ft_printf("Comment : \"%s\"\n\n", parser->comment);
+	
+	i = -1;
+	while (++i < parser->array_info[TOKENS][ARRAY_SIZE])
+	{
+		if (parser->tokens[i]->type == LABEL)
+			ft_printf("%8d    :    %s\n", parser->tokens[i]->op_pos, parser->tokens[i]->content);
+		else if (parser->tokens[i]->type == INSTRUCTION)
+			ft_printf("%8d:(%d) :    %s\n", parser->tokens[i]->op_pos, parser->tokens[i]->type_code, parser->tokens[i]->content);
+	}
 }

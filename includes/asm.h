@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/16 10:09:47 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/16 11:07:49 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ typedef struct		s_token
 	t_type			type;
 	unsigned int	row;
 	unsigned int	column;
+	int32_t			op_pos;
+	int8_t			type_code;
 }					t_token;
 
 typedef struct		s_link
@@ -144,6 +146,7 @@ void				read_file(t_parser *parser);
 void				write_file(int fd, t_parser *parser);
 void				int32_to_int8(char *str, int32_t pos, int32_t value,
 					size_t size);
+void				write_standart_output(t_parser *parser);
 
 void				parse_token(t_parser *parser, char **row);
 void				add_token(t_parser *parser, t_token *token);

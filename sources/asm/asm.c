@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/16 07:54:49 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/16 11:30:13 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,46 +48,54 @@ static t_parser	*init_parser(int fd)
 	return (parser);
 }
 
+static int			get_fd(int argc, char **argv)
+{
+	int fd;
+
+	fd = 0;
+	if (argc == 2)
+		fd = open(argv[1], O_RDONLY);
+	else if (argc == 3 && ft_strcmp("-a", argv[1]) == 0)
+		fd = open(argv[2], O_RDONLY);
+	else
+	{
+		fd = -2;
+		ft_printf("Usage: ./asm [-a] <sourcefile.s>\n    -a : Instead of");
+    	ft_printf(" creating a .cor file, outputs a stripped and annotated");
+		ft_printf(" version of the code to the standard output\n");
+	}
+	if (-1 == fd)
+	ft_printf("Can't read source file %s\n", argv[argc - 1]);
+	return (fd);
+}
+
+
 int				main(int argc, char **argv)
 {
 	int fd;
 	t_parser	*parser;
 	char *filename;
 
-	fd = 0;
-//	filename = ft_strdup("rgero.s");
-	if (argc == 2)
-	{
-		if (-1 == (fd = open(argv[1], O_RDONLY)))
-			terminate(NULL, ERR_OPEN, "main");
-	}
-//	else if (argc == 1) //for debug
-//		fd = open(filename, O_RDONLY);  //for debug
-	else
-	{
-		ft_printf("Usage: ./asm mychampion.s\n");
+	if (-1 >= (fd = get_fd(argc, argv)))
 		return (0);
-	}
 	parser = init_parser(fd);
 	init_op_tab(parser);
 	read_file(parser);
-	filename = replace_extension(parser, argv[1]);
-//	filename = replace_extension(parser, filename);
-	
-	//if	((fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR)) == -1) 
-	//S_IRUSR | S_IWUSR - запись и чтение только для владельца = 0600
-	if ((fd = open(filename, O_CREAT | O_TRUNC | O_WRONLY, 0644)) == -1)
-	{
-		free(filename);
-		terminate(parser, ERR_CREATE, "main");
+	if (argc == 2)
+	{	
+		filename = replace_extension(parser, argv[1]);
+		//if	((fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR)) == -1) 
+		//S_IRUSR | S_IWUSR - запись и чтение только для владельца = 0600
+		if ((fd = open(filename, O_CREAT | O_TRUNC | O_WRONLY, 0644)) == -1)
+		{
+			free(filename);
+			terminate(parser, ERR_CREATE, "main");
+		}
+		write_file(fd, parser);
+		ft_printf("Writing output program to %s\n", filename);
 	}
-// DEBUG_print_tokens(parser);
-// DEBUG_print_labels(parser);
-// DEBUG_print_links(parser);
-
-	write_file(fd, parser);
-	ft_printf("Writing output program to %s\n", filename);
-
+	else
+		write_standart_output(parser);
 	return (0);
 }
 

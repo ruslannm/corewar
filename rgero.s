@@ -1,10 +1,10 @@
 			#aa
 .comment "Multipass"
 .name	"Lтeoo" #1
-c:	
+caaaaaaaa:	
 a:ld %:b,r6
-b2:st r15, :a1
-b3:st r15, :a1
+b:st r15, :a
+b:st r15, :a
 
 live	%150994944
 live	%42991616
