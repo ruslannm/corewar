@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 20:18:50 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/16 08:17:45 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/16 20:23:54 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	replace_link(t_parser *parser)
 {
 	int i;
 	int j;
+	int k;
 
 	i = -1;
 	while (++i < parser->array_info[LABELS][ARRAY_SIZE])
@@ -59,9 +60,10 @@ void	replace_link(t_parser *parser)
 			{
 				if (i == parser->links[j]->label_index)
 				{
-					int32_to_int8(parser->code, parser->links[j]->pos,
-						parser->labels[i]->op_pos
-						- parser->links[j]->op_pos,	parser->links[j]->size);
+					k = parser->labels[i]->op_pos - parser->links[j]->op_pos;
+					parser->tokens[parser->links[j]->token_index]->number = k;
+					int32_to_int8(parser->code, parser->links[j]->pos, k,
+						parser->links[j]->size);
 				}
 			}
 		}

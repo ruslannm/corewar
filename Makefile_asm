@@ -6,7 +6,7 @@
 #    By: rgero <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#              #
-#    Updated: 2020/08/16 09:40:04 by rgero            ###   ########.fr        #
+#    Updated: 2020/08/16 19:58:16 by rgero            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ SRC_LIST_ASM 	= 	DEBUG.c\
 					parse_operator.c\
 					read_file.c\
 					utils.c\
+					write_output.c\
 					write_file.c
 
 HEADERS				= asm.h op.h

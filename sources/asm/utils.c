@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 19:07:21 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/08 10:12:32 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/16 20:57:20 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,33 @@ char	*get_str(t_parser *parser, const char *row, unsigned start)
 	if (!(str = ft_strsub(row, start, parser->column - start)))
 		terminate(parser, ERR_MEMORY, "get_str");
 	return (str);
+}
+
+int8_t	get_types_len(t_token *token, int8_t type_code)
+{
+	int		i;
+	int8_t	ret;
+	int8_t	tmp;
+
+	if (token->op_tab->args_types_code == 0)
+	{
+		token->arg_len[0] = token->op_tab->t_dir_size;
+		return (1 + token->op_tab->t_dir_size);
+	}
+	ret = 2;
+	i = -1;
+	while (++i < 3)
+	{
+		tmp = 0;
+		if ((type_code & IND_CODE) == IND_CODE)
+			tmp = 2;
+		else if ((type_code & REG_CODE) == REG_CODE)
+			tmp = 1;
+		else if ((type_code & DIR_CODE) == DIR_CODE)
+			tmp = token->op_tab->t_dir_size;
+		token->arg_len[2 - i] = tmp;
+		ret += tmp;
+		type_code = type_code >> 2;
+	}
+	return (ret);
 }

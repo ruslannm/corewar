@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/16 15:36:23 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/16 20:52:33 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@
 # define COMMAND_CHAR			'.'
 # define REGISTER_CHAR			'r'
 # define WHITESPACES			"\t\v\f\r "
-# define FT_ULONG_MAX			((unsigned long)(~0L))
-# define FT_LONG_MAX			((long)(FT_ULONG_MAX >> 1))
 
 typedef enum
 {
@@ -94,6 +92,7 @@ typedef struct		s_token
 	int32_t			op_pos;
 	int8_t			type_code;
 	int32_t			number;
+	int 			arg_len[3];
 	t_op_tab 		*op_tab;
 }					t_token;
 
@@ -148,6 +147,7 @@ void				read_file(t_parser *parser);
 void				write_file(int fd, t_parser *parser);
 void				int32_to_int8(char *str, int32_t pos, int32_t value,
 					size_t size);
+int8_t				get_types_len(t_token *token, int8_t type_code);
 void				write_standart_output(t_parser *parser);
 
 void				parse_token(t_parser *parser, char **row);

@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 13:49:57 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/15 16:23:14 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/16 18:37:37 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int32_t		ft_atoi32(const char *str)
 	int				sign;
 
 	result = 0;
-	border = (unsigned long)(FT_LONG_MAX / 10);
+	border = (((unsigned long)(~0L) >> 1) / 10);
 	sign = 1;
 	i = 0;
 	if (str[i] == '-')
