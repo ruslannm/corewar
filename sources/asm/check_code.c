@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 20:06:49 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/16 10:47:12 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/16 11:56:27 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,12 @@ static void		check_label(t_parser *parser, int i)
 		terminate(parser, ERR_MEMORY, "check_label");
 	label_index = find_label(parser, content);
 	if (-1 == label_index)
-		add_label(parser, init_label(parser, &content, parser->op_pos));
+		add_label(parser, init_label(parser, &content, parser->op_pos, i));
 	else if (-1 == parser->labels[label_index]->op_pos)
+	{
 		parser->labels[label_index]->op_pos = parser->op_pos;
+		parser->tokens[i]->op_pos = parser->op_pos;
+	}
 }
 
 static void		check_operator(t_parser *parser, int i)

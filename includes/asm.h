@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/16 11:07:49 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/16 11:53:09 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,8 @@ void				add_link(t_parser *parser, t_link *link);
 void				add_code_capacity(t_parser *parser);
 
 t_token				*init_token(t_parser *parser, t_type type);
-t_label				*init_label(t_parser *parser, char **content, int op_pos);
+t_label				*init_label(t_parser *parser, char **content, int op_pos,
+					int token_index);
 t_link				*init_link(t_parser *parser, int token_index, size_t size);
 
 int					find_label(t_parser *parser, char *str);

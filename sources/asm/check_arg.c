@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 09:28:37 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/16 08:06:28 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/16 11:53:55 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void		check_link(t_parser *parser, int i, t_op_tab *op)
 		terminate(parser, ERR_MEMORY, "check_links");
 	if (-1 == find_label(parser, name))
 	{
-		label = init_label(parser, &name, -1);
+		label = init_label(parser, &name, -1, i);
 		add_label(parser, label);
 	}
 	else

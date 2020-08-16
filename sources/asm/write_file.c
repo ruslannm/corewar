@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 17:15:22 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/16 11:07:15 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/16 11:43:14 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ void		write_standart_output(t_parser *parser)
 	while (++i < parser->array_info[TOKENS][ARRAY_SIZE])
 	{
 		if (parser->tokens[i]->type == LABEL)
-			ft_printf("%8d    :    %s\n", parser->tokens[i]->op_pos, parser->tokens[i]->content);
+			ft_printf("%-8d    :    %s\n", parser->tokens[i]->op_pos, parser->tokens[i]->content);
 		else if (parser->tokens[i]->type == INSTRUCTION)
-			ft_printf("%8d:(%d) :    %s\n", parser->tokens[i]->op_pos, parser->tokens[i]->type_code, parser->tokens[i]->content);
+			ft_printf("%-8d:(%-3d) :    %s\n", parser->tokens[i]->op_pos, parser->tokens[i]->type_code, parser->tokens[i]->content);
 	}
 }

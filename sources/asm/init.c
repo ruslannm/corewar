@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 20:16:41 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/16 09:49:18 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/16 11:52:33 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ t_token		*init_token(t_parser *parser, t_type type)
 		terminate(parser, ERR_MEMORY, "init_token");
 	token->content = NULL;
 	token->type = type;
+	token->op_pos = -1;
+	token->type_code = -1;
 	token->row = parser->row;
 	if (type == SEPARATOR || type == ENDLINE)
 		token->column = parser->column - 1;
@@ -28,7 +30,7 @@ t_token		*init_token(t_parser *parser, t_type type)
 	return (token);
 }
 
-t_label		*init_label(t_parser *parser, char **content, int op_pos)
+t_label		*init_label(t_parser *parser, char **content, int op_pos, int token_index)
 {
 	t_label	*label;
 
@@ -39,6 +41,7 @@ t_label		*init_label(t_parser *parser, char **content, int op_pos)
 	}
 	label->content = *content;
 	label->op_pos = op_pos;
+	parser->tokens[token_index]->op_pos = op_pos;
 	return (label);
 }
 

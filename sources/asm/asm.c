@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/16 11:30:13 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/16 12:06:36 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ static int			get_fd(int argc, char **argv)
 	return (fd);
 }
 
-
 int				main(int argc, char **argv)
 {
 	int fd;
@@ -101,7 +100,7 @@ int				main(int argc, char **argv)
 
 //for DEBUG only
 /*
-int				main()
+int	main(int argc, char **argv)
 {
 	int fd;
 	t_parser	*parser;
@@ -109,7 +108,7 @@ int				main()
 
 //	filename = ft_strdup("./test2/tests/asm/error/param_nonexistent_label.s");
 	filename = ft_strdup("./rgero.s");
-
+	fd = get_fd(argc, argv);
 	fd = open(filename, O_RDONLY);  //for debug
 	parser = init_parser(fd);
 	init_op_tab(parser);
@@ -124,12 +123,12 @@ int				main()
 		terminate(parser, ERR_CREATE, "main");
 	}
 
- DEBUG_print_tokens(parser);
- DEBUG_print_labels(parser);
- DEBUG_print_links(parser);
+// DEBUG_print_tokens(parser);
+ //DEBUG_print_labels(parser);
+ //DEBUG_print_links(parser);
 
-	write_file(fd, parser);
-	ft_printf("Writing output program to %s\n", filename);
+	write_standart_output(parser);
+//	ft_printf("Writing output program to %s\n", filename);
 
 	return (0);
 }
