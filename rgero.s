@@ -3,7 +3,9 @@
 .name	"Lтeoo" #1
 c:	
 a:ld %:b,r6
-b:st r15, :a
+b2:st r15, :a1
+b3:st r15, :a1
+
 live	%150994944
 live	%42991616
 live	%118978653103279		# je suis en vie

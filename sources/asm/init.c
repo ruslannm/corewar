@@ -6,13 +6,13 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 20:16:41 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/09 20:45:58 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/16 08:06:09 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_token		*init_token(t_parser *parser, token_type type)
+t_token		*init_token(t_parser *parser, t_type type)
 {
 	t_token	*token;
 
@@ -49,8 +49,9 @@ t_link	*init_link(t_parser *parser, int token_index, size_t size)
 	if (!(link = (t_link *)malloc(sizeof(t_link))))
 		terminate(parser, ERR_MEMORY, "init_link");
 	link->label_index = parser->array_info[LABELS][ARRAY_INDEX];
-	link->row = parser->tokens[token_index]->row;
-	link->column = parser->tokens[token_index]->column;
+	link->token_index = token_index;
+//	link->row = parser->tokens[token_index]->row;
+//	link->column = parser->tokens[token_index]->column;
 	link->pos = parser->pos;
 	link->op_pos = parser->op_pos;
 	link->size = size;

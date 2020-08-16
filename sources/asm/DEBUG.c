@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug.c                                            :+:      :+:    :+:   */
+/*   DEBUG.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 21:52:20 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/09 21:24:50 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/15 22:47:31 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void DEBUG_print_links(t_parser *parser)
 	{
 			ft_printf("%d - label_index=%d, row=%u, col=%u, pos=%d, op_pos = %d, size=%d\n", i, 
 			parser->links[i]->label_index,
-			parser->links[i]->row,
-			parser->links[i]->column,
+			parser->tokens[parser->links[i]->token_index]->row,
+			parser->tokens[parser->links[i]->token_index]->column,
 			parser->links[i]->pos,
 			parser->links[i]->op_pos,
 			parser->links[i]->size);

@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 20:18:50 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/11 22:45:20 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/16 07:27:23 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	replace_link(t_parser *parser)
 	while (++i < parser->array_info[LABELS][ARRAY_SIZE])
 	{
 		if (parser->labels[i]->op_pos == -1)
-			link_error(parser, parser->labels[i]);
+			link_error(parser, parser->labels[i], i);
 		else
 		{
 			j = -1;

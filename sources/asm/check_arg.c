@@ -6,13 +6,13 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 09:28:37 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/15 16:24:37 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/16 08:06:28 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static int8_t	get_arg_type(token_type type)
+static int8_t	get_arg_type(t_type type)
 {
 	if (type == DIRECT || type == DIRECT_LABEL)
 		return (T_DIR);

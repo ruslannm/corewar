@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/15 21:21:11 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/16 07:54:49 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int				main()
 	t_parser	*parser;
 	char *filename;
 
-//	filename = ft_strdup("./test2/tests/asm/error/label_error_3.s");
+//	filename = ft_strdup("./test2/tests/asm/error/param_nonexistent_label.s");
 	filename = ft_strdup("./rgero.s");
 
 	fd = open(filename, O_RDONLY);  //for debug
