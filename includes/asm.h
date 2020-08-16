@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/16 11:53:09 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/16 15:36:23 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ typedef struct		s_token
 	unsigned int	column;
 	int32_t			op_pos;
 	int8_t			type_code;
+	int32_t			number;
+	t_op_tab 		*op_tab;
 }					t_token;
 
 typedef struct		s_link

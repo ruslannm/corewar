@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 09:28:37 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/16 11:53:55 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/16 14:13:25 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,17 @@ static int8_t	get_arg_type(t_type type)
 static void		check_num(t_parser *parser, int i, t_op_tab *op)
 {
 	unsigned	start;
+	int32_t 	nb;
 	size_t		size;
 
 	start = (parser->tokens[i]->type == DIRECT) ? 1 : 0;
 	size = (parser->tokens[i]->type == DIRECT) ? op->t_dir_size : IND_SIZE;
+	nb = ft_atoi32(parser->tokens[i]->content + start);
 	if (size == 2)
-		int32_to_int8(parser->code,	parser->pos, 
-			(int16_t)ft_atoi32(parser->tokens[i]->content + start),size);
+		int32_to_int8(parser->code,	parser->pos, (int16_t)nb, size);
 	else
-		int32_to_int8(parser->code,	parser->pos,
-			ft_atoi32(&parser->tokens[i]->content[start]), size);
+		int32_to_int8(parser->code,	parser->pos, nb, size);
+	parser->tokens[i]->number = nb;
 	parser->pos += size;
 }
 
@@ -65,8 +66,11 @@ static void		check_link(t_parser *parser, int i, t_op_tab *op)
 
 static void		check_register(t_parser *parser, int i)
 {
-	int32_to_int8(parser->code,	parser->pos,
-				ft_atoi(&parser->tokens[i]->content[1]), 1);
+	int32_t nb;
+
+	nb = ft_atoi(parser->tokens[i]->content + 1);
+	int32_to_int8(parser->code,	parser->pos, nb, 1);
+	parser->tokens[i]->number = nb;
 	parser->pos += 1;
 }
 

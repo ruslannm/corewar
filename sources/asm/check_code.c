@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 20:06:49 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/16 11:56:27 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/16 15:22:21 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,9 @@ static void		check_operator(t_parser *parser, int i)
 		types_code = check_args(parser, i, op);
 		if (op->args_types_code)
 			parser->code[parser->op_pos + 1] = types_code;
-		parser->tokens[i]->op_pos = parser->op_pos;
-		parser->tokens[i]->type_code = types_code;
+		parser->tokens[i - 1]->op_pos = parser->op_pos;
+		parser->tokens[i - 1]->type_code = types_code;
+		parser->tokens[i - 1]->op_tab = op;
 	}
 	else
 	{
