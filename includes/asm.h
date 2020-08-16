@@ -18,6 +18,7 @@
 # include "ft_printf.h"
 # include "op.h"
 # include "asm_error.h"
+# include "asm_op_tab.h"
 
 # define ARRAY_CAPACITY_MIN		1024
 # define OP_TAB_SIZE			16
@@ -73,15 +74,15 @@ enum
 	CODE
 };
 
-typedef struct		s_op_tab
-{
-	char			*name;
-	uint8_t			code;
-	uint8_t			args_num;
-	int				args_types_code;
-	uint8_t			args_types[3];
-	uint8_t			t_dir_size;
-}					t_op_tab;
+//typedef struct		s_op_tab
+//{
+//	char			*name;
+//	uint8_t			code;
+//	uint8_t			args_num;
+//	int				args_types_code;
+//	uint8_t			args_types[3];
+//	uint8_t			t_dir_size;
+//}					t_op_tab;
 
 typedef struct		s_token
 {
@@ -132,7 +133,7 @@ typedef struct		s_parser
 	int32_t			op_pos;
 	char			*name;
 	char			*comment;
-	t_op_tab		**orig_op_tab;
+//	t_op_tab		**orig_op_tab;
 }					t_parser;
 
 void				terminate(t_parser *parser, const char *error_info,
@@ -162,7 +163,7 @@ t_label				*init_label(t_parser *parser, char **content, int op_pos,
 t_link				*init_link(t_parser *parser, int token_index, size_t size);
 
 int					find_label(t_parser *parser, char *str);
-t_op_tab			*find_op(t_parser *parser, char *name);
+t_op_tab			*find_op(char *name);
 
 int					find_strchr(const char *s, int c);
 int					is_delimiter(const char c);
@@ -202,7 +203,7 @@ void				replace_link(t_parser *parser);
 ** initialization original table
 */
 
-void				init_op_tab(t_parser *parser);
+//void				init_op_tab(t_parser *parser);
 
 char				*get_str(t_parser *parser, const char *row,
 					unsigned start);

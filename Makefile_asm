@@ -36,7 +36,6 @@ SRC_LIST_ASM 	= 	DEBUG.c\
 					error_parse.c\
 					exit_func.c\
 					init.c\
-					init_op_tab.c\
 					files.c\
 					ft_atoi32.c\
 					parse.c\
@@ -47,7 +46,7 @@ SRC_LIST_ASM 	= 	DEBUG.c\
 					write_output.c\
 					write_file.c
 
-HEADERS				= asm.h op.h
+HEADERS				= asm.h asm_error.h asm_op_tab.h op.h
 
 SRC_ASM			= $(addprefix $(DIR_SRC)/, $(SRC_LIST_ASM))
 OBJ_ASM			= $(addprefix $(DIR_OBJ)/, $(SRC_LIST_ASM:.c=.o))

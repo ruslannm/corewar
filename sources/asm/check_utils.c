@@ -29,15 +29,15 @@ int	find_label(t_parser *parser, char *str)
 	return (-1);
 }
 
-t_op_tab	*find_op(t_parser *parser, char *name)
+t_op_tab	*find_op(char *name)
 {
 	int	i;
 
 	i = -1;
 	while (++i < OP_TAB_SIZE)
 	{
-		if (!ft_strcmp(parser->orig_op_tab[i]->name, name))
-			return (parser->orig_op_tab[i]);
+		if (!ft_strcmp(g_op_tab[i].name, name))
+			return (&g_op_tab[i]);
 	}
 	return (NULL);
 }

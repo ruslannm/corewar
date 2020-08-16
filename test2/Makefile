@@ -44,10 +44,16 @@ T_ASM_DIR_ERROR = tests/asm/error/
 T_ASM_FILES_ERROR:=$(shell cd $(T_ASM_DIR_ERROR); ls  | egrep '^$(T_FILE_ERROR).*.s$$' | sort -f )
 
 test_asm_error :
-	@if [[ $$(./$(ASM_PATH) $(OPT_A) $(T_ASM_DIR_ERROR)$(X) $(SILENT) ) < 0 ]] ; \
+	@./$(ASM_PATH) $(OPT_A) $(T_ASM_DIR_ERROR)$(X) > out1 2>> out1; true
+	@./binaries/asm -a $(T_ASM_DIR_ERROR)$(X) > out2; true
+	@if diff out1 out2 $(SILENT); \
 		then echo $(GREEN) " - [OK] $(T_ASM_DIR_ERROR)$(X)" $(EOC) && echo "OK" >> $(TALLY); \
 		else echo $(RED) " - [KO] $(T_ASM_DIR_ERROR)$(X)" $(EOC) && echo "KO" >> $(TALLY); \
 	fi
+#	@if [[ $$(./$(ASM_PATH) $(OPT_A) $(T_ASM_DIR_ERROR)$(X) $(SILENT) ) < 0 ]] ; \
+#		then echo $(GREEN) " - [OK] $(T_ASM_DIR_ERROR)$(X)" $(EOC) && echo "OK" >> $(TALLY); \
+#		else echo $(RED) " - [KO] $(T_ASM_DIR_ERROR)$(X)" $(EOC) && echo "KO" >> $(TALLY); \
+#	fi
 
 tests_asm_error:
 	@echo $(CYAN) " - Test Error Cases" $(EOC)

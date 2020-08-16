@@ -80,7 +80,7 @@ static void		check_operator(t_parser *parser, int i)
 	t_op_tab *op;
 	int8_t	types_code;
 
-	if ((op = find_op(parser, parser->tokens[i]->content)))
+	if ((op = find_op(parser->tokens[i]->content)))
 	{
 		parser->code[parser->pos++] = op->code;
 		parser->array_info[TOKENS][ARRAY_INDEX] = ++i;

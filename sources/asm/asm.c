@@ -43,8 +43,8 @@ static t_parser	*init_parser(int fd)
 		terminate(parser, ERR_MEMORY, "init_parser");
 	parser->pos = 0;
 	parser->op_pos = 0;
-	if (!(parser->orig_op_tab = (t_op_tab**)malloc(sizeof(t_op_tab*) * OP_TAB_SIZE)))
-		terminate(parser, ERR_MEMORY, "init_parser");
+//	if (!(parser->orig_op_tab = (t_op_tab**)malloc(sizeof(t_op_tab*) * OP_TAB_SIZE)))
+//		terminate(parser, ERR_MEMORY, "init_parser");
 	return (parser);
 }
 
@@ -78,7 +78,7 @@ int				main(int argc, char **argv)
 	if (-1 >= (fd = get_fd(argc, argv)))
 		return (0);
 	parser = init_parser(fd);
-	init_op_tab(parser);
+//	init_op_tab(parser);
 	read_file(parser);
 	if (argc == 2)
 	{	
