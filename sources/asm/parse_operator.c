@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 07:44:19 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/15 18:28:55 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/16 09:50:26 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	parse_operator(t_parser *parser, char *row,	t_token *token)
 		parser->column++;
 		token->content = get_str(parser, row, start);
 		token->type = LABEL;
-		if (parser->tokens[parser->array_info[TOKENS][ARRAY_SIZE] - 1]->type == NEW_LINE
+		if (parser->tokens[parser->array_info[TOKENS][ARRAY_SIZE] - 1]->type == ENDLINE
 		|| parser->tokens[parser->array_info[TOKENS][ARRAY_SIZE] - 1]->type == LABEL)
 			add_token(parser, token);
 		else
@@ -35,7 +35,7 @@ void	parse_operator(t_parser *parser, char *row,	t_token *token)
 	{
 		token->content = get_str(parser, row, start);
 		if (token->type == INDIRECT)
-			token->type = (is_register(token->content)) ? REGISTER : OPERATOR;
+			token->type = (is_register(token->content)) ? REGISTER : INSTRUCTION;
 		add_token(parser, token);
 	}
 	else

@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   asm_error.h                                        :+:      :+:    :+:   */
+/*   error_parse.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/08 09:04:01 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/16 09:52:20 by rgero            ###   ########.fr       */
+/*   Created: 2020/08/06 19:11:37 by rgero             #+#    #+#             */
+/*   Updated: 2020/08/16 09:39:22 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ASM_ERROR_H
-# define ASM_ERROR_H
+#include "asm.h"
 
-# define ERR_MEMORY	"memory allocation"
-# define ERR_OPEN	"opening file"
-# define ERR_CREATE	"creating file"
-# define ERR_READ	"reading file"
-
-#endif
+void	lexical_error(t_parser *parser)
+{
+	ft_printf("Lexical error at [%u:%u]\n",
+		parser->row,
+		parser->column + 1);
+	exit_func(parser, -1);
+}

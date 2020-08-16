@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 21:52:20 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/15 22:47:31 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/16 09:46:28 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void DEBUG_print_tokens(t_parser *parser)
 	while (i < parser->array_info[TOKENS][ARRAY_SIZE])
 	{
 		ft_printf("%d|", i);
-		if (parser->tokens[i]->type == NEW_LINE)
+		if (parser->tokens[i]->type == ENDLINE)
 			ft_printf("NEW_LINE/%d\n", parser->tokens[i]->type);
 		else if (parser->tokens[i]->type == SEPARATOR)
 			ft_printf("SEPARATOR/%d -> ", parser->tokens[i]->type);

@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 20:06:49 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/15 22:58:00 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/16 09:48:25 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int8_t	check_args(t_parser *parser, int i, t_op_tab *op)
 	}
 	if (parser->tokens[i]->type == SEPARATOR)
 	{
-		if (parser->tokens[++i]->type == NEW_LINE)
+		if (parser->tokens[++i]->type == ENDLINE)
 			token_error(parser, parser->tokens[i]);
 		else
 			arg_type_error(parser, parser->tokens[i], arg_num, op);
@@ -90,7 +90,7 @@ static void		check_operator(t_parser *parser, int i)
 	else
 	{
 		if (i < parser->array_info[TOKENS][ARRAY_SIZE]
-			&& parser->tokens[i + 1]->type == NEW_LINE)
+			&& parser->tokens[i + 1]->type == ENDLINE)
 			token_error(parser, parser->tokens[i + 1]);
 		else
 			instruction_error(parser, parser->tokens[i]);
@@ -109,12 +109,12 @@ void	check_code(t_parser *parser, int i)
 			check_label(parser, i);
 			parser->array_info[TOKENS][ARRAY_INDEX] = ++i;
 		}
-		if (parser->tokens[i]->type == OPERATOR)
+		if (parser->tokens[i]->type == INSTRUCTION)
 		{
 			check_operator(parser, i);
 			i = parser->array_info[TOKENS][ARRAY_INDEX];
 		}
-		if (parser->tokens[i]->type  == NEW_LINE)
+		if (parser->tokens[i]->type  == ENDLINE)
 			parser->array_info[TOKENS][ARRAY_INDEX] = ++i;
 		else
 			token_error(parser, parser->tokens[i]);

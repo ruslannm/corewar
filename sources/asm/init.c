@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 20:16:41 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/16 08:06:09 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/16 09:49:18 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_token		*init_token(t_parser *parser, t_type type)
 	token->content = NULL;
 	token->type = type;
 	token->row = parser->row;
-	if (type == SEPARATOR || type == NEW_LINE)
+	if (type == SEPARATOR || type == ENDLINE)
 		token->column = parser->column - 1;
 	else
 		token->column = parser->column;
@@ -50,8 +50,6 @@ t_link	*init_link(t_parser *parser, int token_index, size_t size)
 		terminate(parser, ERR_MEMORY, "init_link");
 	link->label_index = parser->array_info[LABELS][ARRAY_INDEX];
 	link->token_index = token_index;
-//	link->row = parser->tokens[token_index]->row;
-//	link->column = parser->tokens[token_index]->column;
 	link->pos = parser->pos;
 	link->op_pos = parser->op_pos;
 	link->size = size;

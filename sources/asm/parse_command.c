@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 19:23:34 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/15 20:53:43 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/16 09:49:57 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,11 @@ void parse_endline(t_parser *parser)
 	int i;
 
 	i = parser->array_info[TOKENS][ARRAY_SIZE];
-	if (i >= 1 && parser->tokens[i - 1]->type == NEW_LINE)
+	if (i >= 1 && parser->tokens[i - 1]->type == ENDLINE)
 	{
 		parser->tokens[i - 1]->row = parser->row;
 		parser->tokens[i - 1]->column = parser->column - 1;
 	}
 	else	
-		add_token(parser, init_token(parser, NEW_LINE));
+		add_token(parser, init_token(parser, ENDLINE));
 }

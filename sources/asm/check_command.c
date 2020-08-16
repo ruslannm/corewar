@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 17:27:44 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/15 20:41:57 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/16 09:47:26 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void		check_command(t_parser *parser, int i)
 			parser->array_info[TOKENS][ARRAY_INDEX] = ++i;
 			parser->comment = get_info(parser, "comment", COMMENT_LENGTH, i);
 		}
-		else if (parser->tokens[i]->type == NEW_LINE)
+		else if (parser->tokens[i]->type == ENDLINE)
 		{
 			parser->array_info[TOKENS][ARRAY_INDEX] = ++i;
 			continue;
@@ -57,7 +57,7 @@ void		check_command(t_parser *parser, int i)
 		else
 			token_error(parser, parser->tokens[i]);
 		parser->array_info[TOKENS][ARRAY_INDEX] = ++i;
-		if (parser->tokens[i]->type != NEW_LINE)
+		if (parser->tokens[i]->type != ENDLINE)
 			token_error(parser, parser->tokens[i]);
 	}
 }
