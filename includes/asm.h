@@ -74,16 +74,6 @@ enum
 	CODE
 };
 
-//typedef struct		s_op_tab
-//{
-//	char			*name;
-//	uint8_t			code;
-//	uint8_t			args_num;
-//	int				args_types_code;
-//	uint8_t			args_types[3];
-//	uint8_t			t_dir_size;
-//}					t_op_tab;
-
 typedef struct		s_token
 {
 	char			*content;
@@ -93,8 +83,8 @@ typedef struct		s_token
 	int32_t			op_pos;
 	int8_t			type_code;
 	int32_t			number;
-	int 			arg_len[3];
-	t_op_tab 		*op_tab;
+	int				arg_len[3];
+	t_op_tab		*op_tab;
 }					t_token;
 
 typedef struct		s_link
@@ -133,7 +123,6 @@ typedef struct		s_parser
 	int32_t			op_pos;
 	char			*name;
 	char			*comment;
-//	t_op_tab		**orig_op_tab;
 }					t_parser;
 
 void				terminate(t_parser *parser, const char *error_info,
@@ -203,8 +192,6 @@ void				replace_link(t_parser *parser);
 /*
 ** initialization original table
 */
-
-//void				init_op_tab(t_parser *parser);
 
 char				*get_str(t_parser *parser, const char *row,
 					unsigned start);
