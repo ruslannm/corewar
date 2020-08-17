@@ -12,13 +12,13 @@
 
 #include "asm.h"
 
-static int check_max_capacity(t_parser *parser, int type)
+static int	check_max_capacity(t_parser *parser, int type)
 {
-	int test;
-	int current;
+	int		test;
+	int		current;
 
 	current = parser->array_info[type][ARRAY_SIZE];
-	if (current + 1	> parser->array_info[type][ARRAY_CAPACITY])
+	if (current + 1 > parser->array_info[type][ARRAY_CAPACITY])
 	{
 		test = current * 2;
 		if (test / 2 != current)
@@ -29,10 +29,10 @@ static int check_max_capacity(t_parser *parser, int type)
 	return (0);
 }
 
-void add_token(t_parser *parser, t_token *token)
+void		add_token(t_parser *parser, t_token *token)
 {
 	t_token	**new;
-	int 	i;
+	int		i;
 
 	if (check_max_capacity(parser, TOKENS))
 	{
@@ -48,10 +48,10 @@ void add_token(t_parser *parser, t_token *token)
 	parser->tokens[parser->array_info[TOKENS][ARRAY_SIZE]++] = token;
 }
 
-void add_label(t_parser *parser, t_label *label)
+void		add_label(t_parser *parser, t_label *label)
 {
 	t_label	**new;
-	int 	i;
+	int		i;
 
 	if (check_max_capacity(parser, LABELS))
 	{
@@ -69,10 +69,10 @@ void add_label(t_parser *parser, t_label *label)
 	parser->labels[parser->array_info[LABELS][ARRAY_SIZE]++] = label;
 }
 
-void add_link(t_parser *parser, t_link *link)
+void		add_link(t_parser *parser, t_link *link)
 {
 	t_link	**new;
-	int 	i;
+	int		i;
 
 	if (check_max_capacity(parser, LINKS))
 	{
@@ -90,7 +90,7 @@ void add_link(t_parser *parser, t_link *link)
 	parser->links[parser->array_info[LINKS][ARRAY_SIZE]++] = link;
 }
 
-void add_code_capacity(t_parser *parser)
+void		add_code_capacity(t_parser *parser)
 {
 	if (check_max_capacity(parser, CODE))
 	{
