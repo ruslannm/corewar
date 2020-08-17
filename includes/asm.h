@@ -174,6 +174,7 @@ void				lexical_error(t_parser *parser);
 void				command_error(t_parser *parser, const char *command,
 					int len);
 void				token_error(t_parser *parser, t_token *token);
+void				token_end_error(t_parser *parser, t_token *token);
 void				instruction_error(t_parser *parser, t_token *token);
 void				arg_type_error(t_parser *parser, t_token *token,
 					int arg_num, t_op_tab *op);

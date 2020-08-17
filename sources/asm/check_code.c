@@ -105,6 +105,9 @@ static void		check_operator(t_parser *parser, int i)
 
 void	check_code(t_parser *parser, int i)
 {
+	int j;
+
+	j = 0;
 	while (i < parser->array_info[TOKENS][ARRAY_SIZE] - 1)
 	{
 		parser->array_info[CODE][ARRAY_SIZE] = parser->pos;
@@ -117,13 +120,22 @@ void	check_code(t_parser *parser, int i)
 		}
 		if (parser->tokens[i]->type == INSTRUCTION)
 		{
+			j = 1;
 			check_operator(parser, i);
 			i = parser->array_info[TOKENS][ARRAY_INDEX];
 		}
 		if (parser->tokens[i]->type  == ENDLINE)
 			parser->array_info[TOKENS][ARRAY_INDEX] = ++i;
 		else
+		{
+			//	no ENDLINE
+			if (parser->tokens[i]->type == END && parser->tokens[i - 1]->type != ENDLINE)
+				token_end_error(parser, parser->tokens[i]);
 			token_error(parser, parser->tokens[i]);
+		}
 	}
+//		no Code
+		if (parser->tokens[i]->type == END && j == 0)
+			token_error(parser, parser->tokens[i]);
 	replace_link(parser);
 }

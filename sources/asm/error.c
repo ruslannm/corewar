@@ -76,3 +76,10 @@ void	link_error(t_parser *parser, t_label *label, int label_index)
 	}
 	exit_func(parser, -1);
 }
+
+void	token_end_error(t_parser *parser, t_token *token)
+{
+	if (token->type == END)
+		ft_printf("Syntax error - unexpected end of input (Perhaps you forgot to end with a newline ?)\n");
+	exit_func(parser, -1);
+}
