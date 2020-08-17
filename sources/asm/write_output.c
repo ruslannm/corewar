@@ -12,10 +12,11 @@
 
 #include "asm.h"
 
-static void	print_op_content(t_parser *parser, int i, int current, int op_len)
+static void		print_op_content(t_parser *parser, int i,
+									int current, int op_len)
 {
-	int j;
-	int k;
+	int			j;
+	int			k;
 
 	ft_printf("%-5d(%-3d) :%8c", current, op_len, ' ');
 	ft_printf("%-10s", parser->tokens[i]->content);
@@ -32,7 +33,7 @@ static void	print_op_content(t_parser *parser, int i, int current, int op_len)
 	ft_printf("\n");
 }
 
-static void	print_int32(int32_t value, size_t size)
+static void		print_int32(int32_t value, size_t size)
 {
 	uint32_t	i;
 	uint8_t		tmp;
@@ -59,11 +60,11 @@ static void	print_int32(int32_t value, size_t size)
 	ft_printf("  ");
 }
 
-static void	print_op_number_bit(t_parser *parser, int i)
+static void		print_op_number_bit(t_parser *parser, int i)
 {
-	int j;
-	int k;
-	int type_code;
+	int			j;
+	int			k;
+	int			type_code;
 
 	ft_printf("%20c", ' ');
 	type_code = parser->tokens[i]->type_code;
@@ -87,11 +88,11 @@ static void	print_op_number_bit(t_parser *parser, int i)
 	ft_printf("\n");
 }
 
-static void	print_op_number(t_parser *parser, int i)
+static void		print_op_number(t_parser *parser, int i)
 {
-	int j;
-	int k;
-	int type_code;
+	int			j;
+	int			k;
+	int			type_code;
 
 	ft_printf("%20c", ' ');
 	type_code = parser->tokens[i]->type_code;
@@ -114,12 +115,12 @@ static void	print_op_number(t_parser *parser, int i)
 	ft_printf("\n\n");
 }
 
-void		write_standart_output(t_parser *parser)
+void			write_standart_output(t_parser *parser)
 {
-	int		i;
-	int		current;
-	int		op_len;
-	t_token	*token;
+	int			i;
+	int			current;
+	int			op_len;
+	t_token		*token;
 
 	ft_printf("Dumping annotated program on standard output\n");
 	ft_printf("Program size : %d bytes\n", parser->pos);

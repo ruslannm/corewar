@@ -12,15 +12,16 @@
 
 #include "asm.h"
 
-static char *get_info(t_parser *parser, const char *command, int max_len, unsigned int i)
+static char	*get_info(t_parser *parser, const char *command,
+						int max_len, unsigned int i)
 {
-	int len;
-	char *str;	
+	int		len;
+	char	*str;
 
 	str = NULL;
 	if (parser->tokens[i]->type == STRING)
 	{
-		len = ft_strlen(parser->tokens[i]->content); 
+		len = ft_strlen(parser->tokens[i]->content);
 		if (len - 2 > max_len)
 			command_error(parser, command, max_len);
 		if (!(str = ft_strsub(parser->tokens[i]->content,
@@ -39,12 +40,12 @@ void		check_command(t_parser *parser, int i)
 	{
 		if (parser->tokens[i]->type == END)
 			token_error(parser, parser->tokens[i]);
-		else if (parser->tokens[i]->type == COMMAND_NAME	&& !parser->name)
+		else if (parser->tokens[i]->type == COMMAND_NAME && !parser->name)
 		{
 			parser->array_info[TOKENS][ARRAY_INDEX] = ++i;
 			parser->name = get_info(parser, "name", PROG_NAME_LENGTH, i);
 		}
-		else if (parser->tokens[i]->type == COMMAND_COMMENT	&& !parser->comment)
+		else if (parser->tokens[i]->type == COMMAND_COMMENT && !parser->comment)
 		{
 			parser->array_info[TOKENS][ARRAY_INDEX] = ++i;
 			parser->comment = get_info(parser, "comment", COMMENT_LENGTH, i);

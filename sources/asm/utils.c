@@ -12,9 +12,9 @@
 
 #include "asm.h"
 
-char	*join_str(t_parser *parser, char **str1, char **str2)
+char		*join_str(t_parser *parser, char **str1, char **str2)
 {
-	char *ret;
+	char	*ret;
 
 	if (!(ret = ft_strjoin(*str1, *str2)))
 		terminate(parser, ERR_MEMORY, "join_str");
@@ -23,7 +23,7 @@ char	*join_str(t_parser *parser, char **str1, char **str2)
 	return (ret);
 }
 
-char	*get_str(t_parser *parser, const char *row, unsigned start)
+char		*get_str(t_parser *parser, const char *row, unsigned start)
 {
 	char	*str;
 
@@ -32,7 +32,7 @@ char	*get_str(t_parser *parser, const char *row, unsigned start)
 	return (str);
 }
 
-int8_t	get_types_len(t_token *token, int8_t type_code)
+int8_t		get_types_len(t_token *token, int8_t type_code)
 {
 	int		i;
 	int8_t	ret;

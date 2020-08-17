@@ -27,16 +27,16 @@ static int8_t	get_arg_type(t_type type)
 static void		check_num(t_parser *parser, int i, t_op_tab *op)
 {
 	unsigned	start;
-	int32_t 	nb;
+	int32_t		nb;
 	size_t		size;
 
 	start = (parser->tokens[i]->type == DIRECT) ? 1 : 0;
 	size = (parser->tokens[i]->type == DIRECT) ? op->t_dir_size : IND_SIZE;
 	nb = ft_atoi32(parser->tokens[i]->content + start);
 	if (size == 2)
-		int32_to_int8(parser->code,	parser->pos, (int16_t)nb, size);
+		int32_to_int8(parser->code, parser->pos, (int16_t)nb, size);
 	else
-		int32_to_int8(parser->code,	parser->pos, nb, size);
+		int32_to_int8(parser->code, parser->pos, nb, size);
 	parser->tokens[i]->number = nb;
 	parser->pos += size;
 }
@@ -49,8 +49,9 @@ static void		check_link(t_parser *parser, int i, t_op_tab *op)
 	size_t		size;
 
 	start = (parser->tokens[i]->type == DIRECT_LABEL) ? 2 : 1;
-	size = (parser->tokens[i]->type == DIRECT_LABEL) ? op->t_dir_size : IND_SIZE;
-	if (!(name = ft_strsub(parser->tokens[i]->content,
+	size = (parser->tokens[i]->type == DIRECT_LABEL) ? op->t_dir_size :\
+			IND_SIZE;
+	if (!(name = ft_strsub(parser->tokens[i]->content,\
 				start, ft_strlen(parser->tokens[i]->content) - start)))
 		terminate(parser, ERR_MEMORY, "check_links");
 	if (-1 == find_label(parser, name))
@@ -69,7 +70,7 @@ static void		check_register(t_parser *parser, int i)
 	int32_t nb;
 
 	nb = ft_atoi(parser->tokens[i]->content + 1);
-	int32_to_int8(parser->code,	parser->pos, nb, 1);
+	int32_to_int8(parser->code, parser->pos, nb, 1);
 	parser->tokens[i]->number = nb;
 	parser->pos += 1;
 }

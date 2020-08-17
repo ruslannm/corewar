@@ -10,14 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// only for debug
-
 #include "asm.h"
 
-void DEBUG_print_tokens(t_parser *parser)
+void	DEBUG_print_tokens(t_parser *parser)
 {
-	int i;
-	
+	int	i;
+
 	ft_printf("\nprint_tokens\n");
 	i = 0;
 	while (i < parser->array_info[TOKENS][ARRAY_SIZE])
@@ -27,41 +25,44 @@ void DEBUG_print_tokens(t_parser *parser)
 			ft_printf("NEW_LINE/%d\n", parser->tokens[i]->type);
 		else if (parser->tokens[i]->type == SEPARATOR)
 			ft_printf("SEPARATOR/%d -> ", parser->tokens[i]->type);
-		else 
-			ft_printf("%s/%d -> ", parser->tokens[i]->content, parser->tokens[i]->type);
+		else
+			ft_printf("%s/%d -> ", parser->tokens[i]->content,
+						parser->tokens[i]->type);
 		++i;
 	}
 	ft_printf("end print_tokens\n\n");
 }
 
-void DEBUG_print_labels(t_parser *parser)
+void	DEBUG_print_labels(t_parser *parser)
 {
-	int i;
-	
+	int	i;
+
 	ft_printf("\nprint_labels\n");
 	i = -1;
 	while (++i < parser->array_info[LABELS][ARRAY_SIZE])
 	{
-			ft_printf("%d - op_pos = %d, %s\n", i, parser->labels[i]->op_pos, parser->labels[i]->content);
+		ft_printf("%d - op_pos = %d, %s\n", i,
+					parser->labels[i]->op_pos, parser->labels[i]->content);
 	}
 	ft_printf("end print_label\n\n");
 }
 
-void DEBUG_print_links(t_parser *parser)
+void	DEBUG_print_links(t_parser *parser)
 {
-	int i;
-	
+	int	i;
+
 	ft_printf("\nprint_links\n");
 	i = -1;
 	while (++i < parser->array_info[LINKS][ARRAY_SIZE])
 	{
-			ft_printf("%d - label_index=%d, row=%u, col=%u, pos=%d, op_pos = %d, size=%d\n", i, 
-			parser->links[i]->label_index,
-			parser->tokens[parser->links[i]->token_index]->row,
-			parser->tokens[parser->links[i]->token_index]->column,
-			parser->links[i]->pos,
-			parser->links[i]->op_pos,
-			parser->links[i]->size);
+		ft_printf("%d - label_index=%d, row=%u, col=%u,"
+					" pos=%d, op_pos = %d, size=%d\n", i,
+					parser->links[i]->label_index,
+					parser->tokens[parser->links[i]->token_index]->row,
+					parser->tokens[parser->links[i]->token_index]->column,
+					parser->links[i]->pos,
+					parser->links[i]->op_pos,
+					parser->links[i]->size);
 	}
 	ft_printf("end print_links\n\n");
 }

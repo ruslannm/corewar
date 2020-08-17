@@ -14,8 +14,8 @@
 
 static int		newline(char **s, char **line, int fd, int nbread)
 {
-	char	*temp;
-	int		len;
+	char		*temp;
+	int			len;
 
 	len = 0;
 	while (s[fd][len] != '\n' && s[fd][len] != '\0')
@@ -39,7 +39,7 @@ static int		newline(char **s, char **line, int fd, int nbread)
 	return (1);
 }
 
-int		get_next_line_asm(const int fd, char **line)
+int				get_next_line_asm(const int fd, char **line)
 {
 	static char	*s[10000];
 	char		buffer[BUFF_SIZE + 1];

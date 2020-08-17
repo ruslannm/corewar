@@ -12,9 +12,10 @@
 
 #include "asm.h"
 
-void	int32_to_int8(char *str, int32_t pos, int32_t value, size_t size)
+void				int32_to_int8(char *str, int32_t pos,
+									int32_t value, size_t size)
 {
-	uint8_t	i;
+	uint8_t			i;
 
 	if (1 == size)
 		value = (int8_t)(value);
@@ -29,7 +30,7 @@ void	int32_to_int8(char *str, int32_t pos, int32_t value, size_t size)
 	}
 }
 
-void	write_file(int fd, t_parser *parser)
+void				write_file(int fd, t_parser *parser)
 {
 	unsigned int	len;
 	unsigned int	pos;

@@ -12,9 +12,10 @@
 
 #include "asm.h"
 
-void	parse_operator(t_parser *parser, char *row,	t_token *token)
+void				parse_operator(t_parser *parser,
+									char *row, t_token *token)
 {
-	unsigned int start;
+	unsigned int	start;
 
 	start = parser->column;
 	while (row[parser->column]
@@ -25,8 +26,10 @@ void	parse_operator(t_parser *parser, char *row,	t_token *token)
 		parser->column++;
 		token->content = get_str(parser, row, start);
 		token->type = LABEL;
-		if (parser->tokens[parser->array_info[TOKENS][ARRAY_SIZE] - 1]->type == ENDLINE
-		|| parser->tokens[parser->array_info[TOKENS][ARRAY_SIZE] - 1]->type == LABEL)
+		if (parser->tokens[parser->array_info[TOKENS]
+		[ARRAY_SIZE] - 1]->type == ENDLINE
+		|| parser->tokens[parser->array_info[TOKENS]
+		[ARRAY_SIZE] - 1]->type == LABEL)
 			add_token(parser, token);
 		else
 			token_error(parser, token);
@@ -35,16 +38,18 @@ void	parse_operator(t_parser *parser, char *row,	t_token *token)
 	{
 		token->content = get_str(parser, row, start);
 		if (token->type == INDIRECT)
-			token->type = (is_register(token->content)) ? REGISTER : INSTRUCTION;
+			token->type = (is_register(token->content))\
+			? REGISTER : INSTRUCTION;
 		add_token(parser, token);
 	}
 	else
 		lexical_error(parser);
 }
 
-void	parse_direct_label(t_parser *parser, char *row,	t_token *token)
+void				parse_direct_label(t_parser *parser,
+										char *row, t_token *token)
 {
-	unsigned int start;
+	unsigned int	start;
 
 	start = parser->column;
 	parser->column += 2;
@@ -60,13 +65,15 @@ void	parse_direct_label(t_parser *parser, char *row,	t_token *token)
 		lexical_error(parser);
 }
 
-void parse_indirect_label(t_parser *parser, char *row, t_token *token)
+void				parse_indirect_label(t_parser *parser,
+										char *row, t_token *token)
 {
-	unsigned int start;
+	unsigned int	start;
 
 	start = parser->column;
 	if (row[parser->column] == LABEL_CHAR
-	&&  (parser->tokens[parser->array_info[TOKENS][ARRAY_SIZE] - 1]->type == LABEL))
+	&& (parser->tokens[parser->array_info[TOKENS]
+	[ARRAY_SIZE] - 1]->type == LABEL))
 		lexical_error(parser);
 	parser->column += 1;
 	while (row[parser->column]
@@ -81,7 +88,8 @@ void parse_indirect_label(t_parser *parser, char *row, t_token *token)
 		lexical_error(parser);
 }
 
-void	parse_direct_nbr(t_parser *parser,	char *row,	t_token *token)
+void				parse_direct_nbr(t_parser *parser,
+									char *row, t_token *token)
 {
 	unsigned int	start;
 	unsigned int	start_digit;
@@ -93,7 +101,7 @@ void	parse_direct_nbr(t_parser *parser,	char *row,	t_token *token)
 		start_digit = ++parser->column;
 	while (ft_isdigit(row[parser->column]))
 		parser->column++;
-	if ((parser->column - start_digit)	&& is_delimiter(row[parser->column]))
+	if ((parser->column - start_digit) && is_delimiter(row[parser->column]))
 	{
 		token->content = get_str(parser, row, start);
 		add_token(parser, token);
@@ -105,9 +113,10 @@ void	parse_direct_nbr(t_parser *parser,	char *row,	t_token *token)
 	}
 }
 
-void	parse_str(t_parser *parser,	char *row,	t_token *token)
+void				parse_str(t_parser *parser,
+								char *row, t_token *token)
 {
-	unsigned int start;
+	unsigned int	start;
 	unsigned int	start_digit;
 
 	start = parser->column;

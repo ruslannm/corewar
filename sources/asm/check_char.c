@@ -12,9 +12,9 @@
 
 #include "asm.h"
 
-int	find_strchr(const char *s, int c)
+int			find_strchr(const char *s, int c)
 {
-	size_t i;
+	size_t	i;
 
 	if (!s)
 		return (0);
@@ -28,20 +28,19 @@ int	find_strchr(const char *s, int c)
 	return (0);
 }
 
-
-int	is_delimiter(const char c)
+int			is_delimiter(const char c)
 {
-	if (find_strchr(WHITESPACES, c) || c == '\0' || c == '\n' || c == '\"' || c == '-'
-		|| c == COMMAND_CHAR || c == DIRECT_CHAR 
+	if (find_strchr(WHITESPACES, c) || c == '\0' || c == '\n' || c == '\"'
+		|| c == '-' || c == COMMAND_CHAR || c == DIRECT_CHAR
 		|| c == SEPARATOR_CHAR || c == COMMENT_CHAR || c == ALT_COMMENT_CHAR)
 		return (1);
 	return (0);
 }
 
-int	is_register(const char *str)
+int			is_register(const char *str)
 {
-	int	i;
-	int len;
+	int		i;
+	int		len;
 
 	len = ft_strlen(str);
 	i = 0;

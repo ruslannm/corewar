@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-void terminate(t_parser *parser, const char *error_info, const char *func)
+void	terminate(t_parser *parser, const char *error_info, const char *func)
 {
 	ft_putstr_fd("ERROR: ", 2);
 	ft_putstr_fd(error_info, 2);
@@ -21,7 +21,7 @@ void terminate(t_parser *parser, const char *error_info, const char *func)
 	exit_func(parser, -1);
 }
 
-void		exit_func(t_parser *parser, int error)
+void	exit_func(t_parser *parser, int error)
 {
 	if (!parser)
 	{

@@ -12,9 +12,9 @@
 
 #include "asm.h"
 
-static void	find_end_str(t_parser *parser, const char *row)
+static void			find_end_str(t_parser *parser, const char *row)
 {
-	unsigned i;
+	unsigned		i;
 
 	i = ++(parser->column);
 	while (row[i] && row[i] != '\"')
@@ -30,9 +30,9 @@ static void	find_end_str(t_parser *parser, const char *row)
 	}
 }
 
-static void	update_row(t_parser *parser, char **row, char *ptr)
+static void			update_row(t_parser *parser, char **row, char *ptr)
 {
-	char *new;
+	char			*new;
 
 	if (!(new = ft_strdup(ptr)))
 		terminate(parser, ERR_MEMORY, "update_row");
@@ -40,12 +40,13 @@ static void	update_row(t_parser *parser, char **row, char *ptr)
 	*row = new;
 }
 
-void	parse_command_str(t_parser *parser,	char **row,	t_token *token)
+void				parse_command_str(t_parser *parser,
+										char **row, t_token *token)
 {
-	unsigned int start;
-	char	*end;
-	ssize_t	size;
-	char	*str;
+	unsigned int	start;
+	char			*end;
+	ssize_t			size;
+	char			*str;
 
 	start = parser->column;
 	size = 1;
@@ -65,9 +66,9 @@ void	parse_command_str(t_parser *parser,	char **row,	t_token *token)
 	add_token(parser, token);
 }
 
-void	parse_command(t_parser *parser,	char *row,	t_token *token)
+void				parse_command(t_parser *parser, char *row, t_token *token)
 {
-	int len;
+	int				len;
 
 	len = ft_strlen(row + parser->column);
 	if (len > 4 && 0 == ft_strncmp(NAME_CMD_STRING, row + parser->column, 5))
@@ -75,23 +76,24 @@ void	parse_command(t_parser *parser,	char *row,	t_token *token)
 		if (!(token->content = ft_strdup(NAME_CMD_STRING)))
 			terminate(parser, ERR_MEMORY, "parse_command");
 		token->type = COMMAND_NAME;
-		parser->column +=5;
+		parser->column += 5;
 	}
-	else if (len > 7 && 0 == ft_strncmp(COMMENT_CMD_STRING, row + parser->column, 8))
+	else if (len > 7 && 0 == ft_strncmp(COMMENT_CMD_STRING,
+										row + parser->column, 8))
 	{
 		if (!(token->content = ft_strdup(COMMENT_CMD_STRING)))
 			terminate(parser, ERR_MEMORY, "parse_command");
 		token->type = COMMAND_COMMENT;
-		parser->column +=8;
+		parser->column += 8;
 	}
 	else
 		lexical_error(parser);
 	add_token(parser, token);
 }
 
-void parse_endline(t_parser *parser)
+void				parse_endline(t_parser *parser)
 {
-	int i;
+	int				i;
 
 	i = parser->array_info[TOKENS][ARRAY_SIZE];
 	if (i >= 1 && parser->tokens[i - 1]->type == ENDLINE)
@@ -99,6 +101,6 @@ void parse_endline(t_parser *parser)
 		parser->tokens[i - 1]->row = parser->row;
 		parser->tokens[i - 1]->column = parser->column - 1;
 	}
-	else	
+	else
 		add_token(parser, init_token(parser, ENDLINE));
 }

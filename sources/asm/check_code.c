@@ -24,15 +24,16 @@ static uint8_t	get_arg_code(int8_t type)
 
 static int8_t	check_args(t_parser *parser, int i, t_op_tab *op)
 {
-	int		arg_num;
-	int8_t	types_code;
-	int8_t	type;
+	int			arg_num;
+	int8_t		types_code;
+	int8_t		type;
 
 	arg_num = 0;
 	types_code = 0;
 	while (arg_num < op->args_num)
 	{
-		if (parser->tokens[i]->type >= REGISTER && parser->tokens[i]->type <= INDIRECT_LABEL)
+		if (parser->tokens[i]->type >= REGISTER
+			&& parser->tokens[i]->type <= INDIRECT_LABEL)
 		{
 			type = check_arg(parser, i, op, arg_num);
 			types_code |= (get_arg_code(type) << 2 * (4 - arg_num - 1));
@@ -59,8 +60,8 @@ static int8_t	check_args(t_parser *parser, int i, t_op_tab *op)
 
 static void		check_label(t_parser *parser, int i)
 {
-	char *content;
-	int label_index;
+	char		*content;
+	int			label_index;
 
 	if (!(content = ft_strsub(parser->tokens[i]->content,
 				0, ft_strlen(parser->tokens[i]->content) - 1)))
@@ -77,8 +78,8 @@ static void		check_label(t_parser *parser, int i)
 
 static void		check_operator(t_parser *parser, int i)
 {
-	t_op_tab *op;
-	int8_t	types_code;
+	t_op_tab	*op;
+	int8_t		types_code;
 
 	if ((op = find_op(parser->tokens[i]->content)))
 	{
@@ -103,9 +104,9 @@ static void		check_operator(t_parser *parser, int i)
 	}
 }
 
-void	check_code(t_parser *parser, int i)
+void			check_code(t_parser *parser, int i)
 {
-	int j;
+	int			j;
 
 	j = 0;
 	while (i < parser->array_info[TOKENS][ARRAY_SIZE] - 1)
@@ -124,18 +125,17 @@ void	check_code(t_parser *parser, int i)
 			check_operator(parser, i);
 			i = parser->array_info[TOKENS][ARRAY_INDEX];
 		}
-		if (parser->tokens[i]->type  == ENDLINE)
+		if (parser->tokens[i]->type == ENDLINE)
 			parser->array_info[TOKENS][ARRAY_INDEX] = ++i;
 		else
 		{
-			//	no ENDLINE
-			if (parser->tokens[i]->type == END && parser->tokens[i - 1]->type != ENDLINE)
+			if (parser->tokens[i]->type == END
+				&& parser->tokens[i - 1]->type != ENDLINE)
 				token_end_error(parser, parser->tokens[i]);
 			token_error(parser, parser->tokens[i]);
 		}
 	}
-//		no Code
-		if (parser->tokens[i]->type == END && j == 0)
-			token_error(parser, parser->tokens[i]);
+	if (parser->tokens[i]->type == END && j == 0)
+		token_error(parser, parser->tokens[i]);
 	replace_link(parser);
 }

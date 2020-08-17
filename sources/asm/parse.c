@@ -19,7 +19,7 @@ void	parse_token(t_parser *parser, char **row)
 	else if (*(*row + parser->column) == '\n' && ++parser->column)
 		parse_endline(parser);
 	else if (*(*row + parser->column) == '.')
-		parse_command(parser, *row,	init_token(parser, COMMAND_NAME));
+		parse_command(parser, *row, init_token(parser, COMMAND_NAME));
 	else if (*(*row + parser->column) == '\"')
 		parse_command_str(parser, row, init_token(parser, STRING));
 	else if (*(*row + parser->column) == DIRECT_CHAR)

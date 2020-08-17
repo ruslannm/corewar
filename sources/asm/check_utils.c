@@ -12,9 +12,9 @@
 
 #include "asm.h"
 
-int	find_label(t_parser *parser, char *str)
+int			find_label(t_parser *parser, char *str)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (i < parser->array_info[LABELS][ARRAY_SIZE])
@@ -31,7 +31,7 @@ int	find_label(t_parser *parser, char *str)
 
 t_op_tab	*find_op(char *name)
 {
-	int	i;
+	int		i;
 
 	i = -1;
 	while (++i < OP_TAB_SIZE)
@@ -42,11 +42,11 @@ t_op_tab	*find_op(char *name)
 	return (NULL);
 }
 
-void	replace_link(t_parser *parser)
+void		replace_link(t_parser *parser)
 {
-	int i;
-	int j;
-	int k;
+	int		i;
+	int		j;
+	int		k;
 
 	i = -1;
 	while (++i < parser->array_info[LABELS][ARRAY_SIZE])
@@ -69,4 +69,3 @@ void	replace_link(t_parser *parser)
 		}
 	}
 }
-

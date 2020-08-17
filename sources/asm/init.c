@@ -30,7 +30,8 @@ t_token		*init_token(t_parser *parser, t_type type)
 	return (token);
 }
 
-t_label		*init_label(t_parser *parser, char **content, int op_pos, int token_index)
+t_label		*init_label(t_parser *parser, char **content,
+						int op_pos, int token_index)
 {
 	t_label	*label;
 
@@ -45,7 +46,7 @@ t_label		*init_label(t_parser *parser, char **content, int op_pos, int token_ind
 	return (label);
 }
 
-t_link	*init_link(t_parser *parser, int token_index, size_t size)
+t_link		*init_link(t_parser *parser, int token_index, size_t size)
 {
 	t_link	*link;
 

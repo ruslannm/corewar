@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "asm.h"
+#include "asm.h"
 
 int32_t		ft_atoi32(const char *str)
 {
@@ -40,11 +40,3 @@ int32_t		ft_atoi32(const char *str)
 	}
 	return ((int32_t)(result * sign));
 }
-/*
-int main()
-{
-	char *s = "1985623468534121213213213213213213";
-	printf("s=%s, atoi=%d, ft_atoi=%d", s, atoi(s), ft_atoi32(s));
-	return (0);
-}
-*/

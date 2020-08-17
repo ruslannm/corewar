@@ -12,9 +12,9 @@
 
 #include "asm.h"
 
-int 	is_filename(const char *filename)
+int			is_filename(const char *filename)
 {
-	int len;
+	int		len;
 
 	if (filename)
 	{
@@ -30,10 +30,10 @@ int 	is_filename(const char *filename)
 	return (0);
 }
 
-char	*replace_extension(t_parser * parser, const char *filename)
+char		*replace_extension(t_parser *parser, const char *filename)
 {
 	char	*newname;
-	int len;
+	int		len;
 
 	if (filename)
 	{
