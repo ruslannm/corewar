@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 17:15:22 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/16 20:28:56 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/19 18:09:22 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,5 @@ void				write_file(int fd, t_parser *parser)
 	pos += 4;
 	ft_memcpy(&bytecode[pos], parser->code, (size_t)parser->pos);
 	write(fd, bytecode, (size_t)len);
+	ft_strdel(&bytecode);
 }

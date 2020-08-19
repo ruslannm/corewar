@@ -6,25 +6,24 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/15 13:19:01 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/19 18:07:33 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static void	free_tokens(t_token **tokens)
+static void	free_tokens(t_parser *parser, t_token **tokens)
 {
 	int		i;
 
 	if (tokens)
 	{
 		i = 0;
-		while (tokens[i])
+		while (i < parser->array_info[TOKENS][ARRAY_SIZE])
 		{
 			if (tokens[i])
 			{
-				free(tokens[i]->content);
-				free(tokens[i]->op_tab);
+				ft_strdel(&tokens[i]->content);
 				free(tokens[i]);
 				tokens[i] = NULL;
 			}
@@ -35,18 +34,18 @@ static void	free_tokens(t_token **tokens)
 	tokens = NULL;
 }
 
-static void	free_labels(t_label **labels)
+static void	free_labels(t_parser *parser, t_label **labels)
 {
 	int		i;
 
 	if (labels)
 	{
 		i = 0;
-		while (labels[i])
+		while (i < parser->array_info[LABELS][ARRAY_SIZE])
 		{
 			if (labels[i])
 			{
-				free(labels[i]->content);
+				ft_strdel(&labels[i]->content);
 				free(labels[i]);
 				labels[i] = NULL;
 			}
@@ -57,14 +56,14 @@ static void	free_labels(t_label **labels)
 	labels = NULL;
 }
 
-static void	free_links(t_link **links)
+static void	free_links(t_parser *parser, t_link **links)
 {
 	int		i;
 
 	if (links)
 	{
 		i = 0;
-		while (links[i])
+		while (i < parser->array_info[LINKS][ARRAY_SIZE])
 		{
 			if (links[i])
 			{
@@ -90,16 +89,18 @@ void		terminate(t_parser *parser, const char *error_info,
 
 void		exit_func(t_parser *parser, int error)
 {
-	if (!parser)
+	if (parser)
 	{
-		free_tokens(parser->tokens);
-		free_labels(parser->labels);
-		free_links(parser->links);
-		free(parser->code);
-		free(parser->name);
-		free(parser->comment);
+		free_tokens(parser, parser->tokens);
+		free_labels(parser, parser->labels);
+		free_links(parser, parser->links);
+		ft_strdel(&parser->code);
+		ft_strdel(&parser->name);
+		ft_strdel(&parser->comment);
 		free(parser);
-		exit(error);
+		if (error)
+			exit(error);
 	}
-	exit(error);
+	else 
+		exit(error);
 }

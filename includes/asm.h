@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/16 20:52:33 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/19 21:38:08 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,18 +189,14 @@ int8_t				check_arg(t_parser *parser, int i,
 					t_op_tab *op, int arg_num);
 void				replace_link(t_parser *parser);
 
-/*
-** initialization original table
-*/
-
 char				*get_str(t_parser *parser, const char *row,
 					unsigned start);
 int32_t				ft_atoi32(const char *str);
 
 /*
-** void DEBUG_print_tokens(t_parser *parser);
-** void DEBUG_print_labels(t_parser *parser);
-** void DEBUG_print_links(t_parser *parser);
+**void DEBUG_print_tokens(t_parser *parser);
+**void DEBUG_print_labels(t_parser *parser);
+**void DEBUG_print_links(t_parser *parser);
 */
 
 #endif
