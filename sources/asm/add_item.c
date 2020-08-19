@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 20:29:16 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/13 22:26:02 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/19 23:16:51 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ static int	check_max_capacity(t_parser *parser, int type)
 {
 	int		test;
 	int		current;
+	int		step;
 
 	current = parser->array_info[type][ARRAY_SIZE];
-	if (current + 1 > parser->array_info[type][ARRAY_CAPACITY])
+	step = (type == CODE ? 10 : 1);
+	if (current + step > parser->array_info[type][ARRAY_CAPACITY])
 	{
 		test = current * 2;
 		if (test / 2 != current)
