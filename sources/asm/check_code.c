@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 20:06:49 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/16 15:22:21 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/19 22:34:20 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ static void		check_label(t_parser *parser, int i)
 	{
 		parser->labels[label_index]->op_pos = parser->op_pos;
 		parser->tokens[i]->op_pos = parser->op_pos;
+		ft_strdel(&content);
 	}
 }
 
