@@ -6,11 +6,27 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 19:11:37 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/16 09:48:53 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/20 16:50:15 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+static char			*g_type[] = {
+	"COMMAND_NAME",
+	"COMMAND_COMMENT",
+	"STRING",
+	"LABEL",
+	"INSTRUCTION",
+	"REGISTER",
+	"DIRECT",
+	"DIRECT_LABEL",
+	"INDIRECT",
+	"INDIRECT_LABEL",
+	"SEPARATOR",
+	"ENDLINE",
+	"END"
+};
 
 void	token_error(t_parser *parser, t_token *token)
 {

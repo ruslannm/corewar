@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/19 21:38:08 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/20 16:54:19 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,6 @@ typedef enum
 	END
 }	t_type;
 
-static char			*g_type[] = {
-	"COMMAND_NAME",
-	"COMMAND_COMMENT",
-	"STRING",
-	"LABEL",
-	"INSTRUCTION",
-	"REGISTER",
-	"DIRECT",
-	"DIRECT_LABEL",
-	"INDIRECT",
-	"INDIRECT_LABEL",
-	"SEPARATOR",
-	"ENDLINE",
-	"END"
-};
 
 enum
 {
