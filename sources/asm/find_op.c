@@ -1,27 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   asm_op_tab.h                                       :+:      :+:    :+:   */
+/*   find_op.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnickole <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/16 20:52:33 by rgero            ###   ########.fr       */
+/*   Created: 2020/08/08 20:18:50 by rgero             #+#    #+#             */
+/*   Updated: 2020/08/20 20:43:00 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ASM_OP_TAB_H
-# define ASM_OP_TAB_H
-
-typedef struct		s_op_tab
-{
-	char			*name;
-	uint8_t			code;
-	uint8_t			args_num;
-	int				args_types_code;
-	uint8_t			args_types[3];
-	uint8_t			t_dir_size;
-}					t_op_tab;
+#include "asm.h"
 
 static t_op_tab		g_op_tab[16] = {
 	{
@@ -154,4 +143,15 @@ static t_op_tab		g_op_tab[16] = {
 	}
 };
 
-#endif
+t_op_tab	*find_op(char *name)
+{
+	int		i;
+
+	i = -1;
+	while (++i < OP_TAB_SIZE)
+	{
+		if (!ft_strcmp(g_op_tab[i].name, name))
+			return (&g_op_tab[i]);
+	}
+	return (NULL);
+}

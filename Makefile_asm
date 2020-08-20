@@ -6,7 +6,7 @@
 #    By: rgero <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#              #
-#    Updated: 2020/08/16 19:58:16 by rgero            ###   ########.fr        #
+#    Updated: 2020/08/20 20:44:13 by rgero            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,7 @@ DIR_FT_PRINTF 		= ft_printf
 NAME_FT_PRINTF		= $(DIR_FT_PRINTF)/libftprintf.a
 DIR_INC_PRINTF		= $(DIR_FT_PRINTF)/includes
 
-SRC_LIST_ASM 	= 	DEBUG.c\
-					add_item.c\
+SRC_LIST_ASM 	= 	add_item.c\
 					asm.c\
 					check_arg.c\
 					check_char.c\
@@ -37,6 +36,7 @@ SRC_LIST_ASM 	= 	DEBUG.c\
 					exit_func.c\
 					init.c\
 					files.c\
+					find_op.c\
 					ft_atoi32.c\
 					parse.c\
 					parse_command.c\
@@ -46,7 +46,7 @@ SRC_LIST_ASM 	= 	DEBUG.c\
 					write_output.c\
 					write_file.c
 
-HEADERS				= asm.h asm_error.h asm_op_tab.h op.h
+HEADERS				= asm.h asm_error.h op.h
 
 SRC_ASM			= $(addprefix $(DIR_SRC)/, $(SRC_LIST_ASM))
 OBJ_ASM			= $(addprefix $(DIR_OBJ)/, $(SRC_LIST_ASM:.c=.o))

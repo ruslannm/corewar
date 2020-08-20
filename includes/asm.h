@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/20 16:54:19 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/20 20:40:43 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include "ft_printf.h"
 # include "op.h"
 # include "asm_error.h"
-# include "asm_op_tab.h"
 
 # define ARRAY_CAPACITY_MIN		1024
 # define OP_TAB_SIZE			16
@@ -26,7 +25,7 @@
 # define REGISTER_CHAR			'r'
 # define WHITESPACES			"\t\v\f\r "
 
-typedef enum
+typedef enum	e_type
 {
 	COMMAND_NAME,
 	COMMAND_COMMENT,
@@ -41,8 +40,7 @@ typedef enum
 	SEPARATOR,
 	ENDLINE,
 	END
-}	t_type;
-
+}				t_type;
 
 enum
 {
@@ -58,6 +56,16 @@ enum
 	LINKS,
 	CODE
 };
+
+typedef struct		s_op_tab
+{
+	char			*name;
+	uint8_t			code;
+	uint8_t			args_num;
+	int				args_types_code;
+	uint8_t			args_types[3];
+	uint8_t			t_dir_size;
+}					t_op_tab;
 
 typedef struct		s_token
 {

@@ -6,13 +6,13 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 19:11:37 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/20 16:50:15 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/20 20:30:41 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static char			*g_type[] = {
+static char	*g_type[] = {
 	"COMMAND_NAME",
 	"COMMAND_COMMENT",
 	"STRING",
@@ -28,7 +28,7 @@ static char			*g_type[] = {
 	"END"
 };
 
-void	token_error(t_parser *parser, t_token *token)
+void		token_error(t_parser *parser, t_token *token)
 {
 	if (token->type == ENDLINE)
 		ft_printf("Syntax error at token [TOKEN][%03u:%03u] %s\n",
@@ -42,13 +42,13 @@ void	token_error(t_parser *parser, t_token *token)
 	exit_func(parser, -1);
 }
 
-void	command_error(t_parser *parser, const char *command, int len)
+void		command_error(t_parser *parser, const char *command, int len)
 {
 	ft_printf("Champion %s too long (Max length %u)\n", command, len);
 	exit_func(parser, -1);
 }
 
-void	instruction_error(t_parser *parser, t_token *token)
+void		instruction_error(t_parser *parser, t_token *token)
 {
 	ft_printf("Invalid instruction at token [TOKEN][%03u:%03u] \
 			INSTRUCTION \"%s\"\n",
@@ -56,7 +56,7 @@ void	instruction_error(t_parser *parser, t_token *token)
 	exit_func(parser, -1);
 }
 
-void	arg_type_error(t_parser *parser, t_token *token, int arg_num,
+void		arg_type_error(t_parser *parser, t_token *token, int arg_num,
 		t_op_tab *op)
 {
 	int	i;
@@ -69,7 +69,7 @@ void	arg_type_error(t_parser *parser, t_token *token, int arg_num,
 	exit_func(parser, -1);
 }
 
-void	link_error(t_parser *parser, t_label *label, int label_index)
+void		link_error(t_parser *parser, t_label *label, int label_index)
 {
 	int j;
 	int token_index;

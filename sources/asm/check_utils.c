@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 20:18:50 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/16 20:23:54 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/20 20:35:04 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,6 @@ int			find_label(t_parser *parser, char *str)
 		i++;
 	}
 	return (-1);
-}
-
-t_op_tab	*find_op(char *name)
-{
-	int		i;
-
-	i = -1;
-	while (++i < OP_TAB_SIZE)
-	{
-		if (!ft_strcmp(g_op_tab[i].name, name))
-			return (&g_op_tab[i]);
-	}
-	return (NULL);
 }
 
 void		replace_link(t_parser *parser)
