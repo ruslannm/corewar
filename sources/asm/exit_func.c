@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/23 19:37:28 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/23 19:50:44 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	free_tokens(t_parser *parser, t_token **tokens)
 		{
 			if (tokens[i])
 			{
-				if (tokens[i]->content)
+				ft_strdel(&(tokens[i]->content));
 				free(tokens[i]);
 				tokens[i] = NULL;
 			}
@@ -92,7 +92,6 @@ void		exit_func(t_parser *parser, int error)
 	if (parser)
 	{
 		free_tokens(parser, parser->tokens);
-		exit(-1);
 		free_labels(parser, parser->labels);
 		free_links(parser, parser->links);
 		ft_strdel(&parser->code);
