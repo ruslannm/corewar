@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 20:06:49 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/19 22:34:20 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/23 19:36:38 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,18 @@ static int8_t	check_args(t_parser *parser, int i, t_op_tab *op)
 			parser->array_info[TOKENS][ARRAY_INDEX] = ++i;
 		}
 		else
-			token_error(parser, parser->tokens[i]);
+			token_error(parser, parser->tokens[i], 0);
 		if (arg_num++ != op->args_num - 1)
 		{
 			if (parser->tokens[i]->type != SEPARATOR)
-				token_error(parser, parser->tokens[i]);
+				token_error(parser, parser->tokens[i], 0);
 			parser->array_info[TOKENS][ARRAY_INDEX] = ++i;
 		}
 	}
 	if (parser->tokens[i]->type == SEPARATOR)
 	{
 		if (parser->tokens[++i]->type == ENDLINE)
-			token_error(parser, parser->tokens[i]);
+			token_error(parser, parser->tokens[i], 0);
 		else
 			arg_type_error(parser, parser->tokens[i], arg_num, op);
 	}
@@ -99,7 +99,7 @@ static void		check_operator(t_parser *parser, int i)
 	{
 		if (i < parser->array_info[TOKENS][ARRAY_SIZE]
 			&& parser->tokens[i + 1]->type == ENDLINE)
-			token_error(parser, parser->tokens[i + 1]);
+			token_error(parser, parser->tokens[i + 1], 0);
 		else
 			instruction_error(parser, parser->tokens[i]);
 	}
@@ -133,10 +133,10 @@ void			check_code(t_parser *parser, int i)
 			if (parser->tokens[i]->type == END
 				&& parser->tokens[i - 1]->type != ENDLINE)
 				token_end_error(parser, parser->tokens[i]);
-			token_error(parser, parser->tokens[i]);
+			token_error(parser, parser->tokens[i], 0);
 		}
 	}
 	if (parser->tokens[i]->type == END && j == 0)
-		token_error(parser, parser->tokens[i]);
+		token_error(parser, parser->tokens[i], 0);
 	replace_link(parser);
 }

@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/23 15:03:52 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/23 19:33:56 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,10 +154,10 @@ int					is_delimiter(const char c);
 int					is_register(const char *str);
 char				*join_str(t_parser *parser, char **str1, char **str2);
 
-void				lexical_error(t_parser *parser);
+void				lexical_error(t_parser *parser, t_token *token);
 void				command_error(t_parser *parser, const char *command,
 					int len);
-void				token_error(t_parser *parser, t_token *token);
+void				token_error(t_parser *parser, t_token *token, int parse);
 void				token_end_error(t_parser *parser, t_token *token);
 void				instruction_error(t_parser *parser, t_token *token);
 void				arg_type_error(t_parser *parser, t_token *token,

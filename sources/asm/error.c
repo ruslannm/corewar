@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 19:11:37 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/20 20:30:41 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/23 19:35:13 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static char	*g_type[] = {
 	"END"
 };
 
-void		token_error(t_parser *parser, t_token *token)
+void		token_error(t_parser *parser, t_token *token, int parse)
 {
 	if (token->type == ENDLINE)
 		ft_printf("Syntax error at token [TOKEN][%03u:%03u] %s\n",
@@ -39,6 +39,14 @@ void		token_error(t_parser *parser, t_token *token)
 	else
 		ft_printf("Syntax error at token [TOKEN][%03u:%03u] %s \"%s\"\n",
 			token->row, token->column + 1, g_type[token->type], token->content);
+	if (parse)
+	{
+		if (token)
+		{
+			ft_strdel(&(token->content));
+			free(token);
+		}
+	}
 	exit_func(parser, -1);
 }
 
