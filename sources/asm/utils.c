@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 19:07:21 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/16 20:57:20 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/23 15:24:45 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@ char		*join_str(t_parser *parser, char **str1, char **str2)
 	char	*ret;
 
 	if (!(ret = ft_strjoin(*str1, *str2)))
+	{
+		ft_strdel(str1);
+		ft_strdel(str2);
 		terminate(parser, ERR_MEMORY, "join_str");
+	}
 	ft_strdel(str1);
 	ft_strdel(str2);
 	return (ret);
