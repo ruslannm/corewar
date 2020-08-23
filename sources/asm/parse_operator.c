@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 07:44:19 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/23 19:35:31 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/23 20:37:50 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void				parse_operator(t_parser *parser,
 		[ARRAY_SIZE] - 1]->type == LABEL)
 			add_token(parser, token);
 		else
-			token_error(parser, token, 1);
+			token_error(parser, token, row);
 	}
 	else if ((parser->column - start) && is_delimiter(row[parser->column]))
 	{
@@ -43,7 +43,10 @@ void				parse_operator(t_parser *parser,
 		add_token(parser, token);
 	}
 	else
-		lexical_error(parser, token);
+	{
+		ft_strdel(&row);
+		lexical_error(parser, token, row);
+	}
 }
 
 void				parse_direct_label(t_parser *parser,
@@ -62,7 +65,7 @@ void				parse_direct_label(t_parser *parser,
 		add_token(parser, token);
 	}
 	else
-		lexical_error(parser, token);
+		lexical_error(parser, token, row);
 }
 
 void				parse_indirect_label(t_parser *parser,
@@ -74,7 +77,7 @@ void				parse_indirect_label(t_parser *parser,
 	if (row[parser->column] == LABEL_CHAR
 	&& (parser->tokens[parser->array_info[TOKENS]
 	[ARRAY_SIZE] - 1]->type == LABEL))
-		lexical_error(parser, token);
+		lexical_error(parser, token, row);
 	parser->column += 1;
 	while (row[parser->column]
 		&& ft_strchr(LABEL_CHARS, row[parser->column]))
@@ -85,7 +88,7 @@ void				parse_indirect_label(t_parser *parser,
 		add_token(parser, token);
 	}
 	else
-		lexical_error(parser, token);
+		lexical_error(parser, token, row);
 }
 
 void				parse_direct_nbr(t_parser *parser,
@@ -109,7 +112,7 @@ void				parse_direct_nbr(t_parser *parser,
 	else
 	{
 		parser->column = start;
-		lexical_error(parser, token);
+		lexical_error(parser, token, row);
 	}
 }
 

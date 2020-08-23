@@ -6,13 +6,13 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 19:11:37 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/23 19:29:14 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/23 20:22:13 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	lexical_error(t_parser *parser, t_token *token)
+void	lexical_error(t_parser *parser, t_token *token, char *row)
 {
 	ft_printf("Lexical error at [%u:%u]\n",
 		parser->row,
@@ -22,6 +22,7 @@ void	lexical_error(t_parser *parser, t_token *token)
 		ft_strdel(&(token->content));
 		free(token);
 	}
+	ft_strdel(&row);
 	exit_func(parser, -1);
 }
 

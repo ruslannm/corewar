@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 19:23:34 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/23 19:28:01 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/23 20:25:02 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ static void			update_row(t_parser *parser, char **row, char *ptr)
 	char			*new;
 
 	if (!(new = ft_strdup(ptr)))
+	{
+		ft_strdel(row);
 		terminate(parser, ERR_MEMORY, "update_row");
+	}
 	ft_strdel(row);
 	*row = new;
 }
@@ -57,7 +60,7 @@ void				parse_command_str(t_parser *parser,
 	if (size == -1)
 		terminate(parser, ERR_READ, "parse_command_str");
 	if (size == 0)
-		lexical_error(parser, token);
+		lexical_error(parser, token, *row);
 	if (!(token->content = ft_strsub(*row, start, end + 1 - &((*row)[start]))))
 		terminate(parser, ERR_MEMORY, "parse_command_str");
 	if (end - parser->column != *row)
@@ -87,7 +90,7 @@ void				parse_command(t_parser *parser, char *row, t_token *token)
 		parser->column += 8;
 	}
 	else
-		lexical_error(parser, token);
+		lexical_error(parser, token, row);
 	add_token(parser, token);
 }
 
