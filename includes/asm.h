@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/23 20:37:30 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/23 21:50:39 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,8 @@ void				terminate(t_parser *parser, const char *error_info,
 					const char *func);
 void				exit_func(t_parser *parser, int error);
 
-int					get_next_line_asm(const int fd, char **line, t_parser *parser);
+int					get_next_line_asm(const int fd, char **line,
+					t_parser *parser);
 int					is_filename(const char *filename);
 char				*replace_extension(t_parser *parser, const char *filename);
 void				read_file(t_parser *parser);
@@ -166,8 +167,6 @@ void				link_error(t_parser *parser, t_label *label,
 void				parse_command(t_parser *parser, char *row, t_token *token);
 void				parse_command_str(t_parser *parser, char **row,
 					t_token *token);
-void				parse_operator(t_parser *parser, char *row,
-					t_token *token);
 void				parse_direct_label(t_parser *parser, char *row,
 					t_token *token);
 void				parse_indirect_label(t_parser *parser, char *row,
@@ -181,16 +180,12 @@ void				check_command(t_parser *parser, int i);
 void				check_code(t_parser *parser, int i);
 int8_t				check_arg(t_parser *parser, int i,
 					t_op_tab *op, int arg_num);
+void				check_args_error(t_parser *parser, int i, int arg_num,
+					t_op_tab *op);
 void				replace_link(t_parser *parser);
 
 char				*get_str(t_parser *parser, const char *row,
 					unsigned start);
 int32_t				ft_atoi32(const char *str);
-
-/*
-**void DEBUG_print_tokens(t_parser *parser);
-**void DEBUG_print_labels(t_parser *parser);
-**void DEBUG_print_links(t_parser *parser);
-*/
 
 #endif

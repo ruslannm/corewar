@@ -6,23 +6,14 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/23 15:04:48 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/23 21:52:09 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static t_parser	*init_parser(int fd)
+static void		init_parser2(t_parser *parser)
 {
-	t_parser	*parser;
-
-	if (!(parser = (t_parser*)malloc(sizeof(t_parser))))
-		terminate(NULL, ERR_MEMORY, "init_parser");
-	parser->fd = fd;
-	parser->row = 0;
-	parser->column = 0;
-	parser->name = NULL;
-	parser->comment = NULL;
 	parser->array_info[TOKENS][ARRAY_CAPACITY] = ARRAY_CAPACITY_MIN;
 	parser->array_info[TOKENS][ARRAY_SIZE] = 0;
 	if (!(parser->tokens = (t_token**)malloc(sizeof(t_token*) *\
@@ -42,10 +33,24 @@ static t_parser	*init_parser(int fd)
 	if (!(parser->code = (char *)malloc(parser->array_info[CODE]\
 		[ARRAY_CAPACITY])))
 		terminate(parser, ERR_MEMORY, "init_parser");
+}
+
+static t_parser	*init_parser(int fd)
+{
+	t_parser	*parser;
+
+	if (!(parser = (t_parser*)malloc(sizeof(t_parser))))
+		terminate(NULL, ERR_MEMORY, "init_parser");
+	parser->fd = fd;
+	parser->row = 0;
+	parser->column = 0;
 	parser->pos = 0;
 	parser->op_pos = 0;
+	parser->name = NULL;
+	parser->comment = NULL;
 	if (!(parser->buff = ft_strnew(1)))
 		terminate(parser, ERR_MEMORY, "init_parser");
+	init_parser2(parser);
 	return (parser);
 }
 

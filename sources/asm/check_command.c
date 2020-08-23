@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 17:27:44 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/23 20:38:38 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/23 21:49:00 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,15 @@ void		check_command(t_parser *parser, int i)
 	{
 		if (parser->tokens[i]->type == END)
 			token_error(parser, parser->tokens[i], NULL);
-		else if (parser->tokens[i]->type == COMMAND_NAME && !parser->name)
-		{
-			parser->array_info[TOKENS][ARRAY_INDEX] = ++i;
+		else if (parser->tokens[i]->type == COMMAND_NAME && !parser->name
+		&& (parser->array_info[TOKENS][ARRAY_INDEX] = ++i))
 			parser->name = get_info(parser, "name", PROG_NAME_LENGTH, i);
-		}
-		else if (parser->tokens[i]->type == COMMAND_COMMENT && !parser->comment)
-		{
-			parser->array_info[TOKENS][ARRAY_INDEX] = ++i;
+		else if (parser->tokens[i]->type == COMMAND_COMMENT && !parser->comment
+		&& (parser->array_info[TOKENS][ARRAY_INDEX] = ++i))
 			parser->comment = get_info(parser, "comment", COMMENT_LENGTH, i);
-		}
-		else if (parser->tokens[i]->type == ENDLINE)
-		{
-			parser->array_info[TOKENS][ARRAY_INDEX] = ++i;
+		else if (parser->tokens[i]->type == ENDLINE
+		&& (parser->array_info[TOKENS][ARRAY_INDEX] = ++i))
 			continue;
-		}
 		else
 			token_error(parser, parser->tokens[i], NULL);
 		parser->array_info[TOKENS][ARRAY_INDEX] = ++i;

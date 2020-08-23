@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 20:06:49 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/23 20:39:52 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/23 21:13:11 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,11 @@ static uint8_t	get_arg_code(int8_t type)
 		return (IND_CODE);
 }
 
-static int8_t	check_args(t_parser *parser, int i, t_op_tab *op)
+static int8_t	check_args(t_parser *parser, int i, t_op_tab *op, int arg_num)
 {
-	int			arg_num;
 	int8_t		types_code;
 	int8_t		type;
 
-	arg_num = 0;
 	types_code = 0;
 	while (arg_num < op->args_num)
 	{
@@ -48,13 +46,7 @@ static int8_t	check_args(t_parser *parser, int i, t_op_tab *op)
 			parser->array_info[TOKENS][ARRAY_INDEX] = ++i;
 		}
 	}
-	if (parser->tokens[i]->type == SEPARATOR)
-	{
-		if (parser->tokens[++i]->type == ENDLINE)
-			token_error(parser, parser->tokens[i], NULL);
-		else
-			arg_type_error(parser, parser->tokens[i], arg_num, op);
-	}
+	check_args_error(parser, i, arg_num, op);
 	return (types_code);
 }
 
@@ -88,7 +80,7 @@ static void		check_operator(t_parser *parser, int i)
 		parser->array_info[TOKENS][ARRAY_INDEX] = ++i;
 		if (op->args_types_code)
 			parser->pos++;
-		types_code = check_args(parser, i, op);
+		types_code = check_args(parser, i, op, 0);
 		if (op->args_types_code)
 			parser->code[parser->op_pos + 1] = types_code;
 		parser->tokens[i - 1]->op_pos = parser->op_pos;

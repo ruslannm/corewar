@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 19:23:34 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/23 20:25:02 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/23 21:20:54 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void				parse_command_str(t_parser *parser,
 	size = 1;
 	while (!(end = ft_strchr(&((*row)[start + 1]), '\"'))
 		&& (size = get_next_line_asm(parser->fd, &str, parser)) > 0)
-			*row = join_str(parser, row, &str);
+		*row = join_str(parser, row, &str);
 	find_end_str(parser, *row);
 	if (size == -1)
 		terminate(parser, ERR_READ, "parse_command_str");

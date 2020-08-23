@@ -6,14 +6,14 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 07:44:19 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/23 20:37:50 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/23 21:05:37 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void				parse_operator(t_parser *parser,
-									char *row, t_token *token)
+static void			parse_operator(t_parser *parser, char *row,
+					t_token *token, t_type type_prev)
 {
 	unsigned int	start;
 
@@ -26,13 +26,9 @@ void				parse_operator(t_parser *parser,
 		parser->column++;
 		token->content = get_str(parser, row, start);
 		token->type = LABEL;
-		if (parser->tokens[parser->array_info[TOKENS]
-		[ARRAY_SIZE] - 1]->type == ENDLINE
-		|| parser->tokens[parser->array_info[TOKENS]
-		[ARRAY_SIZE] - 1]->type == LABEL)
-			add_token(parser, token);
-		else
+		if (type_prev != ENDLINE && type_prev != LABEL)
 			token_error(parser, token, row);
+		add_token(parser, token);
 	}
 	else if ((parser->column - start) && is_delimiter(row[parser->column]))
 	{
@@ -43,10 +39,7 @@ void				parse_operator(t_parser *parser,
 		add_token(parser, token);
 	}
 	else
-	{
-		ft_strdel(&row);
 		lexical_error(parser, token, row);
-	}
 }
 
 void				parse_direct_label(t_parser *parser,
@@ -136,6 +129,7 @@ void				parse_str(t_parser *parser,
 	else
 	{
 		parser->column = start;
-		parse_operator(parser, row, token);
+		parse_operator(parser, row, token,
+		parser->tokens[parser->array_info[TOKENS][ARRAY_SIZE] - 1]->type);
 	}
 }
