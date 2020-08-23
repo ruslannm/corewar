@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/20 20:40:43 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/23 15:03:52 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,13 +116,15 @@ typedef struct		s_parser
 	int32_t			op_pos;
 	char			*name;
 	char			*comment;
+	char			*buff;
+	char			*line;
 }					t_parser;
 
 void				terminate(t_parser *parser, const char *error_info,
 					const char *func);
 void				exit_func(t_parser *parser, int error);
 
-int					get_next_line_asm(const int fd, char **line);
+int					get_next_line_asm(const int fd, char **line, t_parser *parser);
 int					is_filename(const char *filename);
 char				*replace_extension(t_parser *parser, const char *filename);
 void				read_file(t_parser *parser);

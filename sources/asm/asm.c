@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/19 21:37:46 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/23 15:04:48 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ static t_parser	*init_parser(int fd)
 		terminate(parser, ERR_MEMORY, "init_parser");
 	parser->pos = 0;
 	parser->op_pos = 0;
+	if (!(parser->buff = ft_strnew(1)))
+		terminate(parser, ERR_MEMORY, "init_parser");
 	return (parser);
 }
 
@@ -93,6 +95,5 @@ int				main(int argc, char **argv)
 	else
 		write_standart_output(parser);
 	exit_func(parser, 0);
-	sleep(100000);
 	return (0);
 }

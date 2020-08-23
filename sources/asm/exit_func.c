@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/20 20:34:48 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/23 15:06:22 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ void		exit_func(t_parser *parser, int error)
 		ft_strdel(&parser->code);
 		ft_strdel(&parser->name);
 		ft_strdel(&parser->comment);
+		ft_strdel(&parser->line);
+		ft_strdel(&parser->buff);
 		free(parser);
 		if (error)
 			exit(error);

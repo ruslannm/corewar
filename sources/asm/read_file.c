@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/19 18:11:25 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/23 14:51:20 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void		read_file(t_parser *parser)
 	char	*row;
 
 	while (++(parser->row) && !(parser->column = 0) &&
-		(size = get_next_line_asm(parser->fd, &row)) > 0)
+		(size = get_next_line_asm(parser->fd, &row, parser)) > 0)
 	{
 		while (row[parser->column])
 		{
@@ -43,7 +43,7 @@ void		read_file(t_parser *parser)
 		}
 		ft_strdel(&row);
 	}
-	ft_strdel(&row);
+	parser->line = NULL;
 	add_token(parser, init_token(parser, END));
 	if (size < 0)
 		terminate(parser, ERR_READ, "read_file");
