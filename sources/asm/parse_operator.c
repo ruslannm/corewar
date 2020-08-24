@@ -27,7 +27,7 @@ static void			parse_operator(t_parser *parser, char *row,
 		token->content = get_str(parser, row, start);
 		token->type = LABEL;
 		if (type_prev != ENDLINE && type_prev != LABEL)
-			token_error(parser, token, row);
+			token_error(parser, token, row, 0);
 		add_token(parser, token);
 	}
 	else if ((parser->column - start) && is_delimiter(row[parser->column]))

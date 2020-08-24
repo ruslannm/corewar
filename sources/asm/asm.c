@@ -48,6 +48,7 @@ static t_parser	*init_parser(int fd)
 	parser->op_pos = 0;
 	parser->name = NULL;
 	parser->comment = NULL;
+	parser->having_ins = 0;
 	if (!(parser->buff = ft_strnew(1)))
 		terminate(parser, ERR_MEMORY, "init_parser");
 	init_parser2(parser);

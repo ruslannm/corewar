@@ -28,7 +28,7 @@ static char	*g_type[] = {
 	"END"
 };
 
-void		token_error(t_parser *parser, t_token *token, char *row)
+void		token_error(t_parser *parser, t_token *token, char *row, int i)
 {
 	if (token->type == ENDLINE)
 		ft_printf("Syntax error at token [TOKEN][%03u:%03u] %s\n",
@@ -36,6 +36,8 @@ void		token_error(t_parser *parser, t_token *token, char *row)
 	else if (token->type == SEPARATOR)
 		ft_printf("Syntax error at token [TOKEN][%03u:%03u] %s \"%c\"\n",
 			token->row, token->column + 1, g_type[token->type], SEPARATOR_CHAR);
+	else if (token->type == END && parser->tokens[i - 1]->type != ENDLINE)
+		token_end_error(parser, token);
 	else
 		ft_printf("Syntax error at token [TOKEN][%03u:%03u] %s \"%s\"\n",
 			token->row, token->column + 1, g_type[token->type], token->content);

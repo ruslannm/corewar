@@ -38,11 +38,11 @@ static int8_t	check_args(t_parser *parser, int i, t_op_tab *op, int arg_num)
 			parser->array_info[TOKENS][ARRAY_INDEX] = ++i;
 		}
 		else
-			token_error(parser, parser->tokens[i], 0);
+			token_error(parser, parser->tokens[i], 0, i);
 		if (arg_num++ != op->args_num - 1)
 		{
 			if (parser->tokens[i]->type != SEPARATOR)
-				token_error(parser, parser->tokens[i], NULL);
+				token_error(parser, parser->tokens[i], NULL, i);
 			parser->array_info[TOKENS][ARRAY_INDEX] = ++i;
 		}
 	}
@@ -91,7 +91,7 @@ static void		check_operator(t_parser *parser, int i)
 	{
 		if (i < parser->array_info[TOKENS][ARRAY_SIZE]
 			&& parser->tokens[i + 1]->type == ENDLINE)
-			token_error(parser, parser->tokens[i + 1], NULL);
+			token_error(parser, parser->tokens[i + 1], NULL, i + 1);
 		else
 			instruction_error(parser, parser->tokens[i]);
 	}
@@ -99,9 +99,6 @@ static void		check_operator(t_parser *parser, int i)
 
 void			check_code(t_parser *parser, int i)
 {
-	int			j;
-
-	j = 0;
 	while (i < parser->array_info[TOKENS][ARRAY_SIZE] - 1)
 	{
 		parser->array_info[CODE][ARRAY_SIZE] = parser->pos;
@@ -114,21 +111,16 @@ void			check_code(t_parser *parser, int i)
 		}
 		if (parser->tokens[i]->type == INSTRUCTION)
 		{
-			j = 1;
+			parser->having_ins = 1;
 			check_operator(parser, i);
 			i = parser->array_info[TOKENS][ARRAY_INDEX];
 		}
 		if (parser->tokens[i]->type == ENDLINE)
 			parser->array_info[TOKENS][ARRAY_INDEX] = ++i;
 		else
-		{
-			if (parser->tokens[i]->type == END
-				&& parser->tokens[i - 1]->type != ENDLINE)
-				token_end_error(parser, parser->tokens[i]);
-			token_error(parser, parser->tokens[i], NULL);
-		}
+			token_error(parser, parser->tokens[i], NULL, i);
 	}
-	if (parser->tokens[i]->type == END && j == 0)
-		token_error(parser, parser->tokens[i], NULL);
+	if (parser->tokens[i]->type == END && parser->having_ins != 1)
+		token_error(parser, parser->tokens[i], NULL, i);
 	replace_link(parser);
 }

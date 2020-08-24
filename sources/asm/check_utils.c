@@ -63,7 +63,7 @@ void		check_args_error(t_parser *parser, int i, int arg_num,
 	if (parser->tokens[i]->type == SEPARATOR)
 	{
 		if (parser->tokens[++i]->type == ENDLINE)
-			token_error(parser, parser->tokens[i], NULL);
+			token_error(parser, parser->tokens[i], NULL, i);
 		else
 			arg_type_error(parser, parser->tokens[i], arg_num, op);
 	}
