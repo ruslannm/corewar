@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#             */
-/*   Updated: 2020/08/23 21:50:39 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/25 15:38:38 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ typedef struct		s_parser
 	char			*name;
 	char			*comment;
 	char			*buff;
-	int 			having_ins;
+	int				having_ins;
 }					t_parser;
 
 void				terminate(t_parser *parser, const char *error_info,
@@ -158,7 +158,8 @@ char				*join_str(t_parser *parser, char **str1, char **str2);
 void				lexical_error(t_parser *parser, t_token *token, char *row);
 void				command_error(t_parser *parser, const char *command,
 					int len);
-void				token_error(t_parser *parser, t_token *token, char *row, int i);
+void				token_error(t_parser *parser, t_token *token, char *row,
+					int i);
 void				token_end_error(t_parser *parser, t_token *token);
 void				instruction_error(t_parser *parser, t_token *token);
 void				arg_type_error(t_parser *parser, t_token *token,
