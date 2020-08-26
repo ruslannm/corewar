@@ -6,7 +6,7 @@
 #    By: rgero <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/03 13:38:10 by lnickole          #+#    #+#              #
-#    Updated: 2020/08/26 22:05:15 by rgero            ###   ########.fr        #
+#    Updated: 2020/08/26 22:48:08 by rgero            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,14 +42,13 @@ all: $(NAME)
 
 $(NAME): $(DIR_OBJ) $(OBJ) $(INC)
 	@ar rc $(NAME) $(OBJ)
-	@echo $(GREEN)$(NAME) -\> Build done!$(RESET)
+	@echo $(NAME) -\> Build done!
 
 $(DIR_OBJ):
 	@mkdir -p $(DIR_OBJ)
 
 $(DIR_OBJ)/%.o: $(DIR_SRC)/%.c $(INC)
 	@gcc -c -I $(DIR_INC) $(FLAGS) $< -o $@
-	@echo $(CYAN)$(NAME)Compiling... $<$(RESET)
 
 clean:
 	@/bin/rm -rf $(DIR_OBJ)

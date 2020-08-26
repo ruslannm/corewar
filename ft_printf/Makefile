@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lnickole <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: rgero <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/08 13:33:55 by lnickole          #+#    #+#              #
-#    Updated: 2020/02/24 14:30:37 by adisco           ###   ########.fr        #
+#    Updated: 2020/08/26 22:52:26 by rgero            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC) $(MAKEFILE)
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
-	@#echo ${GREEN}"[INFO] Created libftprintf.a successfully!"${RESET}
+	@echo ${GREEN}"[INFO] Created libftprintf.a successfully!"${RESET}
 
 clean: 
 	@rm -f $(OBJ)
