@@ -6,7 +6,7 @@
 #    By: rgero <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/31 22:43:12 by lnoisome          #+#    #+#              #
-#    Updated: 2020/08/26 19:03:39 by rgero            ###   ########.fr        #
+#    Updated: 2020/08/26 19:36:10 by rgero            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -185,7 +185,7 @@ D_COREWAR = $(D_FILES_COREWAR) \& $(D_FILES_UTILS) \& $(D_FILES_OPER)
 
 .PHONY: all clean fclean re
 
-all: $(NAME_ASM) $(COREWAR_NAME)
+all: $(NAME_ASM) $(NAME_COREWAR)
 
 $(NAME_ASM): $(DIR_OBJ_ASM) $(OBJ_ASM) $(NAME_LIBFT) $(NAME_FT_PRINTF) $(HEADER_ASM)
 	@$(CC) $(FLAGS) $(OBJ_ASM) -o $(NAME_ASM) $(GCC_LIBFT) $(GCC_FT_PRINTF)
