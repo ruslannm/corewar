@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lnickole <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: rgero <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/03 13:38:10 by lnickole          #+#    #+#              #
-#    Updated: 2019/05/11 21:37:47 by lnickole         ###   ########.fr        #
+#    Updated: 2020/08/26 22:05:15 by rgero            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,12 +42,14 @@ all: $(NAME)
 
 $(NAME): $(DIR_OBJ) $(OBJ) $(INC)
 	@ar rc $(NAME) $(OBJ)
+	@echo $(GREEN)$(NAME) -\> Build done!$(RESET)
 
 $(DIR_OBJ):
 	@mkdir -p $(DIR_OBJ)
 
 $(DIR_OBJ)/%.o: $(DIR_SRC)/%.c $(INC)
 	@gcc -c -I $(DIR_INC) $(FLAGS) $< -o $@
+	@echo $(CYAN)$(NAME)Compiling... $<$(RESET)
 
 clean:
 	@/bin/rm -rf $(DIR_OBJ)

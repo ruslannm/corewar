@@ -6,7 +6,7 @@
 #    By: rgero <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/31 22:43:12 by lnoisome          #+#    #+#              #
-#    Updated: 2020/08/26 19:36:10 by rgero            ###   ########.fr        #
+#    Updated: 2020/08/26 22:00:12 by rgero            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ NAME_ASM = asm
 NAME_COREWAR = corewar
 
 DIR_SRC_ASM			= $(DIR_SRC)/$(NAME_ASM)
-DIR_OBJ_ASM 		= $(DIR_OBJ)/$(NAME_ASM)
+DIR_OBJ_ASM 		= $(DIR_SRC)/$(NAME_ASM)
 
 SRC_LIST_ASM 	= 	add_item.c\
 					asm.c\
@@ -66,6 +66,7 @@ HEADERS_ASM			= asm.h asm_error.h op.h
 
 SRC_ASM			= $(addprefix $(DIR_SRC_ASM)/, $(SRC_LIST_ASM))
 OBJ_ASM			= $(addprefix $(DIR_OBJ_ASM)/, $(SRC_LIST_ASM:.c=.o))
+D_FILES_ASM		= $(addprefix $(DIR_OBJ_ASM)/, $(patsubst %.c, %.d, $(SRC_LIST_ASM)))
 HEADER_ASM			= $(addprefix $(DIR_HEADER)/, $(HEADERS_ASM))
 
 DIR_SRC_COREWAR		= $(DIR_SRC)/$(NAME_COREWAR)
@@ -181,7 +182,7 @@ HEADER_UTILS = $(addprefix $(DIR_HEADER)/, $(HEADERS_UTILS))
 
 C_COREWAR = $(SRC_COREWAR) $(SRC_UTILS) $(SRC_OPER)
 O_COREWAR = $(OBJ_COREWAR) $(OBJ_UTILS) $(OBJ_OPER)
-D_COREWAR = $(D_FILES_COREWAR) \& $(D_FILES_UTILS) \& $(D_FILES_OPER)
+D_COREWAR = $(D_FILES_COREWAR) \& $(D_FILES_UTILS) \& $(D_FILES_OPER) \& $(D_FILES_ASM)
 
 .PHONY: all clean fclean re
 
@@ -201,7 +202,7 @@ $(NAME_FT_PRINTF):
 	@make -C $(DIR_FT_PRINTF)/
 
 $(DIR_OBJ_ASM)/%.o: $(DIR_SRC_ASM)/%.c $(HEADER_ASM)
-	@$(CC) $(FLAGS) -I $(DIR_HEADER) -I $(DIR_INC_LIBFT) -I $(DIR_INC_PRINTF) -c $< -o $@
+	@$(CC) $(FLAGS) -I $(DIR_HEADER) -I $(DIR_INC_LIBFT) -I $(DIR_INC_PRINTF) -MD -c $< -o $@
 	@echo $(CYAN)Compiling... $<$(RESET)
 
 $(NAME_COREWAR): $(O_COREWAR)
