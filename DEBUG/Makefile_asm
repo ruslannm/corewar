@@ -6,14 +6,11 @@
 #    By: rgero <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/01 00:00:00 by lnickole          #+#    #+#              #
-#    Updated: 2020/08/20 20:44:13 by rgero            ###   ########.fr        #
+#    Updated: 2020/08/26 17:42:49 by rgero            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME_ASM			= asm
-DIR_SRC				= sources/$(NAME_ASM)
-DIR_OBJ 			= objects
-DIR_INC 			= includes
+FLAGS			= -Wall -Wextra -Werror
 
 DIR_LIBFT 			= libft
 NAME_LIBFT			= $(DIR_LIBFT)/libft.a
@@ -22,6 +19,18 @@ DIR_INC_LIBFT		= $(DIR_LIBFT)/includes
 DIR_FT_PRINTF 		= ft_printf
 NAME_FT_PRINTF		= $(DIR_FT_PRINTF)/libftprintf.a
 DIR_INC_PRINTF		= $(DIR_FT_PRINTF)/includes
+
+GCC_LIBFT 		= -L $(DIR_LIBFT) -lft
+GCC_FT_PRINTF	= -L $(DIR_FT_PRINTF) -lftprintf
+
+DIR_SRC				= sources
+DIR_OBJ 			= objects
+DIR_INC 			= includes
+
+NAME_ASM			= asm
+
+DIR_SRC_ASM			= $(DIR_SRC)/$(NAME_ASM)
+DIR_OBJ_ASM 		= $(DIR_OBJ)/$(NAME_ASM)
 
 SRC_LIST_ASM 	= 	add_item.c\
 					asm.c\
@@ -46,23 +55,19 @@ SRC_LIST_ASM 	= 	add_item.c\
 					write_output.c\
 					write_file.c
 
-HEADERS				= asm.h asm_error.h op.h
+HEADERS_ASM			= asm.h asm_error.h op.h
 
-SRC_ASM			= $(addprefix $(DIR_SRC)/, $(SRC_LIST_ASM))
-OBJ_ASM			= $(addprefix $(DIR_OBJ)/, $(SRC_LIST_ASM:.c=.o))
-INC				= $(addprefix $(DIR_INC)/, $(HEADERS))
-
-FLAGS			= -Wall -Wextra -Werror -g
-GCC_LIBFT 		= -L $(DIR_LIBFT) -lft
-GCC_FT_PRINTF	= -L $(DIR_FT_PRINTF) -lftprintf
+SRC_ASM			= $(addprefix $(DIR_SRC_ASM)/, $(SRC_LIST_ASM))
+OBJ_ASM			= $(addprefix $(DIR_OBJ_ASM)/, $(SRC_LIST_ASM:.c=.o))
+INC_ASM			= $(addprefix $(DIR_INC)/, $(HEADERS_ASM))
 
 all: $(NAME_ASM)
 
-$(NAME_ASM): $(DIR_OBJ) $(OBJ_ASM) $(NAME_LIBFT) $(NAME_FT_PRINTF) $(INC)
+$(NAME_ASM): $(DIR_OBJ_ASM) $(OBJ_ASM) $(NAME_LIBFT) $(NAME_FT_PRINTF) $(INC_ASM)
 	@gcc $(FLAGS) $(OBJ_ASM) -o $(NAME_ASM) $(GCC_LIBFT) $(GCC_FT_PRINTF)
 
-$(DIR_OBJ):
-	@mkdir -p $(DIR_OBJ)
+$(DIR_OBJ_ASM):
+	@mkdir -p $(DIR_OBJ_ASM)
 
 $(NAME_LIBFT):
 	@make -C $(DIR_LIBFT)/
@@ -70,7 +75,7 @@ $(NAME_LIBFT):
 $(NAME_FT_PRINTF):
 	@make -C $(DIR_FT_PRINTF)/
 
-$(DIR_OBJ)/%.o: $(DIR_SRC)/%.c $(INC)
+$(DIR_OBJ_ASM)/%.o: $(DIR_SRC_ASM)/%.c $(INC_ASM)
 	@gcc -c -I $(DIR_INC) -I $(DIR_INC_LIBFT) -I $(DIR_INC_PRINTF) $(FLAGS) $< -o $@
 
 clean:
