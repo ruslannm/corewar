@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   del_fun.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 10:51:49 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 17:00:00 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:25:15 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 t_car	*del_func(t_car **head, t_car *cur_car)
 {

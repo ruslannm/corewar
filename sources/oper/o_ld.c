@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   o_ld.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 09:23:11 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 13:26:34 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:22:54 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 void	o_ld(t_vm *vm, t_car *car, t_args *arg)
 {

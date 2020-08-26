@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   o_or.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 08:36:27 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 14:30:50 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:23:33 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 void	o_or(t_vm *vm, t_car *car, t_args *arg)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pars_champ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 19:32:30 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 11:25:08 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:26:27 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 void	pars_champ(t_pars *pars, t_players *players)
 {

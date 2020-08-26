@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   o_ldi.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 14:38:58 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 14:39:53 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:23:00 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 void	o_ldi(t_vm *vm, t_car *car, t_args *arg)
 {

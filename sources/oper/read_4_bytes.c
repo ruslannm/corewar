@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   read_4_bytes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 09:37:14 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 13:24:00 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:24:33 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 int	read_4_bytes(t_vm *vm, int position)
 {

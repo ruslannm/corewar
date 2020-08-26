@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   relocate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 20:01:44 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 14:01:16 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:24:38 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 void	relocate(t_car *car, t_args *args, int type)
 {

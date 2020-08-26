@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   read_2_bytes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 10:19:18 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 13:27:25 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:24:27 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 int16_t	read_2_bytes(t_vm *vm, int position)
 {

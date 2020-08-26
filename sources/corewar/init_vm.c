@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_vm.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 14:52:25 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 12:22:50 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:26:15 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 static void	init_vm_arena(t_vm *vm, t_players *players)
 {

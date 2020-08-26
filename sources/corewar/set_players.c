@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   set_players.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 09:41:10 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 11:57:05 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:26:47 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 void	set_players(t_players *players, int new_size)
 {

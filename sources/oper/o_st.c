@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   o_st.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 18:51:54 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 13:59:55 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:23:39 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 int		get_second(t_vm *vm, t_car *car, int type, int *arg)
 {

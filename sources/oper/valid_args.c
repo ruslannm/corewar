@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   valid_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 15:01:53 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/20 19:42:39 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:24:49 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 int			invalid_reg(t_vm *vm, t_car *car, int args, int num)
 {
@@ -36,9 +36,6 @@ int			valid_args(t_vm *vm, t_car *car, int args)
 	arg2 = check_arg(args << 2);
 	arg3 = check_arg(args << 4);
 	res = 0;
-	// printf("a1=%i\n", arg1);
-	// printf("a2=%i\n", arg2);
-	// printf("a3=%i\n", arg3);
 	if ((arg1 == REG_CODE || arg1 == DIR_CODE || arg1 == IND_CODE) &&
 	(arg2 == REG_CODE || arg2 == DIR_CODE) && (arg3 == REG_CODE))
 		res = 1;
@@ -48,7 +45,6 @@ int			valid_args(t_vm *vm, t_car *car, int args)
 		res = 0;
 	if (arg3 == REG_CODE && invalid_reg(vm, car, args, 2))
 		res = 0;
-	// printf("%i\n", res);
 	car->step = 2;
 	return (res);
 }

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   set_oper.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 21:31:36 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 09:25:54 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:24:43 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 void	set_oper(t_vm *vm)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   valid_n.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 21:25:48 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 16:56:27 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:27:42 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 void	valid_n(t_pars *pars, t_players *players)
 {

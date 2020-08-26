@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   valid_id_name.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:04:52 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 16:47:36 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:27:36 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 static void	sort_id(t_players *players, int i, int j)
 {

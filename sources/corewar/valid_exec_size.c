@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   valid_exec_size.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 19:57:16 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 11:37:21 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:27:27 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 void	valid_exec_size(t_pars *pars, t_players *players)
 {

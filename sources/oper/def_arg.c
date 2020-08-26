@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   def_arg.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 19:08:57 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 14:06:29 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:22:03 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 int	def_arg(unsigned char code, unsigned arg)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   valid_champ_name.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 20:01:52 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 11:27:30 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:26:52 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 void	valid_champ_name(t_pars *pars, t_players *players)
 {

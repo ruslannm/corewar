@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   o_zjmp.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 13:58:03 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 14:38:15 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:24:04 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 void	o_zjmp(t_vm *vm, t_car *car, t_args *arg)
 {

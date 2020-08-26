@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 16:36:23 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/11 21:43:46 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:21:24 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
-void ft_swap(t_player **a, t_player **b)
+void	ft_swap(t_player **a, t_player **b)
 {
-    t_player *c;
+	t_player *c;
 
-    c = *a;
-    *a = *b;
-    *b = c;
+	c = *a;
+	*a = *b;
+	*b = c;
 }

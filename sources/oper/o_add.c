@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   o_add.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/16 18:23:17 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 14:05:34 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:22:30 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 void	o_add(t_vm *vm, t_car *car, t_args *arg)
 {

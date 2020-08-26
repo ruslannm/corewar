@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   plus_minus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/16 18:56:27 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 14:07:50 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:24:15 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 void	plus_minus(t_vm *vm, t_car *car, t_args *arg, int type)
 {

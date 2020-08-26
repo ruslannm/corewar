@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_carry.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 14:31:59 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 16:58:55 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:26:03 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 void	init_carry(t_vm *vm, int iter)
 {

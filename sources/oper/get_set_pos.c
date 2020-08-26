@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_set_pos.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 10:37:17 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 13:11:19 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:22:19 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 int		get_pos(t_car *car, int position)
 {

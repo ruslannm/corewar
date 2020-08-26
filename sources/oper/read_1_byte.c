@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   read_1_byte.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/15 19:35:08 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 13:09:34 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:24:21 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 unsigned char	read_1_byte(t_vm *vm, int position)
 {

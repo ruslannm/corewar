@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   oper_func.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/13 13:07:52 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 13:16:31 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:24:10 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 void	oper_func_cont(t_vm *vm, t_car *car, t_args *arg, int i)
 {

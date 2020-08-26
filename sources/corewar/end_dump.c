@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   end_dump.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 10:47:24 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 13:03:12 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:25:21 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 int	end_dump(t_vm *vm)
 {

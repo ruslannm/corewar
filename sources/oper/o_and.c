@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   o_and.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 09:51:52 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 14:27:55 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/26 20:22:41 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 void	o_and(t_vm *vm, t_car *car, t_args *arg)
 {
