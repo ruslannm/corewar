@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   oper.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccharmai <5429549@mail.ru>                 +#+  +:+       +#+        */
+/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/13 12:27:42 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 20:09:03 by ccharmai         ###   ########.fr       */
+/*   Updated: 2020/08/27 16:37:21 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OPER_H
 # define OPER_H
 
-# include "../includes/corewar.h"
+# include "corewar.h"
 # include "vm.h"
 
 typedef struct s_vm	t_vm;
