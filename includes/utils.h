@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lidft.h                                            :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 20:10:42 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 21:08:21 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/27 12:09:01 by lnoisome         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define UTILS_H
 
 # include <unistd.h>
-# include <stdio.h>
 
 size_t		ft_strlen(const char *s);
 void		*ft_memcpy(void *dst, const void *src, size_t n);
