@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_vm.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 14:52:25 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 20:26:15 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/27 13:58:43 by lnoisome         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,5 @@ void		init_vm(t_vm *vm, t_players *players)
 	vm->dump_value = players->dump_num >= 0 ? players->dump_num : -1;
 	vm->dump_size = players->dump_size;
 	vm->win_id = players->size;
+	vm->is_aff = players->is_aff;
 }

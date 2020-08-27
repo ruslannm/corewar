@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 18:43:02 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 20:26:36 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/27 13:59:47 by lnoisome         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+static int	valid_aff(t_pars *pars, t_players *players)
+{
+	pars->i++;
+	if (players->is_aff == 0)
+		players->is_aff = 1;
+	else
+		ft_error("Too many aff", "valid aff", 2);
+	return (1);
+}
 
 static void	init_pars(t_pars *pars, int ac, char **av)
 {
@@ -43,6 +53,8 @@ void		parsing(t_players *players, int ac, char **av)
 	{
 		if ((ft_strequ(pars.av[pars.i], "-dump") || \
 		ft_strequ(pars.av[pars.i], "-d")) && valid_dump(&pars, players))
+			continue ;
+		if ((ft_strequ(pars.av[pars.i], "-a") && valid_aff(&pars, players)))
 			continue ;
 		if (i > 3)
 			ft_error("Too many champions", NULL, 1);

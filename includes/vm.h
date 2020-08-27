@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccharmai <5429549@mail.ru>                 +#+  +:+       +#+        */
+/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 10:15:03 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 20:12:34 by ccharmai         ###   ########.fr       */
+/*   Updated: 2020/08/27 13:57:42 by lnoisome         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct		s_players
 	int8_t			dump_size;
 	int				size;
 	int				iter;
+	int				is_aff;
 }					t_players;
 
 typedef struct		s_vm
@@ -65,6 +66,7 @@ typedef struct		s_vm
 	int				cur_cycle;
 	int				dump_value;
 	int				dump_size;
+	int				is_aff;
 }					t_vm;
 
 typedef struct		s_pars
