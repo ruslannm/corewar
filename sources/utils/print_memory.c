@@ -6,11 +6,11 @@
 /*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 19:48:57 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/27 11:52:12 by lnoisome         ###   ########.fr       */
+/*   Updated: 2020/08/27 11:55:52 by lnoisome         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
+#include "corewar.h"
 
 static void	add(int i)
 {
