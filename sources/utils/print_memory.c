@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_memory.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: lnoisome <lnoisome@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/11 19:48:57 by lnoisome          #+#    #+#             */
-/*   Updated: 2020/08/26 20:21:31 by rgero            ###   ########.fr       */
+/*   Updated: 2020/08/27 11:52:12 by lnoisome         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "../includes/corewar.h"
 
 static void	add(int i)
 {
@@ -18,10 +18,10 @@ static void	add(int i)
 
 	str = "0123456789abcdef";
 	ft_putstr("0x");
-	write(1, &str[((i >> 8) / 16) % 16], 1);
-	write(1, &str[(i >> 8) % 16], 1);
-	write(1, &str[(i / 16) % 16], 1);
-	write(1, &str[i % 16], 1);
+	ft_putchar(str[((i >> 8) / 16) % 16]);
+	ft_putchar(str[(i >> 8) % 16]);
+	ft_putchar(str[(i / 16) % 16]);
+	ft_putchar(str[i % 16]);
 	ft_putstr(" : ");
 }
 
@@ -41,8 +41,8 @@ void		print_memory(const void *arena, size_t size)
 		j = 0;
 		while (j < size && i + j < MEM_SIZE)
 		{
-			write(1, &str[(*(p + i + j) / 16) % 16], 1);
-			write(1, &str[*(p + i + j) % 16], 1);
+			ft_putchar(str[(*(p + i + j) / 16) % 16]);
+			ft_putchar(str[*(p + i + j) % 16]);
 			ft_putstr(" ");
 			j++;
 		}
