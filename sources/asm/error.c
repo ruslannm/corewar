@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 19:11:37 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/23 20:37:16 by rgero            ###   ########.fr       */
+/*   Updated: 2020/09/02 22:32:06 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void		token_error(t_parser *parser, t_token *token, char *row, int i)
 	else if (token->type == SEPARATOR)
 		ft_printf("Syntax error at token [TOKEN][%03u:%03u] %s \"%c\"\n",
 			token->row, token->column + 1, g_type[token->type], SEPARATOR_CHAR);
-	else if (token->type == END && parser->tokens[i - 1]->type != ENDLINE)
+	else if (token->type == END &&\
+			i > 0 && parser->tokens[i - 1]->type != ENDLINE)
 		token_end_error(parser, token);
 	else
 		ft_printf("Syntax error at token [TOKEN][%03u:%03u] %s \"%s\"\n",
