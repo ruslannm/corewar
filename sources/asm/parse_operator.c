@@ -6,7 +6,7 @@
 /*   By: rgero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 07:44:19 by rgero             #+#    #+#             */
-/*   Updated: 2020/08/23 21:05:37 by rgero            ###   ########.fr       */
+/*   Updated: 2020/09/02 22:48:02 by rgero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,8 @@ void				parse_str(t_parser *parser,
 	}
 	else
 	{
+		if (0 == parser->array_info[TOKENS][ARRAY_SIZE])
+			token_end_error(parser, NULL);
 		parser->column = start;
 		parse_operator(parser, row, token,
 		parser->tokens[parser->array_info[TOKENS][ARRAY_SIZE] - 1]->type);
